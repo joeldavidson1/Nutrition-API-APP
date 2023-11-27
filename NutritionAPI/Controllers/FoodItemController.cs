@@ -25,4 +25,21 @@ public class FoodItemController : Controller
 
         return Ok(foodItems);
     }
+
+    [HttpGet("{foodCode}")]
+    [ProducesResponseType(200, Type = typeof(FoodItem))]
+    [ProducesResponseType(400)]
+    public IActionResult GetFoodItem(string foodCode)
+    {
+        if (!_foodItemRepository.FoodItemExists(foodCode))
+        {
+            return NotFound();
+        }
+
+        FoodItem foodItem = _foodItemRepository.GetFoodItem(foodCode);
+
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
+        return Ok(foodItem);
+    }
 }

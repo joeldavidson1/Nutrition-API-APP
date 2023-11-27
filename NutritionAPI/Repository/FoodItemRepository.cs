@@ -15,6 +15,16 @@ public class FoodItemRepository : IFoodItemRepository
 
     public ICollection<FoodItem> GetFoodItems()
     {
-        return _context.FoodItems.ToList();
+        return _context.FoodItem.ToList();
+    }
+
+    public FoodItem GetFoodItem(string foodCode)
+    {
+        return _context.FoodItem.FirstOrDefault(foodItem => foodItem.FoodCode == foodCode);
+    }
+
+    public bool FoodItemExists(string foodCode)
+    {
+        return _context.FoodItem.Any(foodItem => foodItem.FoodCode == foodCode);
     }
 }

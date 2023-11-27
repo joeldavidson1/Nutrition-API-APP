@@ -10,7 +10,7 @@ public class DataContext : DbContext
         
     }
 
-    public DbSet<FoodItem> FoodItems { get; set; }
+    public DbSet<FoodItem> FoodItem { get; set; }
     public DbSet<FoodGroup> FoodGroups { get; set; }
     public DbSet<MacronutrientsAndEnergy> MacronutrientsAndEnergy { get; set; }
     public DbSet<Minerals> Minerals { get; set; }
