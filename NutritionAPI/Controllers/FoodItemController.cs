@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using NutritionAPI.Dto;
 using NutritionAPI.Interfaces;
 using NutritionAPI.Models;
 
@@ -20,10 +21,18 @@ public class FoodItemController : Controller
     public async Task<IActionResult> GetFoodItems()
     {
         IEnumerable<FoodItem> foodItems = await _foodItemRepository.GetFoodItems();
+        
+        // Manually map FoodItem entities to FoodItemDto
+        IEnumerable<FoodItemDto> foodItemDtos = foodItems.Select(foodItem => new FoodItemDto
+        {
+            FoodCode = foodItem.FoodCode,
+            Name = foodItem.Name,
+            FoodGroupCode = foodItem.FoodGroupCode
+        });
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        return Ok(foodItems);
+        return Ok(foodItemDtos);
     }
 
     [HttpGet("{foodCode}")]

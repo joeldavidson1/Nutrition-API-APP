@@ -1,6 +1,8 @@
+using NutritionAPI.Models;
+
 namespace NutritionAPI.Dto;
 
-public class FoodItemsDto
+public class FoodItemDto
 {
     public string FoodCode { get; set; }
     public string Name { get; set; }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using NutritionAPI.Data;
+using NutritionAPI.Helper;
 using NutritionAPI.Interfaces;
 using NutritionAPI.Repository;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IFoodItemRepository, FoodItemRepository>();
+builder.Services.AddScoped<IMappingService, MappingService>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
