@@ -17,9 +17,9 @@ public class FoodItemController : Controller
     
     [HttpGet]
     [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItem>))]
-    public IActionResult GetFoodItems()
+    public async Task<IActionResult> GetFoodItems()
     {
-        ICollection<FoodItem> foodItems = _foodItemRepository.GetFoodItems();
+        IEnumerable<FoodItem> foodItems = await _foodItemRepository.GetFoodItems();
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -29,14 +29,14 @@ public class FoodItemController : Controller
     [HttpGet("{foodCode}")]
     [ProducesResponseType(200, Type = typeof(FoodItem))]
     [ProducesResponseType(400)]
-    public IActionResult GetFoodItem(string foodCode)
+    public async Task<IActionResult> GetFoodItem(string foodCode)
     {
         if (!_foodItemRepository.FoodItemExists(foodCode))
         {
             return NotFound();
         }
 
-        FoodItem foodItem = _foodItemRepository.GetFoodItem(foodCode);
+        FoodItem foodItem = await _foodItemRepository.GetFoodItem(foodCode);
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 

@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using NutritionAPI.Data;
 using NutritionAPI.Interfaces;
 using NutritionAPI.Models;
@@ -13,14 +15,14 @@ public class FoodItemRepository : IFoodItemRepository
         _context = context;
     }
 
-    public ICollection<FoodItem> GetFoodItems()
+    public async Task<IEnumerable<FoodItem>> GetFoodItems()
     {
-        return _context.FoodItem.ToList();
+        return await _context.FoodItem.ToListAsync();
     }
 
-    public FoodItem GetFoodItem(string foodCode)
+    public async Task<FoodItem> GetFoodItem(string foodCode)
     {
-        return _context.FoodItem.FirstOrDefault(foodItem => foodItem.FoodCode == foodCode);
+        return await _context.FoodItem.FirstOrDefaultAsync(foodItem => foodItem.FoodCode == foodCode);
     }
 
     public bool FoodItemExists(string foodCode)
