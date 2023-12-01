@@ -8,10 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodGroupDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Adding Dto to FoodItems with FoodGroups">
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/AllFoodItemInformation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" afterDir="false" />
@@ -115,6 +113,7 @@
       <workItem from="1701279092572" duration="1900000" />
       <workItem from="1701283674013" duration="43000" />
       <workItem from="1701283722372" duration="2675000" />
+      <workItem from="1701432900519" duration="3602000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -193,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701283861438</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Adding Dto to FoodItems with FoodGroups">
+      <created>1701433066916</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701433066916</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +237,7 @@
     <MESSAGE value="Testing out async methods against normal sync" />
     <MESSAGE value="Adding mapping to Dtos" />
     <MESSAGE value="Removed unwanted files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unwanted files" />
+    <MESSAGE value="Adding Dto to FoodItems with FoodGroups" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Dto to FoodItems with FoodGroups" />
   </component>
 </project>

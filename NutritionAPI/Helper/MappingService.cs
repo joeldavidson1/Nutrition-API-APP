@@ -12,17 +12,27 @@ public class MappingService : IMappingService
         {
             FoodCode = foodItem.FoodCode,
             Name = foodItem.Name,
-            FoodGroupCode = foodItem.FoodGroupCode,
+            // FoodGroupCode = foodItem.FoodGroupCode,
             FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup)
         });
+    }
+
+    public FoodItemDto MapFoodItemToDto(FoodItem foodItem)
+    {
+        return new FoodItemDto
+        {
+            FoodCode = foodItem.FoodCode,
+            Name = foodItem.Name,
+            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup)
+        };
     }
 
     public FoodGroupDto MapFoodGroupToDto(FoodGroup foodGroup)
     {
         return new FoodGroupDto
         {
-            Description = foodGroup.Description,
-            FoodGroupCode = foodGroup.FoodGroupCode
+            FoodGroupCode = foodGroup.FoodGroupCode,
+            Description = foodGroup.Description
         };
     }
 }

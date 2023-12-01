@@ -23,7 +23,9 @@ public class FoodItemRepository : IFoodItemRepository
 
     public async Task<FoodItem> GetFoodItem(string foodCode)
     {
-        return await _context.FoodItem.FirstOrDefaultAsync(foodItem => foodItem.FoodCode == foodCode);
+        return await _context.FoodItem
+            .Include(foodItem => foodItem.FoodGroup)
+            .FirstOrDefaultAsync(foodItem => foodItem.FoodCode == foodCode);
     }
 
     public bool FoodItemExists(string foodCode)

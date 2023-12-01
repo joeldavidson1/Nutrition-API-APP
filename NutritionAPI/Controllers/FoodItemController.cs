@@ -9,6 +9,12 @@ namespace NutritionAPI.Controllers;
 [ApiController]
 public class FoodItemController : Controller
 {
+    public enum DetailsOption
+    {
+        Abridged,
+        Full
+    }
+    
     private readonly IFoodItemRepository _foodItemRepository;
     private readonly IMappingService _mappingService;
 
@@ -20,11 +26,9 @@ public class FoodItemController : Controller
     
     [HttpGet]
     [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItem>))]
-    public async Task<IActionResult> GetFoodItems()
+    public async Task<IActionResult> GetFoodItems([FromQuery] bool abridgedDetails = false)
     {
         IEnumerable<FoodItem> foodItems = await _foodItemRepository.GetFoodItems();
-        
-        // Manually map FoodItem entities to FoodItemDto
         IEnumerable<FoodItemDto> foodItemDtos = _mappingService.MapFoodItemsToDtos(foodItems);
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -43,9 +47,10 @@ public class FoodItemController : Controller
         }
 
         FoodItem foodItem = await _foodItemRepository.GetFoodItem(foodCode);
-
+        FoodItemDto foodItemDto = _mappingService.MapFoodItemToDto(foodItem);
+        
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        return Ok(foodItem);
+        return Ok(foodItemDto);
     }
 }
