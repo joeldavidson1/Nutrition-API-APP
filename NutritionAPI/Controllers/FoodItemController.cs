@@ -10,10 +10,12 @@ namespace NutritionAPI.Controllers;
 public class FoodItemController : Controller
 {
     private readonly IFoodItemRepository _foodItemRepository;
+    private readonly IMappingService _mappingService;
 
-    public FoodItemController(IFoodItemRepository foodItemRepository)
+    public FoodItemController(IFoodItemRepository foodItemRepository, IMappingService mappingService)
     {
         _foodItemRepository = foodItemRepository;
+        _mappingService = mappingService;
     }
     
     [HttpGet]
@@ -23,12 +25,7 @@ public class FoodItemController : Controller
         IEnumerable<FoodItem> foodItems = await _foodItemRepository.GetFoodItems();
         
         // Manually map FoodItem entities to FoodItemDto
-        IEnumerable<FoodItemDto> foodItemDtos = foodItems.Select(foodItem => new FoodItemDto
-        {
-            FoodCode = foodItem.FoodCode,
-            Name = foodItem.Name,
-            FoodGroupCode = foodItem.FoodGroupCode
-        });
+        IEnumerable<FoodItemDto> foodItemDtos = _mappingService.MapFoodItemsToDtos(foodItems);
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 

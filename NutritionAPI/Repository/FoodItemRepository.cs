@@ -17,7 +17,8 @@ public class FoodItemRepository : IFoodItemRepository
 
     public async Task<IEnumerable<FoodItem>> GetFoodItems()
     {
-        return await _context.FoodItem.ToListAsync();
+        // return await _context.FoodItem.ToListAsync();
+        return await _context.FoodItem.Include(foodItem => foodItem.FoodGroup).ToListAsync();
     }
 
     public async Task<FoodItem> GetFoodItem(string foodCode)

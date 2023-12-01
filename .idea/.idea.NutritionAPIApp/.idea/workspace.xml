@@ -9,79 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/Contracts.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Contracts.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Contracts.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Contracts.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Contracts/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Entities.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/ref/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/refint/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Entities.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Entities.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/Entities.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/LoggerService.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/bin/Debug/net6.0/LoggerService.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/LoggerService.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/ref/LoggerService.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/Debug/net6.0/refint/LoggerService.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/LoggerService.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LoggerService/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repository/obj/project.packagespec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodGroupDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +114,7 @@
       <workItem from="1701276347757" duration="1787000" />
       <workItem from="1701279092572" duration="1900000" />
       <workItem from="1701283674013" duration="43000" />
-      <workItem from="1701283722372" duration="21000" />
+      <workItem from="1701283722372" duration="2675000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -243,7 +179,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701270388335</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding mapping to Dtos">
+      <created>1701283798892</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701283798892</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Removed unwanted files">
+      <created>1701283861438</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701283861438</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,13 +223,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="removing user generated output files" />
-    <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Removed workspace file" />
     <MESSAGE value="Added data models" />
     <MESSAGE value="Added DataContext to match up tables with PostgreSQL" />
     <MESSAGE value="Added initial FoodItem repository and interface patterns" />
     <MESSAGE value="Added the ability to get a FoodItem from the its food code" />
     <MESSAGE value="Testing out async methods against normal sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing out async methods against normal sync" />
+    <MESSAGE value="Adding mapping to Dtos" />
+    <MESSAGE value="Removed unwanted files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unwanted files" />
   </component>
 </project>
