@@ -8,13 +8,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Adding Dto to FoodItems with FoodGroups">
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/AllFoodItemInformation.cs" afterDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/Models/Proximates.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Data/DataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Data/DataContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IFoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IFoodItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/FoodItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +113,9 @@
       <workItem from="1701279092572" duration="1900000" />
       <workItem from="1701283674013" duration="43000" />
       <workItem from="1701283722372" duration="2675000" />
-      <workItem from="1701432900519" duration="3602000" />
+      <workItem from="1701432900519" duration="5453000" />
+      <workItem from="1705572642739" duration="120000" />
+      <workItem from="1705576159131" duration="800000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -199,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701433066916</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added additional FoodGroupDto when searching for a single FoodItem">
+      <created>1701445056709</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701445056709</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +247,7 @@
     <MESSAGE value="Adding mapping to Dtos" />
     <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Adding Dto to FoodItems with FoodGroups" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Dto to FoodItems with FoodGroups" />
+    <MESSAGE value="Added additional FoodGroupDto when searching for a single FoodItem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added additional FoodGroupDto when searching for a single FoodItem" />
   </component>
 </project>

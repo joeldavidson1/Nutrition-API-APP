@@ -29,7 +29,11 @@ public class DataContext : DbContext
             entity.HasOne(m => m.MacronutrientsAndEnergy)
                 .WithOne(foodItem => foodItem.FoodItem)
                 .HasForeignKey<MacronutrientsAndEnergy>(x => x.FoodCode);
-        
+            
+            entity.HasOne(m => m.Proximates)
+                .WithOne(foodItem => foodItem.FoodItem)
+                .HasForeignKey<Proximates>(x => x.FoodCode);
+
             entity.HasOne(m => m.Minerals)
                 .WithOne(foodItem => foodItem.FoodItem)
                 .HasForeignKey<Minerals>(x => x.FoodCode);
