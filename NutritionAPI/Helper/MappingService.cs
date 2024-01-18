@@ -6,7 +6,7 @@ namespace NutritionAPI.Helper;
 
 public class MappingService : IMappingService
 {
-    public IEnumerable<FoodItemDto> MapFoodItemsToDtos(IEnumerable<FoodItem> foodItems)
+    public IEnumerable<FoodItemDto> MapFoodItemsToDtos(IEnumerable<FoodItems> foodItems)
     {
         return foodItems.Select(foodItem => new FoodItemDto
         {
@@ -17,13 +17,13 @@ public class MappingService : IMappingService
         });
     }
 
-    public FoodItemDto MapFoodItemToDto(FoodItem foodItem)
+    public FoodItemDto MapFoodItemToDto(FoodItems foodItems)
     {
         return new FoodItemDto
         {
-            FoodCode = foodItem.FoodCode,
-            Name = foodItem.Name,
-            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup)
+            FoodCode = foodItems.FoodCode,
+            Name = foodItems.Name,
+            FoodGroup = MapFoodGroupToDto(foodItems.FoodGroup)
         };
     }
 

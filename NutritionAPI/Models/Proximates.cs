@@ -23,5 +23,5 @@ public class Proximates
     public string? FatsPolyunsaturated { get; set; }
     public string? FatsTrans { get; set; }
     public string? Cholesterol { get; set; }
-    public FoodItem? FoodItem { get; set; }
+    public FoodItems? FoodItem { get; set; }
 }

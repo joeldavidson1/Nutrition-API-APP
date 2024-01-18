@@ -5,7 +5,7 @@ namespace NutritionAPI.Interfaces;
 
 public interface IMappingService
 {
-    IEnumerable<FoodItemDto> MapFoodItemsToDtos(IEnumerable<FoodItem> foodItems);
-    FoodItemDto MapFoodItemToDto(FoodItem foodItem);
+    IEnumerable<FoodItemDto> MapFoodItemsToDtos(IEnumerable<FoodItems> foodItems);
+    FoodItemDto MapFoodItemToDto(FoodItems foodItems);
     FoodGroupDto MapFoodGroupToDto(FoodGroup foodGroups);
 }

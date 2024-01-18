@@ -15,21 +15,21 @@ public class FoodItemRepository : IFoodItemRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<FoodItem>> GetFoodItems()
+    public async Task<IEnumerable<FoodItems>> GetFoodItems()
     {
         // return await _context.FoodItem.ToListAsync();
-        return await _context.FoodItem.Include(foodItem => foodItem.FoodGroup).ToListAsync();
+        return await _context.FoodItems.Include(foodItem => foodItem.FoodGroup).ToListAsync();
     }
 
-    public async Task<FoodItem> GetFoodItem(string foodCode)
+    public async Task<FoodItems> GetFoodItem(string foodCode)
     {
-        return await _context.FoodItem
+        return await _context.FoodItems
             .Include(foodItem => foodItem.FoodGroup)
             .FirstOrDefaultAsync(foodItem => foodItem.FoodCode == foodCode);
     }
 
     public bool FoodItemExists(string foodCode)
     {
-        return _context.FoodItem.Any(foodItem => foodItem.FoodCode == foodCode);
+        return _context.FoodItems.Any(foodItem => foodItem.FoodCode == foodCode);
     }
 }

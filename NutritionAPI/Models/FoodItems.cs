@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NutritionAPI.Models;
 
-public class FoodItem
+public class FoodItems
 {
     [Key]
     public string? FoodCode { get; set; }

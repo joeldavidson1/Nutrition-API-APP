@@ -9,7 +9,7 @@ public class DataContext : DbContext
     {
     }
 
-    public DbSet<FoodItem> FoodItem { get; set; }
+    public DbSet<FoodItems> FoodItems { get; set; }
     public DbSet<FoodGroup> FoodGroups { get; set; }
     public DbSet<MacronutrientsAndEnergy> MacronutrientsAndEnergy { get; set; }
     public DbSet<Minerals> Minerals { get; set; }
@@ -20,7 +20,7 @@ public class DataContext : DbContext
         base.OnModelCreating(modelBuilder);
         // modelBuilder.Entity<FoodItem>().ToTable("fooditems"); // Ensure correct table name
 
-        modelBuilder.Entity<FoodItem>(entity =>
+        modelBuilder.Entity<FoodItems>(entity =>
         {
             entity.HasOne(foodItem => foodItem.FoodGroup)
                 .WithMany(foodGroup => foodGroup.FoodItems)

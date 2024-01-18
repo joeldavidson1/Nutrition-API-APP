@@ -11,5 +11,5 @@ public class MacronutrientsAndEnergy
     public string? Protein { get; set; } 
     public string? Fat { get; set; }
     public string? Carbohydrate { get; set; }
-    public FoodItem? FoodItem { get; set; }
+    public FoodItems? FoodItem { get; set; }
 }

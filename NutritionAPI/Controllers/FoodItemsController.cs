@@ -7,7 +7,7 @@ namespace NutritionAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class FoodItemController : Controller
+public class FoodItemsController : Controller
 {
     public enum DetailsOption
     {
@@ -18,17 +18,18 @@ public class FoodItemController : Controller
     private readonly IFoodItemRepository _foodItemRepository;
     private readonly IMappingService _mappingService;
 
-    public FoodItemController(IFoodItemRepository foodItemRepository, IMappingService mappingService)
+    public FoodItemsController(IFoodItemRepository foodItemRepository, IMappingService mappingService)
     {
         _foodItemRepository = foodItemRepository;
         _mappingService = mappingService;
     }
     
     [HttpGet]
-    [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItem>))]
-    public async Task<IActionResult> GetFoodItems([FromQuery] bool abridgedDetails = false)
+    [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItems>))]
+    // public async Task<IActionResult> GetFoodItems([FromQuery] bool abridgedDetails = false
+    public async Task<IActionResult> GetFoodItems()
     {
-        IEnumerable<FoodItem> foodItems = await _foodItemRepository.GetFoodItems();
+        IEnumerable<FoodItems> foodItems = await _foodItemRepository.GetFoodItems();
         IEnumerable<FoodItemDto> foodItemDtos = _mappingService.MapFoodItemsToDtos(foodItems);
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -37,7 +38,7 @@ public class FoodItemController : Controller
     }
 
     [HttpGet("{foodCode}")]
-    [ProducesResponseType(200, Type = typeof(FoodItem))]
+    [ProducesResponseType(200, Type = typeof(FoodItems))]
     [ProducesResponseType(400)]
     public async Task<IActionResult> GetFoodItem(string foodCode)
     {
@@ -46,8 +47,8 @@ public class FoodItemController : Controller
             return NotFound();
         }
 
-        FoodItem foodItem = await _foodItemRepository.GetFoodItem(foodCode);
-        FoodItemDto foodItemDto = _mappingService.MapFoodItemToDto(foodItem);
+        FoodItems foodItems = await _foodItemRepository.GetFoodItem(foodCode);
+        FoodItemDto foodItemDto = _mappingService.MapFoodItemToDto(foodItems);
         
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
