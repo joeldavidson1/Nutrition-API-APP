@@ -6,7 +6,7 @@ namespace NutritionAPI.Models;
 public class FoodGroup
 {
     [Key]
-    public string FoodGroupCode { get; set; }
-    public string Description { get; set; }
-    public ICollection<FoodItem> FoodItems { get; set; }
+    public string? FoodGroupCode { get; set; }
+    public string? Description { get; set; }
+    public ICollection<FoodItem>? FoodItems { get; set; }
 }

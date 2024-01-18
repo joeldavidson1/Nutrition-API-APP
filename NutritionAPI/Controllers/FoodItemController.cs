@@ -54,19 +54,19 @@ public class FoodItemController : Controller
         return Ok(foodItemDto);
     }
     
-    [HttpGet("Search")]
-    [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItemDto>))]
-    public async Task<IActionResult> SearchFoodItems([FromQuery] string searchTerm)
-    {
-        if (string.IsNullOrWhiteSpace(searchTerm))
-        {
-            return BadRequest("Search term is required.");
-        }
-
-        IEnumerable<FoodItem> matchedFoodItems = await _foodItemRepository.SearchFoodItemsByName(searchTerm);
-
-        IEnumerable<FoodItemDto> matchedFoodItemDtos = _mappingService.MapFoodItemsToDtos(matchedFoodItems);
-
-        return Ok(matchedFoodItemDtos);
-    }
+    // [HttpGet("Search")]
+    // [ProducesResponseType(200, Type = typeof(IEnumerable<FoodItemDto>))]
+    // public async Task<IActionResult> SearchFoodItems([FromQuery] string searchTerm)
+    // {
+    //     if (string.IsNullOrWhiteSpace(searchTerm))
+    //     {
+    //         return BadRequest("Search term is required.");
+    //     }
+    //
+    //     IEnumerable<FoodItem> matchedFoodItems = await _foodItemRepository.SearchFoodItemsByName(searchTerm);
+    //
+    //     IEnumerable<FoodItemDto> matchedFoodItemDtos = _mappingService.MapFoodItemsToDtos(matchedFoodItems);
+    //
+    //     return Ok(matchedFoodItemDtos);
+    // }
 }

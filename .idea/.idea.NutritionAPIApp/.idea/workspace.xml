@@ -8,14 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Models/Proximates.cs" afterDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Added Proximates">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Data/DataContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Data/DataContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IFoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IFoodItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/FoodGroup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/FoodItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/MacronutrientsAndEnergy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/MacronutrientsAndEnergy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Minerals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/Minerals.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Proximates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/Proximates.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Vitamins.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Models/Vitamins.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,10 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -115,7 +120,7 @@
       <workItem from="1701283722372" duration="2675000" />
       <workItem from="1701432900519" duration="5453000" />
       <workItem from="1705572642739" duration="120000" />
-      <workItem from="1705576159131" duration="800000" />
+      <workItem from="1705576159131" duration="1763000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -208,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701445056709</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added Proximates">
+      <created>1705577168911</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705577168911</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +260,7 @@
     <MESSAGE value="Removed unwanted files" />
     <MESSAGE value="Adding Dto to FoodItems with FoodGroups" />
     <MESSAGE value="Added additional FoodGroupDto when searching for a single FoodItem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added additional FoodGroupDto when searching for a single FoodItem" />
+    <MESSAGE value="Added Proximates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Proximates" />
   </component>
 </project>
