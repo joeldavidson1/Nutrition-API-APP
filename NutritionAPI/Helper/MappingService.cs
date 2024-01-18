@@ -6,24 +6,29 @@ namespace NutritionAPI.Helper;
 
 public class MappingService : IMappingService
 {
-    public IEnumerable<FoodItemDto> MapFoodItemsToDtos(IEnumerable<FoodItems> foodItems)
+    public IEnumerable<FoodItemsDto> MapFoodItemsToDtos(IEnumerable<FoodItems> foodItems)
     {
-        return foodItems.Select(foodItem => new FoodItemDto
+        return foodItems.Select(foodItem => new FoodItemsDto
         {
             FoodCode = foodItem.FoodCode,
             Name = foodItem.Name,
-            // FoodGroupCode = foodItem.FoodGroupCode,
-            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup)
+            Description = foodItem.Description,
+            DataReferences = foodItem.DataReferences,
+            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup),
+            Proximates = MapProximatesToDto(foodItem.Proximates)
         });
     }
 
-    public FoodItemDto MapFoodItemToDto(FoodItems foodItems)
+    public FoodItemsDto MapFoodItemToDto(FoodItems foodItem)
     {
-        return new FoodItemDto
+        return new FoodItemsDto
         {
-            FoodCode = foodItems.FoodCode,
-            Name = foodItems.Name,
-            FoodGroup = MapFoodGroupToDto(foodItems.FoodGroup)
+            FoodCode = foodItem.FoodCode,
+            Name = foodItem.Name,
+            Description = foodItem.Description,
+            DataReferences = foodItem.DataReferences,
+            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup),
+            Proximates = MapProximatesToDto(foodItem.Proximates)
         };
     }
 
@@ -33,6 +38,30 @@ public class MappingService : IMappingService
         {
             FoodGroupCode = foodGroup.FoodGroupCode,
             Description = foodGroup.Description
+        };
+    }
+
+    public ProximatesDto MapProximatesToDto(Proximates proximates)
+    {
+        return new ProximatesDto
+        {
+            Water = proximates.Water,
+            Starch = proximates.Starch,
+            TotalSugars = proximates.TotalSugars,
+            Glucose = proximates.Glucose,
+            Galactose = proximates.Galactose,
+            Fructose = proximates.Fructose,
+            Sucrose = proximates.Sucrose,
+            Maltose = proximates.Maltose,
+            Lactose = proximates.Lactose,
+            Alochol = proximates.Alcohol,
+            NonStarchPolysaccharides = proximates.NonStarchPolysaccharides,
+            FibreAOAC = proximates.FibreAOAC,
+            FatsSaturated = proximates.FatsSaturated,
+            FatsMonounsaturated = proximates.FatsMonounsaturated,
+            FatsPolyunsaturated = proximates.FatsPolyunsaturated,
+            FatsTrans = proximates.FatsTrans,
+            Cholesterol = proximates.Cholesterol
         };
     }
 }

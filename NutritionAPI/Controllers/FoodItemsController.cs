@@ -30,7 +30,7 @@ public class FoodItemsController : Controller
     public async Task<IActionResult> GetFoodItems()
     {
         IEnumerable<FoodItems> foodItems = await _foodItemRepository.GetFoodItems();
-        IEnumerable<FoodItemDto> foodItemDtos = _mappingService.MapFoodItemsToDtos(foodItems);
+        IEnumerable<FoodItemsDto> foodItemDtos = _mappingService.MapFoodItemsToDtos(foodItems);
 
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -48,11 +48,11 @@ public class FoodItemsController : Controller
         }
 
         FoodItems foodItems = await _foodItemRepository.GetFoodItem(foodCode);
-        FoodItemDto foodItemDto = _mappingService.MapFoodItemToDto(foodItems);
+        FoodItemsDto foodItemsDto = _mappingService.MapFoodItemToDto(foodItems);
         
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        return Ok(foodItemDto);
+        return Ok(foodItemsDto);
     }
     
     // [HttpGet("Search")]

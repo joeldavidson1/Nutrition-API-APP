@@ -17,14 +17,17 @@ public class FoodItemRepository : IFoodItemRepository
 
     public async Task<IEnumerable<FoodItems>> GetFoodItems()
     {
-        // return await _context.FoodItem.ToListAsync();
-        return await _context.FoodItems.Include(foodItem => foodItem.FoodGroup).ToListAsync();
+        return await _context.FoodItems
+            .Include(foodItem => foodItem.FoodGroup)
+            .Include(foodItem => foodItem.Proximates)
+            .ToListAsync();
     }
 
     public async Task<FoodItems> GetFoodItem(string foodCode)
     {
         return await _context.FoodItems
             .Include(foodItem => foodItem.FoodGroup)
+            .Include(foodItem => foodItem.Proximates)
             .FirstOrDefaultAsync(foodItem => foodItem.FoodCode == foodCode);
     }
 

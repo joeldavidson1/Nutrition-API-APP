@@ -16,10 +16,11 @@ public class Proximates
     public string? Sucrose { get; set; }
     public string? Maltose { get; set; }
     public string? Lactose { get; set; }
-    public string? Alochol { get; set; }
+    public string? Alcohol { get; set; }
     public string? NonStarchPolysaccharides { get; set; }
     public string? FibreAOAC { get; set; }
     public string? FatsSaturated { get; set; }
+    public string? FatsMonounsaturated { get; set; }
     public string? FatsPolyunsaturated { get; set; }
     public string? FatsTrans { get; set; }
     public string? Cholesterol { get; set; }
