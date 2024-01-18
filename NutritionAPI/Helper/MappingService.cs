@@ -15,23 +15,23 @@ public class MappingService : IMappingService
             Description = foodItem.Description,
             DataReferences = foodItem.DataReferences,
             FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup),
-            Proximates = MapProximatesToDto(foodItem.Proximates)
+            Proximates = MapProximatesToDto(foodItem.Proximates),
         });
     }
-
-    public FoodItemsDto MapFoodItemToDto(FoodItems foodItem)
-    {
-        return new FoodItemsDto
-        {
-            FoodCode = foodItem.FoodCode,
-            Name = foodItem.Name,
-            Description = foodItem.Description,
-            DataReferences = foodItem.DataReferences,
-            FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup),
-            Proximates = MapProximatesToDto(foodItem.Proximates)
-        };
-    }
-
+    //
+    // public FoodItemsDto MapFoodItemToDto(FoodItems foodItem)
+    // {
+    //     return new FoodItemsDto
+    //     {
+    //         FoodCode = foodItem.FoodCode,
+    //         Name = foodItem.Name,
+    //         Description = foodItem.Description,
+    //         DataReferences = foodItem.DataReferences,
+    //         FoodGroup = MapFoodGroupToDto(foodItem.FoodGroup),
+    //         Proximates = MapProximatesToDto(foodItem.Proximates)
+    //     };
+    // }
+    //
     public FoodGroupDto MapFoodGroupToDto(FoodGroup foodGroup)
     {
         return new FoodGroupDto
@@ -40,7 +40,7 @@ public class MappingService : IMappingService
             Description = foodGroup.Description
         };
     }
-
+    
     public ProximatesDto MapProximatesToDto(Proximates proximates)
     {
         return new ProximatesDto

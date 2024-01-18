@@ -2,7 +2,7 @@ using NutritionAPI.Models;
 
 namespace NutritionAPI.Dto;
 
-public class FoodItemsDto
+public record FoodItemsDto
 {
     public string FoodCode { get; set; }
     public string Name { get; set; }
