@@ -8,70 +8,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Shared.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Shared.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/efCoreCommonOptions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IFoodItemsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IMacronutrientsAndEnergyRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IMineralsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IProximatesRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IRepositoryBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IRepositoryManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IVitaminsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/ErrorModel/ErrorDetails.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/FoodGroups.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/FoodItems.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Minerals.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Proximates.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Vitamins.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/AssemblyReference.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/ContextFactory/RepositoryContextFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Extensions/ExceptionMiddlewareExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Extensions/ServiceExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Properties/launchSettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/appsettings.Development.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPIApp.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/FoodGroupsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/RepositoryBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/RepositoryContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/RepositoryManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/IFoodGroupsService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/IMapperService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/IServiceManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/FoodGroupsService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/FoodItemsService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/MapperService.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/ServiceManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" beforeDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Refer to last commit">
+      <change afterPath="$PROJECT_DIR$/Entities/Exceptions/FoodItemNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Exceptions/NotFoundException.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/FoodItemsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/FoodItemsService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +32,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Contracts/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -187,6 +129,7 @@
       <workItem from="1705670642807" duration="58000" />
       <workItem from="1705670759731" duration="569000" />
       <workItem from="1705671334512" duration="66000" />
+      <workItem from="1705671515145" duration="1181000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -307,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705582401482</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refer to last commit">
+      <created>1705671668208</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705671668208</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,6 +301,7 @@
     <MESSAGE value="Added nullable reference types to Models" />
     <MESSAGE value="Refactor rename FoodItem to FoodItems" />
     <MESSAGE value="Added Proximates in the API call for GetFoodItem and GetFoodItems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Proximates in the API call for GetFoodItem and GetFoodItems" />
+    <MESSAGE value="Refer to last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refer to last commit" />
   </component>
 </project>

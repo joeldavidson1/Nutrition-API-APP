@@ -1,4 +1,5 @@
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -27,8 +28,10 @@ internal sealed class FoodItemsService : IFoodItemsService
     public FoodItemsDto GetFoodItem(string foodCode, bool trackChanges)
     {
         FoodItems foodItem = _repository.FoodItems.GetFoodItem(foodCode, trackChanges);
+        if (foodItem is null) 
+            throw new FoodItemNotFoundException(foodCode);
+        
         FoodItemsDto foodItemDto = _mapper.MapFoodItemToDto(foodItem);
-
         return foodItemDto;
     }
 }
