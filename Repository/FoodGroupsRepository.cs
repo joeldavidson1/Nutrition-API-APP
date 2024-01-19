@@ -9,4 +9,13 @@ public class FoodGroupsRepository : RepositoryBase<FoodGroups>, IFoodGroupsRepos
     {
         
     }
+    
+    public IEnumerable<FoodGroups> GetAllFoodGroups(bool trackChanges) =>
+        FindAll(trackChanges)
+            .OrderBy(x => x.FoodGroupCode)
+            .ToList();
+
+    public FoodGroups GetFoodGroup(string foodGroupCode, bool trackChanges) =>
+        FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
+            .SingleOrDefault();
 }

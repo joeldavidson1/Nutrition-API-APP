@@ -17,4 +17,10 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
     public FoodItems GetFoodItem(string foodCode, bool trackChanges) =>
         FindByCondition(x => x.FoodCode.Equals(foodCode), trackChanges)
             .SingleOrDefault();
+
+    public IEnumerable<FoodItems> GetFoodItemsForFoodGroup(string foodGroupCode, bool trackChanges) =>
+        FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
+            .OrderBy(c => c.Name)
+            .ToList();
+
 }

@@ -20,7 +20,7 @@ internal sealed class FoodItemsService : IFoodItemsService
     public IEnumerable<FoodItemsDto> GetAllFoodItems(bool trackChanges)
     {
         IEnumerable<FoodItems> foodItems = _repository.FoodItems.GetAllFoodItems(trackChanges);
-        IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDtos(foodItems);
+        IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDto(foodItems);
 
         return foodItemsDto;
     }
@@ -33,5 +33,13 @@ internal sealed class FoodItemsService : IFoodItemsService
         
         FoodItemsDto foodItemDto = _mapper.MapFoodItemToDto(foodItem);
         return foodItemDto;
+    }
+
+    public IEnumerable<FoodItemsDto> GetFoodItemsForFoodGroup(string foodGroupCode, bool trackChanges)
+    {
+        IEnumerable<FoodItems> foodItems = _repository.FoodItems.GetFoodItemsForFoodGroup(foodGroupCode, trackChanges);
+        IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDto(foodItems);
+        
+        return foodItemsDto;
     }
 }
