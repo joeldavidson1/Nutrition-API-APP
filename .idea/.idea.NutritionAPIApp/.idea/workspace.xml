@@ -8,28 +8,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Added Proximates in the API call for GetFoodItem and GetFoodItems">
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Models/FoodItemsParameters.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Parameters/FoodItemsParameters.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Parameters/RequestParameters.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemsRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Repository/IRepositoryBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Repository/IRepositoryManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Repository/RepositoryBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Repository/RepositoryManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Services/FoodItemsService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Services/IFoodItemsService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Services/IServiceManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NutritionAPI/Services/ServiceManager.cs" afterDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Refactored: added Services to try and comply with DDD architecture. Also added paging">
+      <change afterPath="$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IFoodItemsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IMacronutrientsAndEnergyRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IMineralsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IProximatesRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IRepositoryBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IRepositoryManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Contracts/IVitaminsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/ErrorModel/ErrorDetails.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/FoodGroups.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/FoodItems.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/Minerals.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/Proximates.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Entities/Models/Vitamins.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/AssemblyReference.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/ContextFactory/RepositoryContextFactory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/Extensions/ExceptionMiddlewareExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NutritionAPI/Extensions/ServiceExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/FoodGroupsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/RepositoryBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/RepositoryContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repository/RepositoryManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service.Contracts/IFoodGroupsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service.Contracts/IMapperService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service.Contracts/IServiceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/FoodGroupsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/FoodItemsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/MapperService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/ServiceManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/efCoreCommonOptions.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/efCoreCommonOptions.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/AllFoodItemInformation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemsDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemsDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IFoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Repository/IFoodItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Controllers/FoodItemsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Data/DataContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodGroupDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/FoodItemsDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Dto/ProximatesDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Helper/MappingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Interfaces/IMappingService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodGroup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodItems.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/FoodItemsParameters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/MacronutrientsAndEnergy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Minerals.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Proximates.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Models/Vitamins.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Parameters/FoodItemsParameters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Parameters/RequestParameters.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/FoodItemsRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/IFoodItemRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/IRepositoryBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/IRepositoryManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/RepositoryBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Repository/RepositoryManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Services/FoodItemsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Services/IFoodItemsService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Services/IServiceManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Services/ServiceManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPIApp.sln" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPIApp.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +97,17 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Models/FoodGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Models/Minerals.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Models/Proximates.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Data/DataContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Models/FoodGroups.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Models/FoodItems.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NutritionAPIApp.Presentation/Class1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI/Repository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -71,6 +124,7 @@
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="ToolWindowNuGet.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -140,7 +194,7 @@
       <workItem from="1701283722372" duration="2675000" />
       <workItem from="1701432900519" duration="5453000" />
       <workItem from="1705572642739" duration="120000" />
-      <workItem from="1705576159131" duration="17672000" />
+      <workItem from="1705576159131" duration="33918000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -261,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705582401482</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactored: added Services to try and comply with DDD architecture. Also added paging">
+      <created>1705597762344</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705597762344</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +366,7 @@
     <MESSAGE value="Added nullable reference types to Models" />
     <MESSAGE value="Refactor rename FoodItem to FoodItems" />
     <MESSAGE value="Added Proximates in the API call for GetFoodItem and GetFoodItems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Proximates in the API call for GetFoodItem and GetFoodItems" />
+    <MESSAGE value="Refactored: added Services to try and comply with DDD architecture. Also added paging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored: added Services to try and comply with DDD architecture. Also added paging" />
   </component>
 </project>
