@@ -1,6 +1,7 @@
 namespace Shared.DataTransferObjects;
 
-public record FoodItemsDto(string? FoodCode, string? Name, string? Description, string? DataReferences);
+public record FoodItemsDto(string? FoodCode, string? Name, string? Description, string? DataReferences,
+    MacronutrientsAndEnergyDto MacronutrientsAndEnergy);
 
 // public string FoodCode { get; set; }
 // public string Name { get; set; }

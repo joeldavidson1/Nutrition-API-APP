@@ -8,19 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Added asynchronous to GET requests for FoodItems and FoodGroups">
+      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/MacronutrientsAndEnergyDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IFoodItemsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/IFoodItemsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/IRepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/IRepositoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/ref/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/ref/Contracts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/refint/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/refint/Contracts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodGroupsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodGroupsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
@@ -30,6 +20,7 @@
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/ref/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/ref/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/refint/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/refint/NutritionAPI.Presentation.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
@@ -45,27 +36,24 @@
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/RepositoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/RepositoryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/ref/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/ref/Repository.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/refint/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/refint/Repository.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/ref/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/ref/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/refint/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/refint/Service.Contracts.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/FoodGroupsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/FoodGroupsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/FoodItemsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/FoodItemsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/MapperService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/MapperService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
@@ -77,6 +65,10 @@
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/ref/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/ref/Service.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/refint/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/refint/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +187,7 @@
       <workItem from="1705671334512" duration="66000" />
       <workItem from="1705671515145" duration="3051000" />
       <workItem from="1705674765466" duration="3026000" />
-      <workItem from="1705759778665" duration="1796000" />
+      <workItem from="1705759778665" duration="2899000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -337,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705676704446</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added asynchronous to GET requests for FoodItems and FoodGroups">
+      <created>1705761892859</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1705761892859</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +383,7 @@
     <MESSAGE value="Refer to last commit" />
     <MESSAGE value="Added exception error handling to FoodItems" />
     <MESSAGE value="Added the ability to search for a food item by a food group code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to search for a food item by a food group code" />
+    <MESSAGE value="Added asynchronous to GET requests for FoodItems and FoodGroups" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added asynchronous to GET requests for FoodItems and FoodGroups" />
   </component>
 </project>
