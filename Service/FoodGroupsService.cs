@@ -17,17 +17,17 @@ internal sealed class FoodGroupsService : IFoodGroupsService
         _mapper = mapper;
     }
 
-    public IEnumerable<FoodGroupsDto> GetAllFoodGroups(bool trackChanges)
+    public async Task<IEnumerable<FoodGroupsDto>> GetAllFoodGroups(bool trackChanges)
     {
-        IEnumerable<FoodGroups> foodGroups = _repository.FoodGroups.GetAllFoodGroups(trackChanges);
+        IEnumerable<FoodGroups> foodGroups = await _repository.FoodGroups.GetAllFoodGroupsAsync(trackChanges);
         IEnumerable<FoodGroupsDto> foodGroupsDtos = _mapper.MapFoodGroupsToDto(foodGroups);
 
         return foodGroupsDtos;
     }
 
-    public FoodGroupsDto GetFoodGroup(string foodGroupCode, bool trackChanges)
+    public async Task<FoodGroupsDto> GetFoodGroup(string foodGroupCode, bool trackChanges)
     {
-        FoodGroups foodGroup = _repository.FoodGroups.GetFoodGroup(foodGroupCode, trackChanges);
+        FoodGroups foodGroup = await _repository.FoodGroups.GetFoodGroupAsync(foodGroupCode, trackChanges);
         if (foodGroup is null)
             throw new FoodGroupNotFoundException(foodGroupCode);
 
@@ -35,30 +35,3 @@ internal sealed class FoodGroupsService : IFoodGroupsService
         return foodGroupDto;
     }
 }
-
-// private readonly IRepositoryManager _repository;
-// private readonly IMapperService _mapper;
-//
-// public FoodItemsService(IRepositoryManager repository, IMapperService mapper)
-// {
-//     _repository = repository;
-//     _mapper = mapper;
-// }
-//
-// public IEnumerable<FoodItemsDto> GetAllFoodItems(bool trackChanges)
-// {
-//     IEnumerable<FoodItems> foodItems = _repository.FoodItems.GetAllFoodItems(trackChanges);
-//     IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDtos(foodItems);
-//
-//     return foodItemsDto;
-// }
-//
-// public FoodItemsDto GetFoodItem(string foodCode, bool trackChanges)
-// {
-//     FoodItems foodItem = _repository.FoodItems.GetFoodItem(foodCode, trackChanges);
-//     if (foodItem is null) 
-//         throw new FoodItemNotFoundException(foodCode);
-//         
-//     FoodItemsDto foodItemDto = _mapper.MapFoodItemToDto(foodItem);
-//     return foodItemDto;
-// }

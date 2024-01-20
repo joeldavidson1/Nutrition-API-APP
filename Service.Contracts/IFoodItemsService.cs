@@ -5,7 +5,7 @@ namespace Service.Contracts;
 
 public interface IFoodItemsService
 {
-    IEnumerable<FoodItemsDto> GetAllFoodItems(bool trackChanges);
-    FoodItemsDto GetFoodItem(string foodCode, bool trackChanges);
-    IEnumerable<FoodItemsDto> GetFoodItemsForFoodGroup(string foodGroupCode, bool trackChanges);
+    Task<IEnumerable<FoodItemsDto>> GetAllFoodItemsAsync(bool trackChanges);
+    Task<FoodItemsDto> GetFoodItemAsync(string foodCode, bool trackChanges);
+    Task<IEnumerable<FoodItemsDto>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges);
 }

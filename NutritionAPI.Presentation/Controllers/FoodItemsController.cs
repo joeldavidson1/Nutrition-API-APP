@@ -14,16 +14,16 @@ public class FoodItemsController : ControllerBase
     public FoodItemsController(IServiceManager service) => _service = service;
 
     [HttpGet]
-    public IActionResult GetFoodItems()
+    public async Task<IActionResult> GetFoodItems()
     {
-        IEnumerable<FoodItemsDto> foodItems = _service.FoodItemsService.GetAllFoodItems(trackChanges: false);
+        IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetAllFoodItemsAsync(trackChanges: false);
         return Ok(foodItems);
     }
 
     [HttpGet("{foodCode}")]
-    public IActionResult GetFoodItem(string foodCode)
+    public async Task<IActionResult> GetFoodItem(string foodCode)
     {
-        FoodItemsDto foodItem = _service.FoodItemsService.GetFoodItem(foodCode, trackChanges: false);
+        FoodItemsDto foodItem = await _service.FoodItemsService.GetFoodItemAsync(foodCode, trackChanges: false);
         return Ok(foodItem);
     }
 }

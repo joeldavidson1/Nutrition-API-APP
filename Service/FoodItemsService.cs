@@ -17,17 +17,17 @@ internal sealed class FoodItemsService : IFoodItemsService
         _mapper = mapper;
     }
 
-    public IEnumerable<FoodItemsDto> GetAllFoodItems(bool trackChanges)
+    public async Task<IEnumerable<FoodItemsDto>> GetAllFoodItemsAsync(bool trackChanges)
     {
-        IEnumerable<FoodItems> foodItems = _repository.FoodItems.GetAllFoodItems(trackChanges);
+        IEnumerable<FoodItems> foodItems = await _repository.FoodItems.GetAllFoodItemsAsync(trackChanges);
         IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDto(foodItems);
 
         return foodItemsDto;
     }
 
-    public FoodItemsDto GetFoodItem(string foodCode, bool trackChanges)
+    public async Task<FoodItemsDto>GetFoodItemAsync(string foodCode, bool trackChanges)
     {
-        FoodItems foodItem = _repository.FoodItems.GetFoodItem(foodCode, trackChanges);
+        FoodItems? foodItem = await _repository.FoodItems.GetFoodItemAsync(foodCode, trackChanges);
         if (foodItem is null) 
             throw new FoodItemNotFoundException(foodCode);
         
@@ -35,9 +35,9 @@ internal sealed class FoodItemsService : IFoodItemsService
         return foodItemDto;
     }
 
-    public IEnumerable<FoodItemsDto> GetFoodItemsForFoodGroup(string foodGroupCode, bool trackChanges)
+    public async Task<IEnumerable<FoodItemsDto>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges)
     {
-        IEnumerable<FoodItems> foodItems = _repository.FoodItems.GetFoodItemsForFoodGroup(foodGroupCode, trackChanges);
+        IEnumerable<FoodItems> foodItems = await _repository.FoodItems.GetFoodItemsForFoodGroupAsync(foodGroupCode, trackChanges);
         IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDto(foodItems);
         
         return foodItemsDto;

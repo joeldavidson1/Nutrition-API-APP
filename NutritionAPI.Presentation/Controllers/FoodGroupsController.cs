@@ -13,23 +13,23 @@ public class FoodGroupsController : ControllerBase
     public FoodGroupsController(IServiceManager service) => _service = service;
 
     [HttpGet]
-    public IActionResult GetFoodGroups()
+    public async Task<IActionResult> GetFoodGroups()
     {
-        IEnumerable<FoodGroupsDto> foodGroups = _service.FoodGroupsService.GetAllFoodGroups(trackChanges: false);
+        IEnumerable<FoodGroupsDto> foodGroups = await _service.FoodGroupsService.GetAllFoodGroups(trackChanges: false);
         return Ok(foodGroups);
     }
 
     [HttpGet("{foodGroupCode}")]
-    public IActionResult GetFoodGroup(string foodGroupCode)
+    public async Task<IActionResult> GetFoodGroup(string foodGroupCode)
     {
-        FoodGroupsDto foodItem = _service.FoodGroupsService.GetFoodGroup(foodGroupCode, trackChanges: false);
+        FoodGroupsDto foodItem = await _service.FoodGroupsService.GetFoodGroup(foodGroupCode, trackChanges: false);
         return Ok(foodItem);
     }
     
     [HttpGet("{foodGroupCode}/foodItems")]
-    public IActionResult GetFoodItemsForFoodGroup(string foodGroupCode)
+    public async Task<IActionResult> GetFoodItemsForFoodGroup(string foodGroupCode)
     {
-        IEnumerable<FoodItemsDto> foodItems = _service.FoodItemsService.GetFoodItemsForFoodGroup(foodGroupCode, trackChanges: false);
+        IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodGroupCode, trackChanges: false);
         return Ok(foodItems);
     }
 }

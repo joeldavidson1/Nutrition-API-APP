@@ -1,5 +1,6 @@
 using Contracts;
 using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository;
 
@@ -10,12 +11,12 @@ public class FoodGroupsRepository : RepositoryBase<FoodGroups>, IFoodGroupsRepos
         
     }
     
-    public IEnumerable<FoodGroups> GetAllFoodGroups(bool trackChanges) =>
-        FindAll(trackChanges)
+    public async Task<IEnumerable<FoodGroups>> GetAllFoodGroupsAsync(bool trackChanges) =>
+        await FindAll(trackChanges)
             .OrderBy(x => x.FoodGroupCode)
-            .ToList();
+            .ToListAsync();
 
-    public FoodGroups GetFoodGroup(string foodGroupCode, bool trackChanges) =>
-        FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
-            .SingleOrDefault();
+    public async Task<FoodGroups> GetFoodGroupAsync(string foodGroupCode, bool trackChanges) =>
+        await FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
+            .SingleOrDefaultAsync();
 }

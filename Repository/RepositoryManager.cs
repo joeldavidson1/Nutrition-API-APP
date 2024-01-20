@@ -18,5 +18,5 @@ public sealed class RepositoryManager : IRepositoryManager
     public IFoodItemsRepository FoodItems => _foodItemsRepository.Value;
     public IFoodGroupsRepository FoodGroups => _foodGroupsRepository.Value;
 
-    public void Save() => _repositoryContext.SaveChanges();
+    public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
 }

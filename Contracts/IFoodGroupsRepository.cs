@@ -4,6 +4,6 @@ namespace Contracts;
 
 public interface IFoodGroupsRepository
 {
-    IEnumerable<FoodGroups> GetAllFoodGroups(bool trackChanges);
-    FoodGroups GetFoodGroup(string foodGroupCode, bool trackChanges);
+    Task<IEnumerable<FoodGroups>> GetAllFoodGroupsAsync(bool trackChanges);
+    Task<FoodGroups> GetFoodGroupAsync(string foodGroupCode, bool trackChanges);
 }
