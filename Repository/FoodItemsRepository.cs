@@ -1,6 +1,7 @@
 using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
 
 namespace Repository;
 
@@ -10,11 +11,17 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
     {
     }
 
-    public async Task<IEnumerable<FoodItems>> GetAllFoodItemsAsync(bool trackChanges) =>
-        await FindAll(trackChanges)
+    public async Task<PagedList<FoodItems>> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters,
+            bool trackChanges)
+    {
+        List<FoodItems> foodItems = await FindAll(trackChanges)
             .Include(f => f.MacronutrientsAndEnergy)
             .OrderBy(x => x.Name)
             .ToListAsync();
+
+        return PagedList<FoodItems>
+            .ToPagedList(foodItems, foodItemParameters.PageNumber, foodItemParameters.PageSize);
+    }
 
     public async Task<FoodItems> GetFoodItemAsync(string foodCode, bool trackChanges) =>
         await FindByCondition(x => x.FoodCode.Equals(foodCode), trackChanges)

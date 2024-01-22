@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts;
 using Entities.Exceptions;
 using Entities.Models;
@@ -9,9 +10,9 @@ namespace Service;
 internal sealed class FoodGroupsService : IFoodGroupsService
 {
     private readonly IRepositoryManager _repository;
-    private readonly IMapperService _mapper;
+    private readonly IMapper _mapper;
 
-    public FoodGroupsService(IRepositoryManager repository, IMapperService mapper)
+    public FoodGroupsService(IRepositoryManager repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
@@ -20,7 +21,7 @@ internal sealed class FoodGroupsService : IFoodGroupsService
     public async Task<IEnumerable<FoodGroupsDto>> GetAllFoodGroups(bool trackChanges)
     {
         IEnumerable<FoodGroups> foodGroups = await _repository.FoodGroups.GetAllFoodGroupsAsync(trackChanges);
-        IEnumerable<FoodGroupsDto> foodGroupsDtos = _mapper.MapFoodGroupsToDto(foodGroups);
+        var foodGroupsDtos = _mapper.Map<IEnumerable<FoodGroupsDto>>(foodGroups);
 
         return foodGroupsDtos;
     }
@@ -31,7 +32,7 @@ internal sealed class FoodGroupsService : IFoodGroupsService
         if (foodGroup is null)
             throw new FoodGroupNotFoundException(foodGroupCode);
 
-        FoodGroupsDto foodGroupDto = _mapper.MapFoodGroupToDto(foodGroup);
+        FoodGroupsDto foodGroupDto = _mapper.Map<FoodGroupsDto>(foodGroup);
         return foodGroupDto;
     }
 }

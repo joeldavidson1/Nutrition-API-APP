@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts;
 using Service.Contracts;
 
@@ -8,7 +9,7 @@ public sealed class ServiceManager : IServiceManager
     private readonly Lazy<IFoodItemsService> _foodItemsService;
     private readonly Lazy<IFoodGroupsService> _foodGroupsService;
 
-    public ServiceManager(IRepositoryManager repositoryManager, IMapperService mapper)
+    public ServiceManager(IRepositoryManager repositoryManager, IMapper mapper)
     {
         _foodItemsService = new Lazy<IFoodItemsService>(() => new FoodItemsService(repositoryManager, mapper));
         _foodGroupsService = new Lazy<IFoodGroupsService>(() => new FoodGroupsService(repositoryManager, mapper));

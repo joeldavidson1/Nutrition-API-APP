@@ -15,3 +15,5 @@
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/obj/Debug/net6.0/refint/Repository.dll
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/obj/Debug/net6.0/Repository.pdb
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/obj/Debug/net6.0/ref/Repository.dll
+/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/bin/Debug/net6.0/Shared.dll
+/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/bin/Debug/net6.0/Shared.pdb

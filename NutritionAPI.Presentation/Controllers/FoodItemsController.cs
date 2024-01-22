@@ -1,7 +1,9 @@
+using System.Text.Json;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace NutritionAPI.Presentation.Controllers;
 
@@ -14,10 +16,18 @@ public class FoodItemsController : ControllerBase
     public FoodItemsController(IServiceManager service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetFoodItems()
+    public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {
-        IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetAllFoodItemsAsync(trackChanges: false);
-        return Ok(foodItems);
+        // IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters,
+        //     trackChanges: false);
+        // return Ok(foodItems);
+
+        (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await
+            _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters, trackChanges: false);
+        
+        Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));
+
+        return Ok(pagedResult.foodItems);
     }
 
     [HttpGet("{foodCode}")]
