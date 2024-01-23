@@ -8,41 +8,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Added AutomMapper library. Also implemented pagination">
-      <change afterPath="$PROJECT_DIR$/Entities/Models/NutrientCategories.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Models/NutrientValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entities/Models/NutrientsAndEnergy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/EnergyDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/MacronutrientsDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/MineralsDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/NutrientUnitAndValueDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/ProximatesDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/VitaminsDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources/80802df1-8f17-4922-a7d4-d09e0bfd075a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources/80802df1-8f17-4922-a7d4-d09e0bfd075a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources/80802df1-8f17-4922-a7d4-d09e0bfd075a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/dataSources/80802df1-8f17-4922-a7d4-d09e0bfd075a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Changed the database to allow for better scalability and added all mappings">
+      <change afterPath="$PROJECT_DIR$/Contracts/IDataShaper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/DataShaper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/FoodItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Models/FoodItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Minerals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Models/Minerals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Proximates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Models/Proximates.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/Models/Vitamins.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/Models/Vitamins.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/Entities.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/ref/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/ref/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/refint/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Entities/obj/Debug/net6.0/refint/Entities.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/ref/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/ref/Contracts.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/refint/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Contracts/obj/Debug/net6.0/refint/Contracts.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Models/MacronutrientsAndEnergy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Models/Minerals.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Models/Proximates.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entities/Models/Vitamins.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
@@ -52,11 +36,9 @@
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.dll" afterDir="false" />
@@ -72,24 +54,17 @@
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/ref/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/ref/NutritionAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/refint/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/refint/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/FoodItemsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/RepositoryContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/RepositoryContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Repository.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/Repository.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/ref/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/ref/Repository.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/refint/Repository.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Repository/obj/Debug/net6.0/refint/Repository.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/IFoodItemsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/bin/Debug/net6.0/Shared.dll" afterDir="false" />
@@ -97,11 +72,12 @@
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/ref/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/ref/Service.Contracts.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/refint/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service.Contracts/obj/Debug/net6.0/refint/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/FoodItemsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/FoodItemsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/ServiceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Service/ServiceManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Contracts.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Entities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Entities.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Entities.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Entities.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.Contracts.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Service.dll" afterDir="false" />
@@ -109,14 +85,14 @@
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Shared.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/Service.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DataTransferObjects/FoodItemsDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/DataTransferObjects/MacronutrientsAndEnergyDto.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/RequestFeatures/FoodItemParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/RequestFeatures/FoodItemParameters.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/ref/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/ref/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/obj/Debug/net6.0/refint/Service.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Service/obj/Debug/net6.0/refint/Service.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameters.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/RequestFeatures/RequestParameters.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/bin/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/bin/Debug/net6.0/Shared.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/bin/Debug/net6.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/bin/Debug/net6.0/Shared.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/Shared.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/ref/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net6.0/ref/Shared.dll" afterDir="false" />
@@ -147,7 +123,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Toolset" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Y9uGKqe9MZMRTAJSLfsK7J5bqb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -240,7 +216,7 @@
       <workItem from="1705671334512" duration="66000" />
       <workItem from="1705671515145" duration="3051000" />
       <workItem from="1705674765466" duration="3026000" />
-      <workItem from="1705759778665" duration="37712000" />
+      <workItem from="1705759778665" duration="41154000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -403,7 +379,14 @@
       <option name="project" value="LOCAL" />
       <updated>1705920140568</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Changed the database to allow for better scalability and added all mappings">
+      <created>1706019564799</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706019564799</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,6 +436,7 @@
     <MESSAGE value="Added asynchronous to GET requests for FoodItems and FoodGroups" />
     <MESSAGE value="Added MacronutrientsAndEnergyDto for FoodItems" />
     <MESSAGE value="Added AutomMapper library. Also implemented pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AutomMapper library. Also implemented pagination" />
+    <MESSAGE value="Changed the database to allow for better scalability and added all mappings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the database to allow for better scalability and added all mappings" />
   </component>
 </project>

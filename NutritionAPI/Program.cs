@@ -1,6 +1,9 @@
 using AutoMapper;
+using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 using NutritionAPI.Extensions;
+using Service;
+using Shared.DataTransferObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IDataShaper<FoodItemsDto>, DataShaper<FoodItemsDto>>();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(NutritionAPI.Presentation.AssemblyReference).Assembly);

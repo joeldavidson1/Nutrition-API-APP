@@ -1,3 +1,4 @@
+using System.Dynamic;
 using System.Text.Json;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ public class FoodItemsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {
-        (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await
+        (IEnumerable<ExpandoObject> foodItems, MetaData metaData) pagedResult = await
             _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters, trackChanges: false);
         
         Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));

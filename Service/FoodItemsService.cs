@@ -1,3 +1,4 @@
+using System.Dynamic;
 using AutoMapper;
 using Contracts;
 using Entities.Exceptions;
@@ -12,20 +13,25 @@ internal sealed class FoodItemsService : IFoodItemsService
 {
     private readonly IRepositoryManager _repository;
     private readonly IMapper _mapper;
+    private readonly IDataShaper<FoodItemsDto> _dataShaper;
 
-    public FoodItemsService(IRepositoryManager repository, IMapper mapper)
+    public FoodItemsService(IRepositoryManager repository, IMapper mapper, IDataShaper<FoodItemsDto> dataShaper)
     {
         _repository = repository;
         _mapper = mapper;
+        _dataShaper = dataShaper;
     }
 
-    public async Task<(IEnumerable<FoodItemsDto> foodItems, MetaData metaData)> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters, bool trackChanges)
+    public async Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)> 
+        GetAllFoodItemsAsync(FoodItemParameters foodItemParameters, bool trackChanges)
     {
         PagedList<FoodItems> foodItemsWithMetaData = await _repository.FoodItems.GetAllFoodItemsAsync(foodItemParameters,
             trackChanges);
         IEnumerable<FoodItemsDto>? foodItemsDto = _mapper.Map<IEnumerable<FoodItemsDto>>(foodItemsWithMetaData);
 
-        return (foodItems: foodItemsDto, metaData: foodItemsWithMetaData.MetaData);
+        IEnumerable<ExpandoObject> shapedData = _dataShaper.ShapeData(foodItemsDto, foodItemParameters.Fields);
+
+        return (foodItems: shapedData, metaData: foodItemsWithMetaData.MetaData);
     }
 
     public async Task<FoodItemsDto>GetFoodItemAsync(string foodCode, bool trackChanges)
