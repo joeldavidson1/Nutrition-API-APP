@@ -18,10 +18,6 @@ public class FoodItemsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {
-        // IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters,
-        //     trackChanges: false);
-        // return Ok(foodItems);
-
         (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await
             _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters, trackChanges: false);
         

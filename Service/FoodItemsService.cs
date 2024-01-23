@@ -21,11 +21,6 @@ internal sealed class FoodItemsService : IFoodItemsService
 
     public async Task<(IEnumerable<FoodItemsDto> foodItems, MetaData metaData)> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters, bool trackChanges)
     {
-        // IEnumerable<FoodItems> foodItems = await _repository.FoodItems.GetAllFoodItemsAsync(foodItemParameters, trackChanges);
-        // IEnumerable<FoodItemsDto> foodItemsDto = _mapper.MapFoodItemsToDto(foodItems);
-        //
-        // return foodItemsDto;
-
         PagedList<FoodItems> foodItemsWithMetaData = await _repository.FoodItems.GetAllFoodItemsAsync(foodItemParameters,
             trackChanges);
         IEnumerable<FoodItemsDto>? foodItemsDto = _mapper.Map<IEnumerable<FoodItemsDto>>(foodItemsWithMetaData);

@@ -18,5 +18,5 @@ public class Minerals
     public string? Manganese { get; set; }
     public string? Selenium { get; set; }
     public string? Iodine { get; set; }
-    public FoodItems? FoodItem { get; set; }
+    // public FoodItems? FoodItem { get; set; }
 }

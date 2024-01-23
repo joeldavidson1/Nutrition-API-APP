@@ -21,5 +21,5 @@ public class Vitamins
     public string? VitaminK1 { get; set; }
     public string? Carotene { get; set; }
     public string? Trytophan { get; set; }
-    public FoodItems? FoodItem { get; set; }
+    // public FoodItems? FoodItem { get; set; }
 }

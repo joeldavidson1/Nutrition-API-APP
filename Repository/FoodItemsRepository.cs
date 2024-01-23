@@ -15,7 +15,9 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
             bool trackChanges)
     {
         List<FoodItems> foodItems = await FindAll(trackChanges)
-            .Include(f => f.MacronutrientsAndEnergy)
+            .Include(f => f.NutrientValues)
+            .ThenInclude(nv => nv.NutrientsAndEnergy)
+            .ThenInclude(n => n.NutrientCategories)
             .OrderBy(x => x.Name)
             .ToListAsync();
 
@@ -25,12 +27,13 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
 
     public async Task<FoodItems> GetFoodItemAsync(string foodCode, bool trackChanges) =>
         await FindByCondition(x => x.FoodCode.Equals(foodCode), trackChanges)
-            .Include(f => f.MacronutrientsAndEnergy)
+            .Include(f => f.NutrientValues)
+            .ThenInclude(nv => nv.NutrientsAndEnergy)
+            .ThenInclude(n => n.NutrientCategories)
             .SingleOrDefaultAsync();
 
     public async Task<IEnumerable<FoodItems>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges) => 
         await FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
-            .Include(f => f.MacronutrientsAndEnergy)
             .OrderBy(c => c.Name)
             .ToListAsync();
 }
