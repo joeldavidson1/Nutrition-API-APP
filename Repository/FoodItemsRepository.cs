@@ -1,6 +1,7 @@
 using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 
 namespace Repository;
@@ -15,11 +16,19 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
             bool trackChanges)
     {
         List<FoodItems> foodItems = await FindAll(trackChanges)
+            .Search(foodItemParameters.SearchFoodByName)
             .Include(f => f.NutrientValues)
             .ThenInclude(nv => nv.NutrientsAndEnergy)
             .ThenInclude(n => n.NutrientCategories)
             .OrderBy(x => x.Name)
             .ToListAsync();
+        
+        // List<FoodItems> foodItems = await FindAll(trackChanges)
+        //     .Include(f => f.NutrientValues)
+        //     .ThenInclude(nv => nv.NutrientsAndEnergy)
+        //     .ThenInclude(n => n.NutrientCategories)
+        //     .OrderBy(x => x.Name)
+        //     .ToListAsync();
 
         return PagedList<FoodItems>
             .ToPagedList(foodItems, foodItemParameters.PageNumber, foodItemParameters.PageSize);
