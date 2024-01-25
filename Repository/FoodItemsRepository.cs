@@ -16,11 +16,14 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
             bool trackChanges)
     {
         List<FoodItems> foodItems = await FindAll(trackChanges)
+            .Include(fi => fi.FoodGroup)
+            .Include(fi => fi.Energy)
+            .Include(fi => fi.Macronutrients)
+            .Include(fi => fi.Proximates)
+            .Include(fi => fi.Vitamins)
+            .Include(fi => fi.Minerals)
             .Search(foodItemParameters.SearchFoodByName)
-            .Include(f => f.NutrientValues)
-            .ThenInclude(nv => nv.NutrientsAndEnergy)
-            .ThenInclude(n => n.NutrientCategories)
-            .OrderBy(x => x.Name)
+            .Sort(foodItemParameters.OrderBy)
             .ToListAsync();
         
         // List<FoodItems> foodItems = await FindAll(trackChanges)
@@ -36,9 +39,11 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
 
     public async Task<FoodItems> GetFoodItemAsync(string foodCode, bool trackChanges) =>
         await FindByCondition(x => x.FoodCode.Equals(foodCode), trackChanges)
-            .Include(f => f.NutrientValues)
-            .ThenInclude(nv => nv.NutrientsAndEnergy)
-            .ThenInclude(n => n.NutrientCategories)
+            .Include(fi => fi.Energy)
+            .Include(fi => fi.Macronutrients)
+            .Include(fi => fi.Proximates)
+            .Include(fi => fi.Vitamins)
+            .Include(fi => fi.Minerals)
             .SingleOrDefaultAsync();
 
     public async Task<IEnumerable<FoodItems>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges) => 

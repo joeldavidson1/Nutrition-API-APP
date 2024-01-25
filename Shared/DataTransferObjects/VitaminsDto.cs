@@ -1,6 +1,6 @@
 namespace Shared.DataTransferObjects;
 
-public record class VitaminsDto(string? Retinol, string? Thiamin, string? Riboflavin, string? Niacin,
-    string? Panthothenate, string? Biotin, string? Folate, string? VitaminB12, string? VitaminB6, string? VitaminC,
-    string? VitaminD, string? VitaminE, string? VitaminK1, string? Carotene, string? Trytophan);
+public record class VitaminsDto(double? Retinol_mcg, double? Thiamin_mg, double? Riboflavin_mg, double? Niacin_mg,
+    double? Pantothenate_mg, double? Biotin_mcg, double? Folate_mcg, double? VitaminB12_mcg, double? VitaminB6_mg, double? VitaminC_mg,
+    double? VitaminD_mcg, double? VitaminE_mg, double? VitaminK1_mcg, double? Carotene_mcg, double? Trytophan_mg);
 
