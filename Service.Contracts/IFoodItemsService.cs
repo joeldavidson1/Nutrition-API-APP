@@ -10,5 +10,6 @@ public interface IFoodItemsService
     Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters,
         bool trackChanges);
     Task<FoodItemsDto> GetFoodItemAsync(string foodCode, bool trackChanges);
-    Task<IEnumerable<FoodItemsDto>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges);
+    Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)>  GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
+        string foodGroupCode, bool trackChanges);
 }

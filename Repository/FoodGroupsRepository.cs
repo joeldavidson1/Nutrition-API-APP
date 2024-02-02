@@ -1,6 +1,8 @@
 using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
+using Shared.RequestFeatures;
 
 namespace Repository;
 
@@ -11,8 +13,10 @@ public class FoodGroupsRepository : RepositoryBase<FoodGroups>, IFoodGroupsRepos
         
     }
     
-    public async Task<IEnumerable<FoodGroups>> GetAllFoodGroupsAsync(bool trackChanges) =>
+    public async Task<IEnumerable<FoodGroups>> GetAllFoodGroupsAsync(FoodGroupParameters foodGroupParameters, 
+        bool trackChanges) =>
         await FindAll(trackChanges)
+            .Search(foodGroupParameters.SearchFoodGroupByDescription)
             .OrderBy(x => x.FoodGroupCode)
             .ToListAsync();
 

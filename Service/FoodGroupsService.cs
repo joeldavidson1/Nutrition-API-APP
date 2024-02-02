@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace Service;
 
@@ -18,9 +19,11 @@ internal sealed class FoodGroupsService : IFoodGroupsService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<FoodGroupsDto>> GetAllFoodGroups(bool trackChanges)
+    public async Task<IEnumerable<FoodGroupsDto>> GetAllFoodGroups(FoodGroupParameters foodGroupParameters, 
+        bool trackChanges)
     {
-        IEnumerable<FoodGroups> foodGroups = await _repository.FoodGroups.GetAllFoodGroupsAsync(trackChanges);
+        IEnumerable<FoodGroups> foodGroups = await _repository.FoodGroups.GetAllFoodGroupsAsync(foodGroupParameters, 
+            trackChanges);
         var foodGroupsDtos = _mapper.Map<IEnumerable<FoodGroupsDto>>(foodGroups);
 
         return foodGroupsDtos;

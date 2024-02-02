@@ -25,13 +25,6 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
             .Search(foodItemParameters.SearchFoodByName)
             .Sort(foodItemParameters.OrderBy)
             .ToListAsync();
-        
-        // List<FoodItems> foodItems = await FindAll(trackChanges)
-        //     .Include(f => f.NutrientValues)
-        //     .ThenInclude(nv => nv.NutrientsAndEnergy)
-        //     .ThenInclude(n => n.NutrientCategories)
-        //     .OrderBy(x => x.Name)
-        //     .ToListAsync();
 
         return PagedList<FoodItems>
             .ToPagedList(foodItems, foodItemParameters.PageNumber, foodItemParameters.PageSize);
@@ -46,8 +39,20 @@ public class FoodItemsRepository : RepositoryBase<FoodItems>, IFoodItemsReposito
             .Include(fi => fi.Minerals)
             .SingleOrDefaultAsync();
 
-    public async Task<IEnumerable<FoodItems>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges) => 
-        await FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
-            .OrderBy(c => c.Name)
+    public async Task<PagedList<FoodItems>> GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
+        string foodGroupCode, bool trackChanges)
+    {
+        List<FoodItems> foodItems = await FindByCondition(x => x.FoodGroupCode.Equals(foodGroupCode.ToUpper()), trackChanges)
+            .Include(fi => fi.Energy)
+            .Include(fi => fi.Macronutrients)
+            .Include(fi => fi.Proximates)
+            .Include(fi => fi.Vitamins)
+            .Include(fi => fi.Minerals)
+            .Search(foodItemParameters.SearchFoodByName)
+            .Sort(foodItemParameters.OrderBy)
             .ToListAsync();
+
+        return PagedList<FoodItems>
+            .ToPagedList(foodItems, foodItemParameters.PageNumber, foodItemParameters.PageSize);
+    }
 }

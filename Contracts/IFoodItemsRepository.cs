@@ -7,5 +7,6 @@ public interface IFoodItemsRepository
 {
    Task<PagedList<FoodItems>> GetAllFoodItemsAsync(FoodItemParameters  foodItemParameters, bool trackChanges);
     Task<FoodItems> GetFoodItemAsync(string foodCode, bool trackChanges);
-    Task<IEnumerable<FoodItems>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges);
+    Task<PagedList<FoodItems>> GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
+        string foodGroupCode, bool trackChanges);
 }

@@ -44,11 +44,22 @@ internal sealed class FoodItemsService : IFoodItemsService
         return foodItemDto;
     }
 
-    public async Task<IEnumerable<FoodItemsDto>> GetFoodItemsForFoodGroupAsync(string foodGroupCode, bool trackChanges)
+    public async Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)>  
+        GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
+        string foodGroupCode, bool trackChanges)
     {
-        IEnumerable<FoodItems> foodItems = await _repository.FoodItems.GetFoodItemsForFoodGroupAsync(foodGroupCode, trackChanges);
-        IEnumerable<FoodItemsDto> foodItemsDto = _mapper.Map<IEnumerable<FoodItemsDto>>(foodItems);
+        // IEnumerable<FoodItems> foodItems = await _repository.FoodItems.GetFoodItemsForFoodGroupAsync(foodItemParameters,
+        //     foodGroupCode, trackChanges);
+        // IEnumerable<FoodItemsDto> foodItemsDto = _mapper.Map<IEnumerable<FoodItemsDto>>(foodItems);
+        //
+        // return foodItemsDto;
+        PagedList<FoodItems> foodItemsWithMetaData =
+            await _repository.FoodItems.GetFoodItemsForFoodGroupAsync(foodItemParameters, foodGroupCode, trackChanges);
         
-        return foodItemsDto;
+        IEnumerable<FoodItemsDto>? foodItemsDto = _mapper.Map<IEnumerable<FoodItemsDto>>(foodItemsWithMetaData);
+        
+        IEnumerable<ExpandoObject> shapedData = _dataShaper.ShapeData(foodItemsDto, foodItemParameters.Fields);
+        
+        return (foodItems: shapedData, metaData: foodItemsWithMetaData.MetaData);
     }
 }

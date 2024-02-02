@@ -1,6 +1,9 @@
+using System.Dynamic;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 
 namespace NutritionAPI.Presentation.Controllers;
 
@@ -13,9 +16,10 @@ public class FoodGroupsController : ControllerBase
     public FoodGroupsController(IServiceManager service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetFoodGroups()
+    public async Task<IActionResult> GetFoodGroups([FromQuery] FoodGroupParameters foodGroupParameters)
     {
-        IEnumerable<FoodGroupsDto> foodGroups = await _service.FoodGroupsService.GetAllFoodGroups(trackChanges: false);
+        IEnumerable<FoodGroupsDto> foodGroups = await _service.FoodGroupsService.GetAllFoodGroups(foodGroupParameters, 
+            trackChanges: false);
         return Ok(foodGroups);
     }
 
@@ -27,9 +31,14 @@ public class FoodGroupsController : ControllerBase
     }
     
     [HttpGet("{foodGroupCode}/foodItems")]
-    public async Task<IActionResult> GetFoodItemsForFoodGroup(string foodGroupCode)
+    public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,
+        string foodGroupCode)
     {
-        IEnumerable<FoodItemsDto> foodItems = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodGroupCode, trackChanges: false);
-        return Ok(foodItems);
+        (IEnumerable<ExpandoObject> foodItems, MetaData metaData) pagedResult = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodItemParameters,
+            foodGroupCode, trackChanges: false);
+        
+        Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));
+        
+        return Ok(pagedResult.foodItems);
     }
 }

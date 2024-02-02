@@ -11,6 +11,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<FoodItems, FoodItemsDto>();
+        CreateMap<FoodGroups, FoodGroupsDto>();
         CreateMap<Energy, EnergyDto>();
         CreateMap<Proximates, ProximatesDto>();
         CreateMap<Macronutrients, MacronutrientsDto>();
