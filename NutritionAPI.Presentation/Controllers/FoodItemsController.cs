@@ -33,4 +33,12 @@ public class FoodItemsController : ControllerBase
         FoodItemsDto foodItem = await _service.FoodItemsService.GetFoodItemAsync(foodCode, trackChanges: false);
         return Ok(foodItem);
     }
+
+    [HttpOptions]
+    public IActionResult GetFoodItemsOptions()
+    {
+        Response.Headers.Add("Allow", "GET, OPTIONS");
+
+        return Ok();
+    }
 }

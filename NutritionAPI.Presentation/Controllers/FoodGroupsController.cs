@@ -41,4 +41,12 @@ public class FoodGroupsController : ControllerBase
         
         return Ok(pagedResult.foodItems);
     }
+    
+    [HttpOptions]
+    public IActionResult GetFoodGroupsOptions()
+    {
+        Response.Headers.Add("Allow", "GET, OPTIONS");
+
+        return Ok();
+    }
 }
