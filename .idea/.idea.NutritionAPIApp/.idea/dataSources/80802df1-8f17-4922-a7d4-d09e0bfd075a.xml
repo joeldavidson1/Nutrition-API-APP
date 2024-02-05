@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.32">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>1158</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1324</IntrospectionStateNumber>
       <ServerVersion>16.1</ServerVersion>
       <StartupTime>1705749164</StartupTime>
       <TimeZones>true ACDT
@@ -801,8 +801,11 @@ false Zulu
 13452||10|C|G
 13452||-9223372036854775808|U|G
 13452||10|U|G</Grants>
-      <IntrospectionStateNumber>1159</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1325</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
+      <Relations>sequence|table|22457|22458|1
+sequence|table|22470|22471|1
+</Relations>
       <OwnerName>postgres</OwnerName>
     </database>
     <role id="3" parent="1" name="pg_checkpoint">
@@ -4224,73 +4227,663 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>1159</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1325</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <table id="265" parent="264" name="Energy">
+    <sequence id="265" parent="264" name="AspNetRoleClaims_Id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>22457</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="266" parent="264" name="AspNetUserClaims_Id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>22470</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="267" parent="264" name="AspNetRoleClaims">
+      <ObjectId>22458</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="268" parent="264" name="AspNetRoles">
+      <ObjectId>22443</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="269" parent="264" name="AspNetUserClaims">
+      <ObjectId>22471</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="270" parent="264" name="AspNetUserLogins">
+      <ObjectId>22483</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="271" parent="264" name="AspNetUserRoles">
+      <ObjectId>22495</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="272" parent="264" name="AspNetUserTokens">
+      <ObjectId>22512</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="273" parent="264" name="AspNetUsers">
+      <ObjectId>22450</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="274" parent="264" name="Energy">
       <ObjectId>22174</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="266" parent="264" name="FoodGroups">
+    <table id="275" parent="264" name="FoodGroups">
       <ObjectId>22155</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="267" parent="264" name="FoodItems">
+    <table id="276" parent="264" name="FoodItems">
       <ObjectId>22162</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="268" parent="264" name="Macronutrients">
+    <table id="277" parent="264" name="Macronutrients">
       <ObjectId>22186</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="269" parent="264" name="Minerals">
+    <table id="278" parent="264" name="Minerals">
       <ObjectId>22210</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="270" parent="264" name="Proximates">
+    <table id="279" parent="264" name="Proximates">
       <ObjectId>22198</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="271" parent="264" name="Vitamins">
+    <table id="280" parent="264" name="Vitamins">
       <ObjectId>22222</ObjectId>
       <StateNumber>1156</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="272" parent="265" name="FoodCode">
+    <table id="281" parent="264" name="__EFMigrationsHistory">
+      <ObjectId>22438</ObjectId>
+      <StateNumber>1316</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="282" parent="267" name="Id">
+      <DataType>integer|0s</DataType>
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="283" parent="267" name="RoleId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="284" parent="267" name="ClaimType">
+      <DataType>text|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="285" parent="267" name="ClaimValue">
+      <DataType>text|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="286" parent="267" name="FK_AspNetRoleClaims_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <ObjectId>22465</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetRoles</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22443</RefTableId>
+      <RefTableName>AspNetRoles</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="287" parent="267" name="PK_AspNetRoleClaims">
+      <ClassIds>1978</ClassIds>
+      <ColNames>Id</ColNames>
+      <CollationIds>0</CollationIds>
+      <ObjectId>22463</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="288" parent="267" name="IX_AspNetRoleClaims_RoleId">
+      <ClassIds>3126</ClassIds>
+      <ColNames>RoleId</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22524</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="289" parent="267" name="PK_AspNetRoleClaims">
+      <ColNames>Id</ColNames>
+      <ObjectId>22464</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22463</UnderlyingIndexId>
+    </key>
+    <column id="290" parent="268" name="Id">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="291" parent="268" name="Name">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="292" parent="268" name="NormalizedName">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="293" parent="268" name="ConcurrencyStamp">
+      <DataType>text|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <index id="294" parent="268" name="PK_AspNetRoles">
+      <ClassIds>3126</ClassIds>
+      <ColNames>Id</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22448</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="295" parent="268" name="RoleNameIndex">
+      <ClassIds>3126</ClassIds>
+      <ColNames>NormalizedName</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22525</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="296" parent="268" name="PK_AspNetRoles">
+      <ColNames>Id</ColNames>
+      <ObjectId>22449</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22448</UnderlyingIndexId>
+    </key>
+    <column id="297" parent="269" name="Id">
+      <DataType>integer|0s</DataType>
+      <IdentityKind>by-default</IdentityKind>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="298" parent="269" name="UserId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="299" parent="269" name="ClaimType">
+      <DataType>text|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="300" parent="269" name="ClaimValue">
+      <DataType>text|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="301" parent="269" name="FK_AspNetUserClaims_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>22478</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetUsers</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22450</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="302" parent="269" name="PK_AspNetUserClaims">
+      <ClassIds>1978</ClassIds>
+      <ColNames>Id</ColNames>
+      <CollationIds>0</CollationIds>
+      <ObjectId>22476</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="303" parent="269" name="IX_AspNetUserClaims_UserId">
+      <ClassIds>3126</ClassIds>
+      <ColNames>UserId</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22526</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="304" parent="269" name="PK_AspNetUserClaims">
+      <ColNames>Id</ColNames>
+      <ObjectId>22477</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22476</UnderlyingIndexId>
+    </key>
+    <column id="305" parent="270" name="LoginProvider">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="306" parent="270" name="ProviderKey">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="307" parent="270" name="ProviderDisplayName">
+      <DataType>text|0s</DataType>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="308" parent="270" name="UserId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="309" parent="270" name="FK_AspNetUserLogins_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>22490</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetUsers</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22450</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="310" parent="270" name="PK_AspNetUserLogins">
+      <ClassIds>3126,3126</ClassIds>
+      <ColNames>LoginProvider
+ProviderKey</ColNames>
+      <CollationIds>100,100</CollationIds>
+      <CollationNames>default
+default</CollationNames>
+      <ObjectId>22488</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="311" parent="270" name="IX_AspNetUserLogins_UserId">
+      <ClassIds>3126</ClassIds>
+      <ColNames>UserId</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22527</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="312" parent="270" name="PK_AspNetUserLogins">
+      <ColNames>LoginProvider
+ProviderKey</ColNames>
+      <ObjectId>22489</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22488</UnderlyingIndexId>
+    </key>
+    <column id="313" parent="271" name="UserId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="314" parent="271" name="RoleId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="315" parent="271" name="FK_AspNetUserRoles_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>22507</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetUsers</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22450</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="316" parent="271" name="FK_AspNetUserRoles_AspNetRoles_RoleId">
+      <ColNames>RoleId</ColNames>
+      <ObjectId>22502</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetRoles</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22443</RefTableId>
+      <RefTableName>AspNetRoles</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="317" parent="271" name="PK_AspNetUserRoles">
+      <ClassIds>3126,3126</ClassIds>
+      <ColNames>UserId
+RoleId</ColNames>
+      <CollationIds>100,100</CollationIds>
+      <CollationNames>default
+default</CollationNames>
+      <ObjectId>22500</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="318" parent="271" name="IX_AspNetUserRoles_RoleId">
+      <ClassIds>3126</ClassIds>
+      <ColNames>RoleId</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22528</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="319" parent="271" name="PK_AspNetUserRoles">
+      <ColNames>UserId
+RoleId</ColNames>
+      <ObjectId>22501</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22500</UnderlyingIndexId>
+    </key>
+    <column id="320" parent="272" name="UserId">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="321" parent="272" name="LoginProvider">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="322" parent="272" name="Name">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="323" parent="272" name="Value">
+      <DataType>text|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="324" parent="272" name="FK_AspNetUserTokens_AspNetUsers_UserId">
+      <ColNames>UserId</ColNames>
+      <ObjectId>22519</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>Id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>PK_AspNetUsers</RefKeyName>
+      <StateNumber>1317</StateNumber>
+      <RefTableId>22450</RefTableId>
+      <RefTableName>AspNetUsers</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="325" parent="272" name="PK_AspNetUserTokens">
+      <ClassIds>3126,3126,3126</ClassIds>
+      <ColNames>UserId
+LoginProvider
+Name</ColNames>
+      <CollationIds>100,100,100</CollationIds>
+      <CollationNames>default
+default
+default</CollationNames>
+      <ObjectId>22517</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="326" parent="272" name="PK_AspNetUserTokens">
+      <ColNames>UserId
+LoginProvider
+Name</ColNames>
+      <ObjectId>22518</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22517</UnderlyingIndexId>
+    </key>
+    <column id="327" parent="273" name="Id">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="328" parent="273" name="FirstName">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="329" parent="273" name="LastName">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="330" parent="273" name="UserName">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>4</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="331" parent="273" name="NormalizedUserName">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="332" parent="273" name="Email">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="333" parent="273" name="NormalizedEmail">
+      <DataType>varchar(256)|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="334" parent="273" name="EmailConfirmed">
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="335" parent="273" name="PasswordHash">
+      <DataType>text|0s</DataType>
+      <Position>9</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="336" parent="273" name="SecurityStamp">
+      <DataType>text|0s</DataType>
+      <Position>10</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="337" parent="273" name="ConcurrencyStamp">
+      <DataType>text|0s</DataType>
+      <Position>11</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="338" parent="273" name="PhoneNumber">
+      <DataType>text|0s</DataType>
+      <Position>12</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="339" parent="273" name="PhoneNumberConfirmed">
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>13</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="340" parent="273" name="TwoFactorEnabled">
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>14</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="341" parent="273" name="LockoutEnd">
+      <DataType>timestamp with time zone|0s</DataType>
+      <Position>15</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <column id="342" parent="273" name="LockoutEnabled">
+      <DataType>boolean|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>16</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="343" parent="273" name="AccessFailedCount">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>17</Position>
+      <StateNumber>1317</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="344" parent="273" name="PK_AspNetUsers">
+      <ClassIds>3126</ClassIds>
+      <ColNames>Id</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22455</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="345" parent="273" name="UserNameIndex">
+      <ClassIds>3126</ClassIds>
+      <ColNames>NormalizedUserName</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22530</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="346" parent="273" name="EmailIndex">
+      <ClassIds>3126</ClassIds>
+      <ColNames>NormalizedEmail</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22529</ObjectId>
+      <StateNumber>1317</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="347" parent="273" name="PK_AspNetUsers">
+      <ColNames>Id</ColNames>
+      <ObjectId>22456</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1317</StateNumber>
+      <UnderlyingIndexId>22455</UnderlyingIndexId>
+    </key>
+    <column id="348" parent="274" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="273" parent="265" name="Kcal">
+    <column id="349" parent="274" name="Kcal">
       <DataType>double precision|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="274" parent="265" name="Kj">
+    <column id="350" parent="274" name="Kj">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="275" parent="265" name="Energy_FoodCode_fkey">
+    <foreign-key id="351" parent="274" name="Energy_FoodCode_fkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22181</ObjectId>
@@ -4302,7 +4895,7 @@ false Zulu
       <RefTableName>FoodItems</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="276" parent="265" name="Energy_pkey">
+    <index id="352" parent="274" name="Energy_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4314,7 +4907,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="277" parent="265" name="Energy_pkey">
+    <key id="353" parent="274" name="Energy_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22180</ObjectId>
@@ -4322,20 +4915,20 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22179</UnderlyingIndexId>
     </key>
-    <column id="278" parent="266" name="FoodGroupCode">
+    <column id="354" parent="275" name="FoodGroupCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="279" parent="266" name="Description">
+    <column id="355" parent="275" name="Description">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="280" parent="266" name="FoodGroups_pkey">
+    <index id="356" parent="275" name="FoodGroups_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodGroupCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4347,7 +4940,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="281" parent="266" name="FoodGroups_pkey">
+    <key id="357" parent="275" name="FoodGroups_pkey">
       <ColNames>FoodGroupCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22161</ObjectId>
@@ -4355,38 +4948,38 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22160</UnderlyingIndexId>
     </key>
-    <column id="282" parent="267" name="FoodCode">
+    <column id="358" parent="276" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="283" parent="267" name="Name">
+    <column id="359" parent="276" name="Name">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="284" parent="267" name="Description">
+    <column id="360" parent="276" name="Description">
       <DataType>varchar|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="285" parent="267" name="DataReferences">
+    <column id="361" parent="276" name="DataReferences">
       <DataType>varchar|0s</DataType>
       <Position>4</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="286" parent="267" name="FoodGroupCode">
+    <column id="362" parent="276" name="FoodGroupCode">
       <DataType>varchar|0s</DataType>
       <Position>5</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="287" parent="267" name="FoodItems_FoodGroupCode_fkey">
+    <foreign-key id="363" parent="276" name="FoodItems_FoodGroupCode_fkey">
       <ColNames>FoodGroupCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22169</ObjectId>
@@ -4398,7 +4991,7 @@ false Zulu
       <RefTableName>FoodGroups</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="288" parent="267" name="FoodItems_pkey">
+    <index id="364" parent="276" name="FoodItems_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4410,7 +5003,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="289" parent="267" name="FoodItems_pkey">
+    <key id="365" parent="276" name="FoodItems_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22168</ObjectId>
@@ -4418,32 +5011,32 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22167</UnderlyingIndexId>
     </key>
-    <column id="290" parent="268" name="FoodCode">
+    <column id="366" parent="277" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="291" parent="268" name="Protein_g">
+    <column id="367" parent="277" name="Protein_g">
       <DataType>double precision|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="292" parent="268" name="Fat_g">
+    <column id="368" parent="277" name="Fat_g">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="293" parent="268" name="Carbohydrate_g">
+    <column id="369" parent="277" name="Carbohydrate_g">
       <DataType>double precision|0s</DataType>
       <Position>4</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="294" parent="268" name="Macronutrients_FoodCode_fkey">
+    <foreign-key id="370" parent="277" name="Macronutrients_FoodCode_fkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22193</ObjectId>
@@ -4455,7 +5048,7 @@ false Zulu
       <RefTableName>FoodItems</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="295" parent="268" name="Macronutrients_pkey">
+    <index id="371" parent="277" name="Macronutrients_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4467,7 +5060,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="296" parent="268" name="Macronutrients_pkey">
+    <key id="372" parent="277" name="Macronutrients_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22192</ObjectId>
@@ -4475,86 +5068,86 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22191</UnderlyingIndexId>
     </key>
-    <column id="297" parent="269" name="FoodCode">
+    <column id="373" parent="278" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="298" parent="269" name="Sodium_mg">
+    <column id="374" parent="278" name="Sodium_mg">
       <DataType>double precision|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="299" parent="269" name="Potassium_mg">
+    <column id="375" parent="278" name="Potassium_mg">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="300" parent="269" name="Calcium_mg">
+    <column id="376" parent="278" name="Calcium_mg">
       <DataType>double precision|0s</DataType>
       <Position>4</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="301" parent="269" name="Magnesium_mg">
+    <column id="377" parent="278" name="Magnesium_mg">
       <DataType>double precision|0s</DataType>
       <Position>5</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="302" parent="269" name="Phosphorus_mg">
+    <column id="378" parent="278" name="Phosphorus_mg">
       <DataType>double precision|0s</DataType>
       <Position>6</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="303" parent="269" name="Iron_mg">
+    <column id="379" parent="278" name="Iron_mg">
       <DataType>double precision|0s</DataType>
       <Position>7</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="304" parent="269" name="Copper_mg">
+    <column id="380" parent="278" name="Copper_mg">
       <DataType>double precision|0s</DataType>
       <Position>8</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="305" parent="269" name="Zinc_mg">
+    <column id="381" parent="278" name="Zinc_mg">
       <DataType>double precision|0s</DataType>
       <Position>9</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="306" parent="269" name="Chloride_mg">
+    <column id="382" parent="278" name="Chloride_mg">
       <DataType>double precision|0s</DataType>
       <Position>10</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="307" parent="269" name="Manganese_mg">
+    <column id="383" parent="278" name="Manganese_mg">
       <DataType>double precision|0s</DataType>
       <Position>11</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="308" parent="269" name="Selenium_mcg">
+    <column id="384" parent="278" name="Selenium_mcg">
       <DataType>double precision|0s</DataType>
       <Position>12</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="309" parent="269" name="Iodine_mcg">
+    <column id="385" parent="278" name="Iodine_mcg">
       <DataType>double precision|0s</DataType>
       <Position>13</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="310" parent="269" name="Minerals_FoodCode_fkey">
+    <foreign-key id="386" parent="278" name="Minerals_FoodCode_fkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22217</ObjectId>
@@ -4566,7 +5159,7 @@ false Zulu
       <RefTableName>FoodItems</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="311" parent="269" name="Minerals_pkey">
+    <index id="387" parent="278" name="Minerals_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4578,7 +5171,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="312" parent="269" name="Minerals_pkey">
+    <key id="388" parent="278" name="Minerals_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22216</ObjectId>
@@ -4586,116 +5179,116 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22215</UnderlyingIndexId>
     </key>
-    <column id="313" parent="270" name="FoodCode">
+    <column id="389" parent="279" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="314" parent="270" name="Water_g">
+    <column id="390" parent="279" name="Water_g">
       <DataType>double precision|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="315" parent="270" name="Starch_g">
+    <column id="391" parent="279" name="Starch_g">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="316" parent="270" name="Total_Sugars_g">
+    <column id="392" parent="279" name="Total_Sugars_g">
       <DataType>double precision|0s</DataType>
       <Position>4</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="317" parent="270" name="Glucose_g">
+    <column id="393" parent="279" name="Glucose_g">
       <DataType>double precision|0s</DataType>
       <Position>5</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="318" parent="270" name="Galactose_g">
+    <column id="394" parent="279" name="Galactose_g">
       <DataType>double precision|0s</DataType>
       <Position>6</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="319" parent="270" name="Fructose_g">
+    <column id="395" parent="279" name="Fructose_g">
       <DataType>double precision|0s</DataType>
       <Position>7</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="320" parent="270" name="Sucrose_g">
+    <column id="396" parent="279" name="Sucrose_g">
       <DataType>double precision|0s</DataType>
       <Position>8</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="321" parent="270" name="Maltose_g">
+    <column id="397" parent="279" name="Maltose_g">
       <DataType>double precision|0s</DataType>
       <Position>9</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="322" parent="270" name="Lactose_g">
+    <column id="398" parent="279" name="Lactose_g">
       <DataType>double precision|0s</DataType>
       <Position>10</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="323" parent="270" name="Alcohol_g">
+    <column id="399" parent="279" name="Alcohol_g">
       <DataType>double precision|0s</DataType>
       <Position>11</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="324" parent="270" name="Non_Starch_Polysaccharides_g">
+    <column id="400" parent="279" name="Non_Starch_Polysaccharides_g">
       <DataType>double precision|0s</DataType>
       <Position>12</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="325" parent="270" name="Fibre_g">
+    <column id="401" parent="279" name="Fibre_g">
       <DataType>double precision|0s</DataType>
       <Position>13</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="326" parent="270" name="Fats_Saturated_g">
+    <column id="402" parent="279" name="Fats_Saturated_g">
       <DataType>double precision|0s</DataType>
       <Position>14</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="327" parent="270" name="Fats_Monounsaturated_g">
+    <column id="403" parent="279" name="Fats_Monounsaturated_g">
       <DataType>double precision|0s</DataType>
       <Position>15</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="328" parent="270" name="Fats_Polyunsaturated_g">
+    <column id="404" parent="279" name="Fats_Polyunsaturated_g">
       <DataType>double precision|0s</DataType>
       <Position>16</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="329" parent="270" name="Fats_Trans_g">
+    <column id="405" parent="279" name="Fats_Trans_g">
       <DataType>double precision|0s</DataType>
       <Position>17</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="330" parent="270" name="Cholesterol_g">
+    <column id="406" parent="279" name="Cholesterol_g">
       <DataType>double precision|0s</DataType>
       <Position>18</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="331" parent="270" name="Proximates_FoodCode_fkey">
+    <foreign-key id="407" parent="279" name="Proximates_FoodCode_fkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22205</ObjectId>
@@ -4707,7 +5300,7 @@ false Zulu
       <RefTableName>FoodItems</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="332" parent="270" name="Proximates_pkey">
+    <index id="408" parent="279" name="Proximates_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4719,7 +5312,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="333" parent="270" name="Proximates_pkey">
+    <key id="409" parent="279" name="Proximates_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22204</ObjectId>
@@ -4727,104 +5320,104 @@ false Zulu
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22203</UnderlyingIndexId>
     </key>
-    <column id="334" parent="271" name="FoodCode">
+    <column id="410" parent="280" name="FoodCode">
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="335" parent="271" name="Retinol_mcg">
+    <column id="411" parent="280" name="Retinol_mcg">
       <DataType>double precision|0s</DataType>
       <Position>2</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="336" parent="271" name="Thiamin_mg">
+    <column id="412" parent="280" name="Thiamin_mg">
       <DataType>double precision|0s</DataType>
       <Position>3</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="337" parent="271" name="Riboflavin_mg">
+    <column id="413" parent="280" name="Riboflavin_mg">
       <DataType>double precision|0s</DataType>
       <Position>4</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="338" parent="271" name="Niacin_mg">
+    <column id="414" parent="280" name="Niacin_mg">
       <DataType>double precision|0s</DataType>
       <Position>5</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="339" parent="271" name="Pantothenate_mg">
+    <column id="415" parent="280" name="Pantothenate_mg">
       <DataType>double precision|0s</DataType>
       <Position>6</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="340" parent="271" name="Vitamin_B6_mg">
+    <column id="416" parent="280" name="Vitamin_B6_mg">
       <DataType>double precision|0s</DataType>
       <Position>7</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="341" parent="271" name="Biotin_mcg">
+    <column id="417" parent="280" name="Biotin_mcg">
       <DataType>double precision|0s</DataType>
       <Position>8</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="342" parent="271" name="Folate_mcg">
+    <column id="418" parent="280" name="Folate_mcg">
       <DataType>double precision|0s</DataType>
       <Position>9</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="343" parent="271" name="Vitamin_B12_mcg">
+    <column id="419" parent="280" name="Vitamin_B12_mcg">
       <DataType>double precision|0s</DataType>
       <Position>10</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="344" parent="271" name="Vitamin_C_mg">
+    <column id="420" parent="280" name="Vitamin_C_mg">
       <DataType>double precision|0s</DataType>
       <Position>11</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="345" parent="271" name="Vitamin_D_mcg">
+    <column id="421" parent="280" name="Vitamin_D_mcg">
       <DataType>double precision|0s</DataType>
       <Position>12</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="346" parent="271" name="Vitamin_E_mg">
+    <column id="422" parent="280" name="Vitamin_E_mg">
       <DataType>double precision|0s</DataType>
       <Position>13</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="347" parent="271" name="Vitamin_K1_mcg">
+    <column id="423" parent="280" name="Vitamin_K1_mcg">
       <DataType>double precision|0s</DataType>
       <Position>14</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="348" parent="271" name="Carotene_mcg">
+    <column id="424" parent="280" name="Carotene_mcg">
       <DataType>double precision|0s</DataType>
       <Position>15</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="349" parent="271" name="Trytophan_mg">
+    <column id="425" parent="280" name="Trytophan_mg">
       <DataType>double precision|0s</DataType>
       <Position>16</Position>
       <StateNumber>1156</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="350" parent="271" name="Vitamins_FoodCode_fkey">
+    <foreign-key id="426" parent="280" name="Vitamins_FoodCode_fkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22229</ObjectId>
@@ -4836,7 +5429,7 @@ false Zulu
       <RefTableName>FoodItems</RefTableName>
       <RefTableKind>table</RefTableKind>
     </foreign-key>
-    <index id="351" parent="271" name="Vitamins_pkey">
+    <index id="427" parent="280" name="Vitamins_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>FoodCode</ColNames>
       <CollationIds>100</CollationIds>
@@ -4848,13 +5441,45 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="352" parent="271" name="Vitamins_pkey">
+    <key id="428" parent="280" name="Vitamins_pkey">
       <ColNames>FoodCode</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>22228</ObjectId>
       <Primary>1</Primary>
       <StateNumber>1156</StateNumber>
       <UnderlyingIndexId>22227</UnderlyingIndexId>
+    </key>
+    <column id="429" parent="281" name="MigrationId">
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>1316</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="430" parent="281" name="ProductVersion">
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>1316</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="431" parent="281" name="PK___EFMigrationsHistory">
+      <ClassIds>3126</ClassIds>
+      <ColNames>MigrationId</ColNames>
+      <CollationIds>100</CollationIds>
+      <CollationNames>default</CollationNames>
+      <ObjectId>22441</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1316</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="432" parent="281" name="PK___EFMigrationsHistory">
+      <ColNames>MigrationId</ColNames>
+      <ObjectId>22442</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>1316</StateNumber>
+      <UnderlyingIndexId>22441</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>

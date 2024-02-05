@@ -17,3 +17,5 @@
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/obj/Debug/net6.0/ref/Repository.dll
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/bin/Debug/net6.0/Shared.dll
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/bin/Debug/net6.0/Shared.pdb
+/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/bin/Debug/net6.0/Repository.runtimeconfig.json
+/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Repository/obj/Debug/net6.0/Repository.genruntimeconfig.cache

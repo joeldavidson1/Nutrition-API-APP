@@ -1,6 +1,6 @@
 using System.Dynamic;
 using System.Reflection;
-using Contracts;
+using Service.Contracts;
 
 namespace Service;
 

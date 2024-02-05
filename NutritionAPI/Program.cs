@@ -1,20 +1,27 @@
+using System.Runtime.CompilerServices;
 using AutoMapper;
-using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 using NutritionAPI.Extensions;
+using NutritionAPI.Presentation.ActionFilters;
 using Service;
+using Service.Contracts;
 using Shared.DataTransferObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJwt(builder.Configuration);
 builder.Services.ConfigureCors();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDataShaper<FoodItemsDto>, DataShaper<FoodItemsDto>>();
+builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(NutritionAPI.Presentation.AssemblyReference).Assembly);
@@ -45,6 +52,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseCors("CorsPolicy");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

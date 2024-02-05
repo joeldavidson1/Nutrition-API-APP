@@ -1,9 +1,12 @@
+using Entities.Configuration;
 using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Repository;
 
-public class RepositoryContext : DbContext
+public class RepositoryContext : IdentityDbContext<User>
 {
     public RepositoryContext(DbContextOptions options) : base(options)
     {
@@ -12,15 +15,14 @@ public class RepositoryContext : DbContext
     //
     // public DbSet<FoodItems>? FoodItems { get; set; }
     // public DbSet<FoodGroups>? FoodGroups { get; set; }
-    // public DbSet<MacronutrientsAndEnergy>? MacronutrientsAndEnergy { get; set; }
+    // public DbSet<Macronutrients>? Macronutrients{ get; set; }
     // public DbSet<Proximates>? Proximates { get; set; }
     // public DbSet<Minerals>? Minerals { get; set; }
     // public DbSet<Vitamins>? Vitamins { get; set; }
+    // public DbSet<Energy>? Energy { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
         modelBuilder.Entity<FoodItems>(entity =>
         {
             entity.HasOne(foodItem => foodItem.FoodGroup)
@@ -48,30 +50,8 @@ public class RepositoryContext : DbContext
                 .HasForeignKey<Vitamins>(x => x.FoodCode);
         });
         
-        // modelBuilder.Entity<FoodItems>(entity =>
-        // {
-        //     entity.HasOne(foodItem => foodItem.FoodGroup)
-        //         .WithMany(foodGroup => foodGroup.FoodItems)
-        //         .HasForeignKey(foodItem => foodItem.FoodGroupCode);
-        // });
-        //
-        // modelBuilder.Entity<NutrientsAndEnergy>(entity =>
-        // {
-        //     entity.HasOne(nutrientsAndEnergy => nutrientsAndEnergy.NutrientCategories)
-        //         .WithMany(nutrientCategories => nutrientCategories.NutrientsAndEnergy)
-        //         .HasForeignKey(nutrientsAndEnergy => nutrientsAndEnergy.CategoryId);
-        // });
-        //
-        // modelBuilder.Entity<NutrientValues>(entity =>
-        // {
-        //     entity.HasOne(nutrientValues => nutrientValues.FoodItems)
-        //         .WithMany(foodItems => foodItems.NutrientValues)
-        //         .HasForeignKey(nutrientValues => nutrientValues.FoodCode);
-        //     
-        //     entity.HasOne(nutrientValues => nutrientValues.NutrientsAndEnergy)
-        //         .WithMany(nutrientsAndEnergy => nutrientsAndEnergy.NutrientValues)
-        //         .HasForeignKey(nutrientValues => nutrientValues.NutrientId);
-        // });
+        base.OnModelCreating(modelBuilder);
 
+        modelBuilder.ApplyConfiguration(new RoleConfiguration());
     }
 }

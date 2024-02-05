@@ -1,5 +1,10 @@
+using System.Text;
 using Contracts;
+using Entities.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Repository;
 using Service;
 using Service.Contracts;
@@ -8,6 +13,7 @@ namespace NutritionAPI.Extensions;
 
 public static class ServiceExtensions
 {
+    
     public static void ConfigureCors(this IServiceCollection services) =>
         services.AddCors(options =>
         {
@@ -24,5 +30,48 @@ public static class ServiceExtensions
     public static void ConfigureSqlContext(this IServiceCollection services,
         IConfiguration configuration) => 
         services.AddDbContext<RepositoryContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("postgreSqlConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("postgreSqlConnection"), b =>
+                b.MigrationsAssembly("NutritionAPI")));
+
+    public static void ConfigureIdentity(this IServiceCollection services)
+    {
+        var builder = services.AddIdentityCore<User>(io =>
+        {
+            io.Password.RequireDigit = true;
+            io.Password.RequireLowercase = false;
+            io.Password.RequireUppercase = false;
+            io.Password.RequireNonAlphanumeric = false;
+            io.Password.RequiredLength = 10;
+            io.User.RequireUniqueEmail = true;
+        });
+
+        builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), builder.Services);
+        builder.AddEntityFrameworkStores<RepositoryContext>()
+            .AddDefaultTokenProviders();
+    }
+    
+    public static void ConfigureJwt(this IServiceCollection services, IConfiguration configuration)
+    {
+        IConfigurationSection? jwtSettings = configuration.GetSection("JwtSettings");
+        string? secretKey = Environment.GetEnvironmentVariable("SECRET");
+        
+        services.AddAuthentication(opt => {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.GetSection("validIssuer").Value,
+                    ValidAudience = jwtSettings.GetSection("validAudience").Value,
+                    IssuerSigningKey = new
+                        SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                };
+            });
+    }
 }

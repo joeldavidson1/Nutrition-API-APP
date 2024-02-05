@@ -17,5 +17,6 @@ public class MappingProfile : Profile
         CreateMap<Macronutrients, MacronutrientsDto>();
         CreateMap<Vitamins, VitaminsDto>();
         CreateMap<Minerals, MineralsDto>();
+        CreateMap<UserForRegistrationDto, User>();
     }
 }

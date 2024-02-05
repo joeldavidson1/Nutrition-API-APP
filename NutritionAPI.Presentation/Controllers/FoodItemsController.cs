@@ -1,6 +1,7 @@
 using System.Dynamic;
 using System.Text.Json;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -16,7 +17,7 @@ public class FoodItemsController : ControllerBase
 
     public FoodItemsController(IServiceManager service) => _service = service;
 
-    [HttpGet]
+    [HttpGet(Name = "GetFoodItems"), Authorize]
     public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {
         (IEnumerable<ExpandoObject> foodItems, MetaData metaData) pagedResult = await

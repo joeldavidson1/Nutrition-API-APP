@@ -16,7 +16,7 @@ public class FoodGroupsController : ControllerBase
     public FoodGroupsController(IServiceManager service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetFoodGroups([FromQuery] FoodGroupParameters foodGroupParameters)
+    public async Task<IActionResult> GetAllFoodGroups([FromQuery] FoodGroupParameters foodGroupParameters)
     {
         IEnumerable<FoodGroupsDto> foodGroups = await _service.FoodGroupsService.GetAllFoodGroups(foodGroupParameters, 
             trackChanges: false);

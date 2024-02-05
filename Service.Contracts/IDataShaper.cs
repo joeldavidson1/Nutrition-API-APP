@@ -1,6 +1,6 @@
 using System.Dynamic;
 
-namespace Contracts;
+namespace Service.Contracts;
 
 public interface IDataShaper<T>
 {
