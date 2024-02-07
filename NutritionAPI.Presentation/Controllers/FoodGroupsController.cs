@@ -1,5 +1,6 @@
 using System.Dynamic;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -19,7 +20,7 @@ public class FoodGroupsController : ControllerBase
     /// Gets the list of all the food groups
     /// </summary>
     /// <returns>The food groups list</returns>
-    [HttpGet]
+    [HttpGet(Name = "GetFoodGroups"), Authorize]
     public async Task<IActionResult> GetAllFoodGroups([FromQuery] FoodGroupParameters foodGroupParameters)
     {
         IEnumerable<FoodGroupsDto> foodGroups = await _service.FoodGroupsService.GetAllFoodGroups(foodGroupParameters, 
@@ -31,7 +32,7 @@ public class FoodGroupsController : ControllerBase
     /// Gets a specific food group from a given food group code
     /// </summary>
     /// <returns>A food group</returns>
-    [HttpGet("{foodGroupCode}")]
+    [HttpGet("{foodGroupCode}"), Authorize]
     public async Task<IActionResult> GetFoodGroup(string foodGroupCode)
     {
         FoodGroupsDto foodItem = await _service.FoodGroupsService.GetFoodGroup(foodGroupCode, trackChanges: false);
@@ -42,7 +43,7 @@ public class FoodGroupsController : ControllerBase
     /// Gets a list of food items from a specific food group
     /// </summary>
     /// <returns>A list of food items from the given food group</returns>
-    [HttpGet("{foodGroupCode}/foodItems")]
+    [HttpGet("{foodGroupCode}/foodItems"), Authorize]
     public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,
         string foodGroupCode)
     {

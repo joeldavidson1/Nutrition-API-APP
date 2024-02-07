@@ -36,7 +36,7 @@ public class FoodItemsController : ControllerBase
     /// Gets a specific food item from a given food code
     /// </summary>
     /// <returns>A food item</returns>
-    [HttpGet("{foodCode}")]
+    [HttpGet("{foodCode}"), Authorize]
     public async Task<IActionResult> GetFoodItem(string foodCode)
     {
         FoodItemsDto foodItem = await _service.FoodItemsService.GetFoodItemAsync(foodCode, trackChanges: false);
