@@ -17,3 +17,4 @@
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/obj/Debug/net6.0/refint/NutritionAPI.Presentation.dll
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb
 /Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/obj/Debug/net6.0/ref/NutritionAPI.Presentation.dll
+/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.xml

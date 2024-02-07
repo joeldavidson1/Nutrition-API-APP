@@ -17,6 +17,10 @@ public class FoodItemsController : ControllerBase
 
     public FoodItemsController(IServiceManager service) => _service = service;
 
+    /// <summary>
+    /// Gets the list of all the food items
+    /// </summary>
+    /// <returns>The food items list</returns>
     [HttpGet(Name = "GetFoodItems"), Authorize]
     public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {

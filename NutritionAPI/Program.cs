@@ -18,6 +18,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IDataShaper<FoodItemsDto>, DataShaper<FoodItemsDto>>();
 builder.Services.AddScoped<ValidationFilterAttribute>();
@@ -28,7 +29,7 @@ builder.Services.AddControllers()
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -38,7 +39,8 @@ app.ConfigureExceptionHandler();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(sw =>
+        sw.SwaggerEndpoint("/swagger/v1/swagger.json", "Nutrition API"));
     app.UseDeveloperExceptionPage();
 }
 else
