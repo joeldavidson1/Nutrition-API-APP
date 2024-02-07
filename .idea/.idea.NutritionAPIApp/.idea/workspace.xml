@@ -11,28 +11,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="">
+    <list default="true" id="ecb4da5d-df64-4cd3-8efa-a65e6bc7ad58" name="Changes" comment="Added JWT authorisation with Bearer using tokens">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NutritionAPIApp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/AuthenticationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/AuthenticationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodGroupsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodGroupsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI.Presentation/obj/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Extensions/ServiceExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Extensions/ServiceExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/NutritionAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.Presentation.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/bin/Debug/net6.0/NutritionAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/NutritionAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/ref/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/ref/NutritionAPI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/refint/NutritionAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/Debug/net6.0/refint/NutritionAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/NutritionAPI/obj/staticwebassets.pack.sentinel" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +49,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bebd253e21dcf766929bfdfd74615bfe46e6e1693b289273dbdb82152893/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Contracts/IFoodGroupsRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Contracts/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/Controllers/AuthenticationController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/Controllers/FoodItemsController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -159,7 +155,7 @@
       <workItem from="1707125722085" duration="15418000" />
       <workItem from="1707142894779" duration="2131000" />
       <workItem from="1707145056641" duration="3205000" />
-      <workItem from="1707311241723" duration="6820000" />
+      <workItem from="1707311241723" duration="7750000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1700756023138</created>
@@ -371,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707147901048</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added JWT authorisation with Bearer using tokens">
+      <created>1707321110263</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707321110263</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +402,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added DataContext to match up tables with PostgreSQL" />
     <MESSAGE value="Added initial FoodItem repository and interface patterns" />
     <MESSAGE value="Added the ability to get a FoodItem from the its food code" />
     <MESSAGE value="Testing out async methods against normal sync" />
@@ -424,6 +426,7 @@
     <MESSAGE value="Added sorting and searching for FoodGroups controller" />
     <MESSAGE value="Added OPTIONS for FoodItems and FoodGroups" />
     <MESSAGE value="Added authorisation via JWT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added authorisation via JWT" />
+    <MESSAGE value="Added JWT authorisation with Bearer using tokens" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JWT authorisation with Bearer using tokens" />
   </component>
 </project>

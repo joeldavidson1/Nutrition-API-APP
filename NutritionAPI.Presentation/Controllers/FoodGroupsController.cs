@@ -15,6 +15,10 @@ public class FoodGroupsController : ControllerBase
 
     public FoodGroupsController(IServiceManager service) => _service = service;
 
+    /// <summary>
+    /// Gets the list of all the food groups
+    /// </summary>
+    /// <returns>The food groups list</returns>
     [HttpGet]
     public async Task<IActionResult> GetAllFoodGroups([FromQuery] FoodGroupParameters foodGroupParameters)
     {
@@ -23,6 +27,10 @@ public class FoodGroupsController : ControllerBase
         return Ok(foodGroups);
     }
 
+    /// <summary>
+    /// Gets a specific food group from a given food group code
+    /// </summary>
+    /// <returns>A food group</returns>
     [HttpGet("{foodGroupCode}")]
     public async Task<IActionResult> GetFoodGroup(string foodGroupCode)
     {
@@ -30,6 +38,10 @@ public class FoodGroupsController : ControllerBase
         return Ok(foodItem);
     }
     
+    /// <summary>
+    /// Gets a list of food items from a specific food group
+    /// </summary>
+    /// <returns>A list of food items from the given food group</returns>
     [HttpGet("{foodGroupCode}/foodItems")]
     public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,
         string foodGroupCode)
@@ -42,6 +54,10 @@ public class FoodGroupsController : ControllerBase
         return Ok(pagedResult.foodItems);
     }
     
+    /// <summary>
+    /// Retrieves the available HTTP methods for the foodGroups endpoint
+    /// </summary>
+    /// <returns>A list of allowed HTTP methods</returns>
     [HttpOptions]
     public IActionResult GetFoodGroupsOptions()
     {

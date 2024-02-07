@@ -32,6 +32,10 @@ public class FoodItemsController : ControllerBase
         return Ok(pagedResult.foodItems);
     }
 
+    /// <summary>
+    /// Gets a specific food item from a given food code
+    /// </summary>
+    /// <returns>A food item</returns>
     [HttpGet("{foodCode}")]
     public async Task<IActionResult> GetFoodItem(string foodCode)
     {
@@ -39,6 +43,10 @@ public class FoodItemsController : ControllerBase
         return Ok(foodItem);
     }
 
+    /// <summary>
+    /// Retrieves the available HTTP methods for the foodItems endpoint
+    /// </summary>
+    /// <returns>A list of allowed HTTP methods</returns>
     [HttpOptions]
     public IActionResult GetFoodItemsOptions()
     {

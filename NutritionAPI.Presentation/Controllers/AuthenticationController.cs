@@ -16,7 +16,7 @@ public class AuthenticationController : ControllerBase
     private readonly UserManager<User> _userManager;
     private readonly IAuthenticationManager _authenticationManager;
 
-    public AuthenticationController(IMapper mapper, UserManager<User> userManager, 
+    public AuthenticationController(IMapper mapper, UserManager<User> userManager,
         IAuthenticationManager authenticationManager)
     {
         _mapper = mapper;
@@ -24,36 +24,46 @@ public class AuthenticationController : ControllerBase
         _authenticationManager = authenticationManager;
     }
 
-     [HttpPost]
-     [ServiceFilter(typeof(ValidationFilterAttribute))]
-     public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
-     {
-         User? user = _mapper.Map<User>(userForRegistration);
-         
-         IdentityResult? result = await _userManager.CreateAsync(user, userForRegistration.Password);
-         if(!result.Succeeded)
-         {
-             foreach (IdentityError? error in result.Errors)
-             {
-                 ModelState.TryAddModelError(error.Code, error.Description);
-             }
-             return BadRequest(ModelState);
-         }
-         
-         await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
-         
-         return StatusCode(201);
-     }
-     
-     [HttpPost("login")]
-     [ServiceFilter(typeof(ValidationFilterAttribute))]
-     public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto
-         user)
-     {
-         if (!await _authenticationManager.ValidateUser(user))
-         {
-             return Unauthorized();
-         }
-         return Ok(new { Token = await _authenticationManager.CreateToken() });
-     }
+    /// <summary>
+    /// Registers a new user
+    /// </summary>
+    /// <returns>Returns 201 Created if registration is successful; otherwise, returns BadRequest</returns>
+    [HttpPost]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
+    {
+        User? user = _mapper.Map<User>(userForRegistration);
+
+        IdentityResult? result = await _userManager.CreateAsync(user, userForRegistration.Password);
+        if (!result.Succeeded)
+        {
+            foreach (IdentityError? error in result.Errors)
+            {
+                ModelState.TryAddModelError(error.Code, error.Description);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
+
+        return StatusCode(201);
+    }
+
+    /// <summary>
+    /// Authenticates a user
+    /// </summary>
+    /// <returns>Returns OK with a JWT token if authentication is successful; otherwise, returns Unauthorized</returns>
+    [HttpPost("login")]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
+    public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto
+        user)
+    {
+        if (!await _authenticationManager.ValidateUser(user))
+        {
+            return Unauthorized();
+        }
+
+        return Ok(new {Token = await _authenticationManager.CreateToken()});
+    }
 }
