@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NutritionAPI.Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:NutritionAPI.Presentation.Controllers.AuthenticationController.RegisterUser(Shared.DataTransferObjects.UserForRegistrationDto)">
+            <summary>
+            Registers a new user
+            </summary>
+            <returns>Returns 201 Created if registration is successful; otherwise, returns BadRequest</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.AuthenticationController.Authenticate(Shared.DataTransferObjects.UserForAuthenticationDto)">
+            <summary>
+            Authenticates a user
+            </summary>
+            <returns>Returns OK with a JWT token if authentication is successful; otherwise, returns Unauthorized</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodGroupsController.GetAllFoodGroups(Shared.RequestFeatures.FoodGroupParameters)">
+            <summary>
+            Gets the list of all the food groups
+            </summary>
+            <returns>The food groups list</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodGroupsController.GetFoodGroup(System.String)">
+            <summary>
+            Gets a specific food group from a given food group code
+            </summary>
+            <returns>A food group</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodGroupsController.GetFoodItemsForFoodGroup(Shared.RequestFeatures.FoodItemParameters,System.String)">
+            <summary>
+            Gets a list of food items from a specific food group
+            </summary>
+            <returns>A list of food items from the given food group</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodGroupsController.GetFoodGroupsOptions">
+            <summary>
+            Retrieves the available HTTP methods for the foodGroups endpoint
+            </summary>
+            <returns>A list of allowed HTTP methods</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodItemsController.GetFoodItems(Shared.RequestFeatures.FoodItemParameters)">
+            <summary>
+            Gets the list of all the food items
+            </summary>
+            <returns>The food items list</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodItemsController.GetFoodItem(System.String)">
+            <summary>
+            Gets a specific food item from a given food code
+            </summary>
+            <returns>A food item</returns>
+        </member>
+        <member name="M:NutritionAPI.Presentation.Controllers.FoodItemsController.GetFoodItemsOptions">
+            <summary>
+            Retrieves the available HTTP methods for the foodItems endpoint
+            </summary>
+            <returns>A list of allowed HTTP methods</returns>
+        </member>
+    </members>
+</doc>
