@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sMVHQfho4ZUBoJFE/o+RI8bCCjhMhJbGSt3FYRCYVjM+9v5J+WhLSA3jjmLfvr1KvZRuQmMVVN4BMW/e36cnDg==",
+  "dgSpecHash": "tDOxIeuPf0eVtooTcoRTNaELVACoHFjIzKd91xG98ct7aJ8l0mrpoLwdqYa0qATB+1ckTgQ38ubH2Of5d0O11A==",
   "success": true,
-  "projectFilePath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Service/Service.csproj",
+  "projectFilePath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Service/Service.csproj",
   "expectedPackageFiles": [
     "/Users/joeldavidson/.nuget/packages/automapper/8.1.1/automapper.8.1.1.nupkg.sha512",
     "/Users/joeldavidson/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/6.1.1/automapper.extensions.microsoft.dependencyinjection.6.1.1.nupkg.sha512",

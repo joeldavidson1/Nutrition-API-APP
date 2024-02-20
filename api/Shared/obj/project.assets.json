@@ -847,11 +847,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Shared/Shared.csproj",
+      "projectUniqueName": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Shared/Shared.csproj",
       "projectName": "Shared",
-      "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Shared/Shared.csproj",
+      "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Shared/Shared.csproj",
       "packagesPath": "/Users/joeldavidson/.nuget/packages/",
-      "outputPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Shared/obj/",
+      "outputPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Shared/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/joeldavidson/.nuget/NuGet/NuGet.Config"

@@ -1610,11 +1610,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj",
+      "projectUniqueName": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj",
       "projectName": "NutritionAPI.Presentation",
-      "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj",
+      "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/NutritionAPI.Presentation/NutritionAPI.Presentation.csproj",
       "packagesPath": "/Users/joeldavidson/.nuget/packages/",
-      "outputPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/NutritionAPI.Presentation/obj/",
+      "outputPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/NutritionAPI.Presentation/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/joeldavidson/.nuget/NuGet/NuGet.Config"
@@ -1629,8 +1629,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Service.Contracts/Service.Contracts.csproj": {
-              "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/NutritionAPIApp/Service.Contracts/Service.Contracts.csproj"
+            "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Service.Contracts/Service.Contracts.csproj": {
+              "projectPath": "/Users/joeldavidson/Library/Mobile Documents/com~apple~CloudDocs/Documents/Uni/Year 3/Project/nutrition-api-app/api/Service.Contracts/Service.Contracts.csproj"
             }
           }
         }
