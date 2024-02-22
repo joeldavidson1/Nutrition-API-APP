@@ -24,8 +24,20 @@ def format_nutrient_option(option):
         formatted_option = '_'.join(words[:-1])
     # Append the measurement unit with an underscore
     formatted_option += '_' + measurement
+
     return formatted_option.lower()
 
+# Converts nested keys to lowercase, due to our previous formatting function for the API GET request
+def convert_response_to_lowercase(response):
+    new_response = []
+    for item in response:
+        new_item = {}
+        for k, v in item.items():
+            if isinstance(v, dict):
+                v = {k.lower(): v[k] for k in v}
+            new_item[k] = v
+        new_response.append(new_item)
+    return new_response
 
 
 api_token = credentials.api_key 
@@ -75,11 +87,29 @@ with tab2:
 
     formatted_option = format_nutrient_option(selected_option)
 
-    order_by = f"{constants.NUTRIENTS_TO_CATEGORIES.get(selected_option).lower()} {formatted_option.lower()} desc"
+    order_by = f"{constants.NUTRIENTS_TO_CATEGORIES.get(selected_option).lower()} {formatted_option} desc"
 
     # Check if the selection has changed before sending the request
     if st.session_state.prev_order_by != order_by:
         response = api_handler.get_data_from_api(api_token, OrderBy=order_by)
         st.session_state.prev_order_by = order_by  # Update the previous selection
-        st.write(st.session_state.prev_order_by)
-        st.write(response)
+        
+        with st.container():
+            # Add a dropdown menu to filter by food group
+            food_groups = ["All Groups", "Group 1", "Group 2", "Group 3"]  # Replace with your actual food group names
+            selected_group = st.selectbox("Filter by Food Group", food_groups)
+
+            # Filter foods by selected food group
+            if selected_group:
+                filtered_foods = food_groups 
+                st.write(filtered_foods)
+
+            response = convert_response_to_lowercase(response)
+            st.subheader(f"Top x foods for {selected_option}")
+            if response:
+                nutrient_data = {}
+                for food in response:
+                    nutrient_data[food["Name"]] = food[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option]
+
+                df = pd.DataFrame({"Food": list(nutrient_data.keys()), selected_option: list(nutrient_data.values())})
+                st.write(df)
