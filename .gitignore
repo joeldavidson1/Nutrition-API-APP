@@ -77,3 +77,4 @@ obj/
 Debug/
 
 credentials.py
+__pycache__/
