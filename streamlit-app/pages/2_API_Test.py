@@ -56,7 +56,7 @@ with tab1:
     
     if food_to_search != "":
         response = api_handler.get_data_from_api(
-        api_token, True, SearchFoodByName=food_to_search, PageSize=50)
+        api_token, "foodItems", True, SearchFoodByName=food_to_search, PageSize=50)
         for food_item in response:
             if st.button(food_item["Name"], key=food_item["FoodCode"]):
                 # st.write(f"Protein: {food_item['Macronutrients']['protein_g']}g")
@@ -91,25 +91,36 @@ with tab2:
 
     # Check if the selection has changed before sending the request
     if st.session_state.prev_order_by != order_by:
-        response = api_handler.get_data_from_api(api_token, OrderBy=order_by)
+        response = api_handler.get_data_from_api(api_token, "foodItems", OrderBy=order_by)
         st.session_state.prev_order_by = order_by  # Update the previous selection
         
-        with st.container():
-            # Add a dropdown menu to filter by food group
-            food_groups = ["All Groups", "Group 1", "Group 2", "Group 3"]  # Replace with your actual food group names
-            selected_group = st.selectbox("Filter by Food Group", food_groups)
+    with st.container():
+        food_groups_response = api_handler.get_data_from_api(api_token, "foodGroups")
+        # Create a dictionary where the keys are descriptions and the values are the food group codes
+        food_groups_dict = {food_group["description"]: food_group["foodGroupCode"] for food_group in food_groups_response}
+        
+        # Create a list of descriptions
+        food_groups = list(food_groups_dict.keys())
+        food_groups.insert(0, "All")
 
-            # Filter foods by selected food group
-            if selected_group:
-                filtered_foods = food_groups 
-                st.write(filtered_foods)
+        # Add a dropdown menu to filter by food group
+        selected_group = st.selectbox("Filter by Food Group", food_groups)
 
-            response = convert_response_to_lowercase(response)
-            st.subheader(f"Top x foods for {selected_option}")
-            if response:
-                nutrient_data = {}
-                for food in response:
-                    nutrient_data[food["Name"]] = food[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option]
+        if selected_group == "All":
+            response = api_handler.get_data_from_api(api_token, "foodItems", OrderBy=order_by)
+        else:
+            # Use the selected description to look up the food group code
+            food_group_code = food_groups_dict[selected_group]
+            response = api_handler.get_data_from_api(api_token, f"foodGroups/{food_group_code}/foodItems", OrderBy=order_by)
+        
+        response = convert_response_to_lowercase(response)
+        st.subheader(f"Top x foods for {selected_option} for the {selected_group} Food Group(s):")
+        if response:
+            nutrient_data = {}
+            for food in response:
+                nutrient_data[food["Name"]] = food[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option]
 
-                df = pd.DataFrame({"Food": list(nutrient_data.keys()), selected_option: list(nutrient_data.values())})
-                st.write(df)
+            df = pd.DataFrame({"Food": list(nutrient_data.keys()), selected_option: list(nutrient_data.values())})
+            st.write(df)
+        else:
+            st.write("No data available")

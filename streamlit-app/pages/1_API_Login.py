@@ -53,7 +53,6 @@ def main():
         else:
             st.error("Failed to retrieve data")
 
-
-
+    
 if __name__ == "__main__":
     main()

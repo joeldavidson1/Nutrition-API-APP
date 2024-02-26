@@ -2,8 +2,8 @@ import requests
 import json
 import streamlit as st
 
-def get_data_from_api(token: str, get_all_pages: bool = False, **kwargs):
-    url = "https://localhost:7099/api/foodItems"
+def get_data_from_api(token: str, end_point: str, get_all_pages: bool = False, **kwargs):
+    url = f"https://localhost:7099/api/{end_point}"
     headers = {"Authorization": f"Bearer {token}"}
     params = kwargs
     
