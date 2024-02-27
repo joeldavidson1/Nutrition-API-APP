@@ -26,3 +26,4 @@ def get_data_from_api(token: str, end_point: str, get_all_pages: bool = False, *
         
         params['PageNumber'] = pagination_info['CurrentPage'] + 1
     
+    return all_data
