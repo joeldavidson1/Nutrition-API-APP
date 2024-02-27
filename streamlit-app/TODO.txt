@@ -1,7 +1,2 @@
-- Filter by food groups for the nutrient
 - Tryptophan spelling mistake on database
-- Add a list of all the food from a nutrient not just top 10
-- Add to filter by multiple nutrient groups not just 1
-- Possibly add daily reference values for each nutrient on a slider similar to MF
-- Formatting for number input
-- Alignment of rows for adding food to list
+- Add a list of all the food from a nutri

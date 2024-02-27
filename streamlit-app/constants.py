@@ -24,3 +24,5 @@ NUTRIENTS_TO_CATEGORIES = {
     **{nutrient: "Vitamins" for nutrient in VITAMINS},
     **{nutrient: "Minerals" for nutrient in MINERALS}
 } 
+
+NUTRIENT_CATEGORIES= ["Energy", "Macronutrients", "Proximates", "Vitamins", "Minerals"]
