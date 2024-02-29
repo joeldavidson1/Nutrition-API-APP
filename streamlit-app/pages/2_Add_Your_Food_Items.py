@@ -120,6 +120,15 @@ if st.session_state.user_food_list:
     #     for nutrient, value in nutrients.items():
     #         st.write(f"{reverse_format_nutrient_option(nutrient)}: {round(value, 2)}")
 
+    macronutrients = total_nutrition['Macronutrients']
+    names = ['Protein', 'Fat', 'Carbohydrate']
+    colour_dict = {'Protein': '#FF8333', 'Fat': '#FFD133', 'Carbohydrate': '#11A400'}
+    helper.create_bar_chart(list(macronutrients.values()), names, "Macronutrient Composition as a Percentage (%)", "Macronutrient", colour_dict)
+
+    fats = [total_nutrition['Proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
+    names = ['Saturated', 'Monounsaturated', 'Polyunsaturated', 'Trans']
+    helper.create_bar_chart(fats, names, "Fats Composition as a Percentage (%)", "Fatty Acid")
+ 
     # Initialize a list to hold the columns
     columns = []
 
@@ -130,7 +139,7 @@ if st.session_state.user_food_list:
         
         # Convert the nutrients dictionary to a DataFrame
         df = pd.DataFrame([(nutrient, round(value, 2)) for nutrient, value in nutrients.items()], columns=['Nutrient', 'Value'])
-        st.write(nutrients)
+        # st.write(nutrients)
         # Apply the reverse_format_nutrient_option method to the 'Nutrient' column
         df['Nutrient'] = df['Nutrient'].apply(helper.reverse_format_nutrient_option)
 
@@ -138,3 +147,4 @@ if st.session_state.user_food_list:
         with columns[i % 2]:
             st.subheader(f"{category}:\n")
             st.dataframe(df)
+    

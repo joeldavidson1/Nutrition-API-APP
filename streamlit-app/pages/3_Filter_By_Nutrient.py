@@ -5,6 +5,7 @@ import api_handler
 import credentials
 import pandas as pd
 from st_aggrid import AgGrid, GridOptionsBuilder
+import plotly.express as px
 
 
 # Initialize session state variables
@@ -20,8 +21,7 @@ st.subheader(f"Select a nutrient from the {selected_category} category:")
 options = [nutrient for nutrient, category in constants.NUTRIENTS_TO_CATEGORIES.items() if category == selected_category]
 selected_option = st.radio("selected", options, label_visibility="collapsed")
 
-formatted_option = helper.format_nutrient_option(selected_option)
-
+formatted_option = helper.format_nutrient_option(selected_option, True)
 order_by = f"{constants.NUTRIENTS_TO_CATEGORIES.get(selected_option).lower()} {formatted_option} desc"
 
 # Check if the selection has changed before sending the request
@@ -40,7 +40,7 @@ with st.container():
 
     # Add a dropdown menu to filter by food group
     selected_group = st.selectbox("Filter by Food Group", food_groups)
-    top_x_food_slider = st.slider('Move the slider to show (x) amount of foods', min_value=1, max_value=50, value=10)
+    top_x_food_slider = st.slider('Move the slider to show (x) amount of foods', min_value=1, max_value=50, value=20)
 
     if selected_group == "All":
         response = api_handler.get_data_from_api(credentials.api_key, "foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
@@ -51,11 +51,12 @@ with st.container():
     
     st.subheader(f"Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):")
     if response:
-        # nutrient_data = {}
-        # for food in response:
-        #     nutrient_data[food["Name"]] = food[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option]
 
         df = pd.DataFrame(response)
+
+        # Format the selected option back to its original format
+        formatted_option = helper.format_nutrient_option(selected_option, False)
+
         # Create a new column in df for the selected option and its values
         df[selected_option] = df.apply(lambda row: row[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option], axis=1)
         df_to_display = df[['FoodCode', 'Name', selected_option]]
@@ -77,6 +78,18 @@ with st.container():
                                 "padding-bottom": "0px !important",
                                 }
                                 })
+
+        # Sort the dataframe by the selected option and take the top X foods
+        top_x = df_to_display.sort_values(by=selected_option, ascending=True).head(top_x_food_slider)
+
+        measurement = helper.extract_measurement(selected_option)
+        # Display the top (x) as bar chart
+        fig = px.bar(top_x, x=selected_option, y='Name', orientation='h', title=f'Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):', labels={"Name": "Food Name", selected_option: measurement}) 
+        # Update y-axis to display all labels
+        fig.update_yaxes(tickmode='linear', nticks=len(top_x))
+        fig.update_xaxes(showgrid=True)
+        fig.update_layout(height=800, bargap=0.3)
+        st.plotly_chart(fig)
 
         helper.display_selected_row(grid_table, food_groups_dict) 
     else:

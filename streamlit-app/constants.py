@@ -26,3 +26,5 @@ NUTRIENTS_TO_CATEGORIES = {
 } 
 
 NUTRIENT_CATEGORIES= ["Energy", "Macronutrients", "Proximates", "Vitamins", "Minerals"]
+
+MEASUREMENT_UNITS = {'g': 'grams', 'mg': 'milligrams', 'mcg': 'micrograms'}

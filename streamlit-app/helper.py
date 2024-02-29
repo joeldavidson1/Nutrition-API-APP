@@ -6,17 +6,6 @@ import constants
 import plotly.express as px
 import pandas as pd
 
-def reverse_format_nutrient_option(option):
-    # Split the option into words
-    words = option.split('_')
-    # Add spaces before capital letters
-    words[0] = re.sub(r"(?<=\w)([A-Z])", r" \1", words[0])
-    # Capitalize each word and join them with a space, putting the last word in parentheses
-    formatted_option = ' '.join(word.title() for word in words[:-1]) + ' (' + words[-1] + ')'
-
-    return formatted_option
-
-
 def get_key(my_dict, val):
     for key, value in my_dict.items():
         if value == val:
@@ -25,7 +14,18 @@ def get_key(my_dict, val):
     return "Value does not exist in the dictionary"
 
 
-def format_nutrient_option(option):
+def extract_measurement(option):
+    # Use regex to find the measurement unit
+    match = re.search(r'\((.*?)\)', option)
+    # If a match is found, return the measurement unit
+    if match:
+        return constants.MEASUREMENT_UNITS[match.group(1)]
+    # If no match is found, return None
+    else:
+        return None
+    
+
+def format_nutrient_option(option, for_api=True):
     # Remove brackets
     option = re.sub(r'[()]', '', option)
     # Split the option into words
@@ -34,7 +34,7 @@ def format_nutrient_option(option):
     measurement = words[-1]
     # If there is only one word, return it as is
     if len(words) == 1:
-        return option.lower()
+        return option.lower() if for_api else option
     # Remove spaces and underscores between words if there are more than two words
     elif len(words) > 2:
         formatted_option = ''.join(words[:-1])
@@ -43,20 +43,8 @@ def format_nutrient_option(option):
     # Append the measurement unit with an underscore
     formatted_option += '_' + measurement
 
-    return formatted_option.lower()
-
-# Converts nested keys to lowercase, due to our previous formatting function for the API GET request
-# def convert_response_to_lowercase(response):
-#     new_response = []
-#     for item in response:
-#         new_item = {}
-#         for k, v in item.items():
-#             if isinstance(v, dict):
-#                 v = {k.lower(): v[k] for k in v}
-#             new_item[k] = v
-#         new_response.append(new_item)
-
-#     return new_response
+    # Convert to lowercase if for_api is True, otherwise preserve the original capitalization
+    return formatted_option.lower() if for_api else formatted_option[0].lower() + formatted_option[1:]
 
 
 def adjust_nutrition_values(nutrition_dict, quantity):

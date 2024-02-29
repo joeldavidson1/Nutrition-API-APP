@@ -77,4 +77,5 @@ obj/
 Debug/
 
 credentials.py
+TODO.txt
 __pycache__/
