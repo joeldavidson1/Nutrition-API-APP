@@ -3,6 +3,7 @@ import copy
 from collections import defaultdict
 import streamlit as st
 import constants
+import plotly.express as px
 import pandas as pd
 
 def reverse_format_nutrient_option(option):
@@ -90,7 +91,7 @@ def reverse_format_nutrient_option(option):
     formatted_option = ' '.join(word.title() for word in words[:-1]) + ' (' + words[-1] + ')'
 
     return formatted_option
-    
+
 
 def display_selected_row(grid_table, food_groups_dict):
     if (grid_table['selected_rows']):
@@ -99,6 +100,15 @@ def display_selected_row(grid_table, food_groups_dict):
         st.markdown(f"**Food Group**: {get_key(food_groups_dict, selected_row['FoodGroupCode'])}")
         st.markdown(f"**Description**: {selected_row['Description']}")
         st.markdown(f"**Data References**: {selected_row['DataReferences']}")
+
+        macronutrients = selected_row['Macronutrients']
+        names = ['Protein', 'Fat', 'Carbohydrate']
+        colour_dict = {'Protein': '#FF8333', 'Fat': '#FFD133', 'Carbohydrate': '#11A400'}
+        create_bar_chart(list(macronutrients.values()), names, "Macronutrient Composition as a Percentage (%)", "Macronutrient", colour_dict)
+
+        fats = [selected_row['Proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
+        names = ['Saturated', 'Monounsaturated', 'Polyunsaturated', 'Trans']
+        create_bar_chart(fats, names, "Fats Composition as a Percentage (%)", "Fatty Acid")
 
         # Initialize a list to hold the columns
         columns = []
@@ -122,3 +132,25 @@ def display_selected_row(grid_table, food_groups_dict):
             with columns[i % 2]:
                 st.subheader(f"{category}:\n")
                 st.dataframe(df)
+            
+
+def create_bar_chart(data, names, title, x_label, colour_dict=None):
+    if any(value is None for value in data):
+        st.markdown("*Not enough reliable information about the amounts to display chart*")
+        return 
+    
+    # Convert the values to percentages
+    total = sum(data)
+    if total == 0:
+        st.markdown("*No data available to display chart*")
+        return
+    
+    percentages = [(value / total) * 100 for value in data]
+    fig = px.bar(x=names, y=percentages, 
+                title=title,
+                labels={"x": x_label, "y": "Percentage (%)"},
+                color = names,
+                color_discrete_map=colour_dict)
+    fig.update_yaxes(range=[0, 100])
+    fig.update_layout(showlegend=False)
+    st.plotly_chart(fig)
