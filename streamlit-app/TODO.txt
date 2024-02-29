@@ -1,2 +1,4 @@
 - Tryptophan spelling mistake on database
-- Add a list of all the food from a nutri
+- Add to filter by multiple nutrient groups not just 1
+- Possibly add daily reference values for each nutrient on a slider similar to MF
+- Alignment of rows for adding food to list
