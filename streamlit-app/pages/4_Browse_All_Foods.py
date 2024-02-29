@@ -27,4 +27,25 @@ if response:
     # st.write(df_to_display)
 
     st.subheader("Select a food item to view more details")
-    gd = GridOptionsBuilder.from_dataframe(df
+    gd = GridOptionsBuilder.from_dataframe(df_to_display)
+    gd.configure_pagination(enabled=True)
+    gd.configure_selection(selection_mode='single', use_checkbox=True)
+
+    gd.configure_column('FoodCode', width=60)
+
+    grid_table = AgGrid(df, gridOptions=gd.build(), 
+                        height=500, width='100%', 
+                        theme='streamlit', 
+                        editable=False,
+                        fit_columns_on_grid_load=True,
+                        custom_css={
+                        "#gridToolBar": {
+                            "padding-bottom": "0px !important",
+                            }
+                            })
+
+    helper.display_selected_row(grid_table, food_groups_dict) 
+else:
+    st.write(f"No food items found for the food group: {selected_group}")
+
+

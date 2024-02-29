@@ -1,6 +1,9 @@
 import re
 import copy
 from collections import defaultdict
+import streamlit as st
+import constants
+import pandas as pd
 
 def reverse_format_nutrient_option(option):
     # Split the option into words
@@ -42,17 +45,17 @@ def format_nutrient_option(option):
     return formatted_option.lower()
 
 # Converts nested keys to lowercase, due to our previous formatting function for the API GET request
-def convert_response_to_lowercase(response):
-    new_response = []
-    for item in response:
-        new_item = {}
-        for k, v in item.items():
-            if isinstance(v, dict):
-                v = {k.lower(): v[k] for k in v}
-            new_item[k] = v
-        new_response.append(new_item)
+# def convert_response_to_lowercase(response):
+#     new_response = []
+#     for item in response:
+#         new_item = {}
+#         for k, v in item.items():
+#             if isinstance(v, dict):
+#                 v = {k.lower(): v[k] for k in v}
+#             new_item[k] = v
+#         new_response.append(new_item)
 
-    return new_response
+#     return new_response
 
 
 def adjust_nutrition_values(nutrition_dict, quantity):
@@ -87,3 +90,35 @@ def reverse_format_nutrient_option(option):
     formatted_option = ' '.join(word.title() for word in words[:-1]) + ' (' + words[-1] + ')'
 
     return formatted_option
+    
+
+def display_selected_row(grid_table, food_groups_dict):
+    if (grid_table['selected_rows']):
+        selected_row = grid_table['selected_rows'][0]
+        st.subheader(f'{selected_row['FoodCode']}: {selected_row['Name']}')
+        st.markdown(f"**Food Group**: {get_key(food_groups_dict, selected_row['FoodGroupCode'])}")
+        st.markdown(f"**Description**: {selected_row['Description']}")
+        st.markdown(f"**Data References**: {selected_row['DataReferences']}")
+
+        # Initialize a list to hold the columns
+        columns = []
+
+        for i, (category, nutrients) in enumerate(selected_row.items()):
+            # Skip the keys that are not nutrient categories
+            if category not in constants.NUTRIENT_CATEGORIES:
+                continue
+
+            # Create a new row every 2 categories
+            if i % 2 == 0:
+                columns = st.columns(2)
+
+            # Convert the nutrients dictionary to a DataFrame
+            df = pd.DataFrame([(nutrient, value) for nutrient, value in nutrients.items()], columns=['Nutrient', 'Value'])
+
+            # Apply the reverse_format_nutrient_option method to the 'Nutrient' column
+            df['Nutrient'] = df['Nutrient'].apply(reverse_format_nutrient_option)
+            
+            # Use the current column for the category subheader and DataFrame
+            with columns[i % 2]:
+                st.subheader(f"{category}:\n")
+                st.dataframe(df)
