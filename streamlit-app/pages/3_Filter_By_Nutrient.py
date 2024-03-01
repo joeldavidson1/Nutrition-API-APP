@@ -82,7 +82,13 @@ with st.container():
         # Sort the dataframe by the selected option and take the top X foods
         top_x = df_to_display.sort_values(by=selected_option, ascending=True).head(top_x_food_slider)
 
-        measurement = helper.extract_measurement(selected_option)
+        if (selected_option == "kcal"):
+            measurement = "kilocalories"
+        elif (selected_option == "kj"):
+            measurement = "kilojoules"
+        else:
+            measurement = helper.extract_measurement(selected_option) 
+
         # Display the top (x) as bar chart
         fig = px.bar(top_x, x=selected_option, y='Name', orientation='h', title=f'Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):', labels={"Name": "Food Name", selected_option: measurement}) 
         # Update y-axis to display all labels
@@ -92,5 +98,6 @@ with st.container():
         st.plotly_chart(fig)
 
         helper.display_selected_row(grid_table, food_groups_dict) 
+
     else:
         st.write("No data available")

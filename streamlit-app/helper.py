@@ -5,6 +5,7 @@ import streamlit as st
 import constants
 import plotly.express as px
 import pandas as pd
+from scipy import stats
 
 def get_key(my_dict, val):
     for key, value in my_dict.items():
@@ -89,6 +90,9 @@ def display_selected_row(grid_table, food_groups_dict):
         st.markdown(f"**Description**: {selected_row['Description']}")
         st.markdown(f"**Data References**: {selected_row['DataReferences']}")
 
+        top_nutrients = calculate_top_5_nutrients(st.session_state.full_response, selected_row)
+        display_top_nutrients(top_nutrients)
+
         macronutrients = selected_row['Macronutrients']
         names = ['Protein', 'Fat', 'Carbohydrate']
         colour_dict = {'Protein': '#FF8333', 'Fat': '#FFD133', 'Carbohydrate': '#11A400'}
@@ -98,6 +102,7 @@ def display_selected_row(grid_table, food_groups_dict):
         names = ['Saturated', 'Monounsaturated', 'Polyunsaturated', 'Trans']
         create_bar_chart(fats, names, "Fats Composition as a Percentage (%)", "Fatty Acid")
 
+        st.subheader(f"All nutrient information for {selected_row['Name']} per 100g")
         # Initialize a list to hold the columns
         columns = []
 
@@ -118,7 +123,7 @@ def display_selected_row(grid_table, food_groups_dict):
             
             # Use the current column for the category subheader and DataFrame
             with columns[i % 2]:
-                st.subheader(f"{category}:\n")
+                st.markdown(f"##### {category}:\n")
                 st.dataframe(df)
             
 
@@ -142,3 +147,48 @@ def create_bar_chart(data, names, title, x_label, colour_dict=None):
     fig.update_yaxes(range=[0, 100])
     fig.update_layout(showlegend=False)
     st.plotly_chart(fig)
+
+
+def calculate_top_5_nutrients(food_data, food_item):
+    # Create a dictionary to store the nutrient and its percentile
+    nutrient_percentiles = {}
+
+    # Define the categories of nutrients to consider
+    nutrient_categories = ["Macronutrients", "Proximates", "Vitamins", "Minerals"]
+
+    for category in nutrient_categories:
+        for nutrient, value in food_item[category].items():
+            if value is not None:  # Only consider the nutrient if its value is not None
+                # Get all the values for the nutrient, excluding None values
+                nutrient_values = [item[category][nutrient] for item in food_data if nutrient in item[category] and item[category][nutrient] is not None]
+                
+                # Calculate the percentile of the food item's nutrient value
+                percentile = stats.percentileofscore(nutrient_values, value)
+                
+                # Reverse the percentile
+                reversed_percentile = 100 - percentile
+                
+                # Store the nutrient and its reversed percentile in the dictionary
+                nutrient_percentiles[nutrient] = reversed_percentile
+
+    # Sort the dictionary by percentile in descending order and get the top 5 nutrients
+    top_nutrients = sorted(nutrient_percentiles.items(), key=lambda x: x[1])[:5]
+
+    return top_nutrients
+
+
+def display_top_nutrients(top_nutrients):
+    st.markdown("#### Top Nutrients:")
+    st.markdown("These nutrients are in the top percentiles compared to other foods in the database. The higher the percentile "
+                "the more the nutrient is present in the food.")
+    
+    # Create 5 columns
+    cols = st.columns(5)
+
+    for i, (nutrient, percentile) in enumerate(top_nutrients):
+        # Display the nutrient and its percentile in a column
+        cols[i].markdown(f"**{reverse_format_nutrient_option(nutrient)}**:\n{round(percentile, 2)}%")
+
+    # If there are less than 5 top nutrients, fill the remaining columns with empty strings
+    for i in range(len(top_nutrients), 5):
+        cols[i].write("")
