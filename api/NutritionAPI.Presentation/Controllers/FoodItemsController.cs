@@ -24,7 +24,7 @@ public class FoodItemsController : ControllerBase
     [HttpGet(Name = "GetFoodItems"), Authorize]
     public async Task<IActionResult> GetFoodItems([FromQuery] FoodItemParameters foodItemParameters)
     {
-        (IEnumerable<ExpandoObject> foodItems, MetaData metaData) pagedResult = await
+        (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await
             _service.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters, trackChanges: false);
         
         Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));

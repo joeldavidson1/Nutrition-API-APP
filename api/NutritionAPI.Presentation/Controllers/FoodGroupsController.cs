@@ -47,7 +47,7 @@ public class FoodGroupsController : ControllerBase
     public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,
         string foodGroupCode)
     {
-        (IEnumerable<ExpandoObject> foodItems, MetaData metaData) pagedResult = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodItemParameters,
+        (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodItemParameters,
             foodGroupCode, trackChanges: false);
         
         Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));

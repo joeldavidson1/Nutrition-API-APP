@@ -29,7 +29,6 @@ public class FoodItemsControllerTest
     private readonly FoodItemsController _controller;
     private readonly Mock<IRepositoryManager> _repositoryManagerMock;
     private readonly Mock<IMapper> _mapperMock;
-    private readonly Mock<IDataShaper<FoodItemsDto>> _dataShaperMock;
     private readonly Mock<IServiceManager> _service;
 
     public FoodItemsControllerTest(ITestOutputHelper testOutputHelper)
@@ -37,7 +36,6 @@ public class FoodItemsControllerTest
         _testOutputHelper = testOutputHelper;
         _repositoryManagerMock = new Mock<IRepositoryManager>();
         _mapperMock = new Mock<IMapper>();
-        _dataShaperMock = new Mock<IDataShaper<FoodItemsDto>>();
         _service = new Mock<IServiceManager>();
 
         _controller = new FoodItemsController(_service.Object);
@@ -53,7 +51,7 @@ public class FoodItemsControllerTest
         var pagedList = PagedList<FoodItems>.ToPagedList(expectedFoodItems, pageNumber: 1, pageSize: 10);
         
         SetupRepositoryMock(pagedList, foodItemParameters);
-        SetupServiceMock(expectedFoodItems);
+        SetupServiceMockForAllFoodItems(expectedFoodItems);
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
         // Act
@@ -74,15 +72,17 @@ public class FoodItemsControllerTest
         var pagedList = PagedList<FoodItems>.ToPagedList(expectedFoodItems, pageNumber: 1, pageSize: 10);
     
         SetupRepositoryMock(pagedList, foodItemParameters);
-        SetupServiceMock(expectedFoodItems);
+        SetupServiceMockForAllFoodItems(expectedFoodItems);
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
         // Act
         var result = await _controller.GetFoodItems(new FoodItemParameters());
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<ExpandoObject>>(okResult.Value);
 
+        // _testOutputHelper.WriteLine(expectedFoodItems[0].Name);
+    
         // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<FoodItemsDto>>(okResult.Value);
         Assert.Equal(expectedFoodItems.Count, returnedFoodItems.Count());
     }
     
@@ -92,12 +92,12 @@ public class FoodItemsControllerTest
     {
         // Arrange
         var mockHttpContext = MockHttpContext();
-        var foodItemParameters = new FoodItemParameters { SearchFoodByName = "Food 1" }; // Set the name to search for
+        var foodItemParameters = new FoodItemParameters { SearchFoodByName = "Banana" }; // Set the name to search for
         var expectedFoodItems = GenerateExpectedFoodItems().Where(f => f.Name.Contains(foodItemParameters.SearchFoodByName)).ToList(); // Filter expected items based on the search criteria
         var pagedList = PagedList<FoodItems>.ToPagedList(expectedFoodItems, pageNumber: 1, pageSize: 10);
     
         SetupRepositoryMock(pagedList, foodItemParameters);
-        SetupServiceMock(expectedFoodItems);
+        SetupServiceMockForAllFoodItems(expectedFoodItems);
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
         // Act
@@ -105,12 +105,53 @@ public class FoodItemsControllerTest
 
         // Assert
         var okResult = Assert.IsType<OkObjectResult>(result);
-        var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<ExpandoObject>>(okResult.Value);
+        var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<FoodItemsDto>>(okResult.Value);
         Assert.Equal(expectedFoodItems.Count, returnedFoodItems.Count()); // Ensure all expected items are returned
-        // Add additional assertions if needed
+        Assert.All(returnedFoodItems, dto => Assert.Contains("Banana", dto.Name)); // Check if each item contains "Food 1" in its name
     }
 
+    [Fact]
+    public async Task GetFoodItemFromFoodCode_WhenCalled_ReturnsOkResult()
+    {
+        // Arrange
+        var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
+        var expectedFoodItems = GenerateExpectedFoodItems();
+        var pagedList = PagedList<FoodItems>.ToPagedList(expectedFoodItems, pageNumber: 1, pageSize: 10);
+        
+        SetupRepositoryMock(pagedList, foodItemParameters);
+        SetupServiceMockForOneFoodItem(expectedFoodItems);
+        _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
+        // Act
+        var result = await _controller.GetFoodItem("14-999");
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        Assert.NotNull(okResult.Value);
+    }
+    
+    [Fact]
+    public async Task GetFoodItemFromFoodCode_WhenCalled_ReturnsMatchingFoodItem()
+    {
+        // Arrange
+        var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
+        var expectedFoodItems = GenerateExpectedFoodItems();
+        var pagedList = PagedList<FoodItems>.ToPagedList(expectedFoodItems, pageNumber: 1, pageSize: 10);
+        
+        SetupRepositoryMock(pagedList, foodItemParameters);
+        SetupServiceMockForOneFoodItem(expectedFoodItems);
+        _controller.ControllerContext.HttpContext = mockHttpContext.Object;
+
+        // Act
+        var result = await _controller.GetFoodItem("14-999");
+
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnedFoodItem = Assert.IsType<FoodItemsDto>(okResult.Value);
+        Assert.Equal("Apple", returnedFoodItem.Name);
+    }
 
     private Mock<HttpContext> MockHttpContext()
     {
@@ -126,8 +167,8 @@ public class FoodItemsControllerTest
     {
         return new List<FoodItems>
         {
-            new FoodItems { FoodCode = "1", Name = "Food 1", FoodGroupCode = "Group 1" },
-            new FoodItems { FoodCode = "2", Name = "Food 2", FoodGroupCode = "Group 2" }
+            new FoodItems { FoodCode = "13-000", Name = "Banana", FoodGroupCode = "Group 1" },
+            new FoodItems { FoodCode = "14-999", Name = "Apple", FoodGroupCode = "Group 2" }
         };
     }
 
@@ -137,9 +178,56 @@ public class FoodItemsControllerTest
             .ReturnsAsync(pagedList);
     }
 
-    private void SetupServiceMock(List<FoodItems> expectedFoodItems)
+    private void SetupServiceMockForAllFoodItems(List<FoodItems> expectedFoodItems)
     {
+
+        List<FoodItemsDto> foodItemsDto = new List<FoodItemsDto>();
+
+        foreach (var foodItem in expectedFoodItems)
+        {
+            foodItemsDto.Add(new FoodItemsDto(
+                FoodCode: foodItem.FoodCode,
+                Name: foodItem.Name,
+                FoodGroupCode: foodItem.FoodGroupCode,
+                Description: null,
+                DataReferences: null,
+                Energy: null,
+                Macronutrients: null,
+                Minerals: null,
+                Proximates: null,
+                Vitamins: null
+            ));
+        }
+        
+        MetaData metaData = new MetaData(); 
+
         _service.Setup(s => s.FoodItemsService.GetAllFoodItemsAsync(It.IsAny<FoodItemParameters>(), false))
-            .ReturnsAsync((expectedFoodItems.Select(f => new ExpandoObject()), new MetaData()));
+            .ReturnsAsync((foodItemsDto, metaData));
+    }
+    
+    private void SetupServiceMockForOneFoodItem(List<FoodItems> expectedFoodItems)
+    {
+        _service.Setup(s => s.FoodItemsService.GetFoodItemAsync(It.IsAny<string>(), false))
+            .ReturnsAsync((string foodCode, bool trackChanges) =>
+            {
+                FoodItems foodItem = expectedFoodItems.FirstOrDefault(fi => fi.FoodCode == foodCode);
+            
+                // If food item is found, map it to FoodItemsDto otherwise return null
+                var foodItemDto = foodItem != null ? new FoodItemsDto(
+                    FoodCode: foodItem.FoodCode,
+                    Name: foodItem.Name,
+                    FoodGroupCode: foodItem.FoodGroupCode,
+                    Description: null,
+                    DataReferences: null,
+                    Energy: null,
+                    Macronutrients: null,
+                    Minerals: null,
+                    Proximates: null,
+                    Vitamins: null
+                    ) 
+                    : null;
+            
+                return foodItemDto;
+            });
     }
 }

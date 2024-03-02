@@ -7,9 +7,9 @@ namespace Service.Contracts;
 
 public interface IFoodItemsService
 {
-    Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters,
+    Task<(IEnumerable<FoodItemsDto> foodItems, MetaData metaData)> GetAllFoodItemsAsync(FoodItemParameters foodItemParameters,
         bool trackChanges);
     Task<FoodItemsDto> GetFoodItemAsync(string foodCode, bool trackChanges);
-    Task<(IEnumerable<ExpandoObject> foodItems, MetaData metaData)>  GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
+    Task<(IEnumerable<FoodItemsDto> foodItems, MetaData metaData)>  GetFoodItemsForFoodGroupAsync(FoodItemParameters foodItemParameters,
         string foodGroupCode, bool trackChanges);
 }

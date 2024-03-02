@@ -8,6 +8,5 @@ public class FoodItemParameters : RequestParameters
     // public bool ValidNutrientValueRange => MaxNutrientValue > MinNutrientValue;
 
     public string? SearchFoodByName { get; set; }
-    public string? Fields { get; set; }
     public string? OrderBy { get; set; }
 }
