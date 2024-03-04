@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using AutoMapper;
 using Contracts;
@@ -62,8 +63,8 @@ public class FoodItemsControllerTest
         var foodItemParameters = new FoodItemParameters();
         
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMock(mockedDatabase, foodItemParameters);
-        SetupServiceMock(foodItemParameters);
+        SetupRepositoryMockForAllFoodItems(mockedDatabase, foodItemParameters);
+        SetupServiceMockForAllFoodItems(foodItemParameters);
         
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
@@ -83,8 +84,8 @@ public class FoodItemsControllerTest
         var foodItemParameters = new FoodItemParameters();
         var expectedFoodItems = GenerateMockDatabase();
     
-        SetupRepositoryMock(expectedFoodItems, foodItemParameters);
-        SetupServiceMock(foodItemParameters);
+        SetupRepositoryMockForAllFoodItems(expectedFoodItems, foodItemParameters);
+        SetupServiceMockForAllFoodItems(foodItemParameters);
         
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
@@ -103,11 +104,11 @@ public class FoodItemsControllerTest
         // Arrange
         var mockHttpContext = MockHttpContext();
         var foodItemParameters = new FoodItemParameters { SearchFoodByName = "Banana" }; // Set the name to search for
-        var expectedFoodItems = GenerateMockDatabase().Where(f => f.Name.Contains(foodItemParameters.SearchFoodByName)).ToList(); // Filter expected items based on the search criteria
+        var expectedFoodItems = GenerateMockDatabase().Where(f => f.Name.Contains(foodItemParameters.SearchFoodByName)).ToList(); 
     
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMock(mockedDatabase, foodItemParameters);
-        SetupServiceMock(foodItemParameters);
+        SetupRepositoryMockForAllFoodItems(mockedDatabase, foodItemParameters);
+        SetupServiceMockForAllFoodItems(foodItemParameters);
         
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
@@ -118,7 +119,7 @@ public class FoodItemsControllerTest
         var okResult = Assert.IsType<OkObjectResult>(result);
         var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<FoodItemsDto>>(okResult.Value);
         Assert.Equal(expectedFoodItems.Count, returnedFoodItems.Count()); // Ensure all expected items are returned
-        Assert.All(returnedFoodItems, dto => Assert.Contains("Banana", dto.Name)); // Check if each item contains "Food 1" in its name
+        Assert.All(returnedFoodItems, dto => Assert.Contains(expectedFoodItems, f => f.Name == dto.Name)); 
     }
 
     [Fact]
@@ -126,11 +127,12 @@ public class FoodItemsControllerTest
     {
         // Arrange
         var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
         string testFoodCode = "14-999";
 
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMockForOneFoodItem(mockedDatabase, testFoodCode);
-        SetupServiceMockForOneFoodItem(testFoodCode);
+        SetupRepositoryMockForInputStrings(mockedDatabase, foodItemParameters, foodCode: testFoodCode);
+        SetupServiceMockForInputStrings(foodItemParameters, foodCode: testFoodCode);
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
         // Act
@@ -146,12 +148,13 @@ public class FoodItemsControllerTest
     {
         // Arrange
         var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
         string testFoodCode = "14-999";
         var expectedFoodItem = GenerateMockDatabase().SingleOrDefault(f => f.FoodCode.Equals(testFoodCode));
 
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMockForOneFoodItem(mockedDatabase, testFoodCode);
-        SetupServiceMockForOneFoodItem(testFoodCode);
+        SetupRepositoryMockForInputStrings(mockedDatabase, foodItemParameters, foodCode: testFoodCode);
+        SetupServiceMockForInputStrings(foodItemParameters, foodCode: testFoodCode);
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
         // Act
@@ -175,8 +178,8 @@ public class FoodItemsControllerTest
             .ToList();
 
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMock(mockedDatabase, foodItemParameters);
-        SetupServiceMock(foodItemParameters);
+        SetupRepositoryMockForAllFoodItems(mockedDatabase, foodItemParameters);
+        SetupServiceMockForAllFoodItems(foodItemParameters);
         
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
@@ -198,6 +201,50 @@ public class FoodItemsControllerTest
             Assert.Equal(expectedFoodItems[i].FoodCode, returnedFoodItemsList[i].FoodCode);
         }
     }
+
+    [Fact]
+    public async Task GetFoodItemsFromFoodGroupCode_WhenCalled_ReturnsOkResult()
+    {
+        // Arrange
+        var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
+        string testFoodGroupCode = "AN";
+        
+        var mockedDatabase = GenerateMockDatabase();
+        SetupRepositoryMockForInputStrings(mockedDatabase,  foodItemParameters, foodGroupCode: testFoodGroupCode);
+        SetupServiceMockForInputStrings(foodItemParameters, foodGroupCode: testFoodGroupCode);
+        _controller.ControllerContext.HttpContext = mockHttpContext.Object;
+        
+        // Act
+        var result = await _controller.GetFoodItemsForFoodGroup(foodItemParameters, testFoodGroupCode);
+        
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        Assert.NotNull(okResult.Value); 
+    }
+
+    [Fact]
+    public async Task GetFoodItemsFromFoodGroupCode_WhenCalled_ReturnsMatchingItems()
+    {
+        // Arrange
+        var mockHttpContext = MockHttpContext();
+        var foodItemParameters = new FoodItemParameters();
+        string testFoodGroupCode = "AN";
+        var expectedFoodItems = GenerateMockDatabase().Where(f => f.FoodGroupCode.Equals(testFoodGroupCode));
+
+        var mockedDatabase = GenerateMockDatabase();
+        SetupRepositoryMockForInputStrings(mockedDatabase, foodItemParameters, foodGroupCode: testFoodGroupCode);
+        SetupServiceMockForInputStrings(foodItemParameters, foodGroupCode: testFoodGroupCode);
+        _controller.ControllerContext.HttpContext = mockHttpContext.Object;
+
+        // Act
+        var result = await _controller.GetFoodItemsForFoodGroup(foodItemParameters, testFoodGroupCode);
+
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnedFoodItems = Assert.IsAssignableFrom<IEnumerable<FoodItemsDto>>(okResult.Value);
+        Assert.Equal(expectedFoodItems.Count(), returnedFoodItems.Count()); // Ensure all expected items are returned
+        Assert.All(returnedFoodItems, dto => Assert.Contains(expectedFoodItems, f => f.Name == dto.Name)); 
+    }
     
     [Fact]
     public async Task GetFoodItems_WhenCalled_ReturnsCorrectResponseHeaders()
@@ -207,8 +254,8 @@ public class FoodItemsControllerTest
         var foodItemParameters = new FoodItemParameters();
         
         var mockedDatabase = GenerateMockDatabase();
-        SetupRepositoryMock(mockedDatabase, foodItemParameters);
-        SetupServiceMock(foodItemParameters);
+        SetupRepositoryMockForAllFoodItems(mockedDatabase, foodItemParameters);
+        SetupServiceMockForAllFoodItems(foodItemParameters);
         
         _controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
@@ -246,37 +293,37 @@ public class FoodItemsControllerTest
         return new List<FoodItems>
         {
             new FoodItems
-            { 
+            {
                 FoodCode = "13-000",
                 Name = "Banana",
-                FoodGroupCode = "Group 1",
-                Energy = new Energy { Kcal = 89.0, Kj = 371.0 } 
+                FoodGroupCode = "F",
+                Energy = new Energy {Kcal = 89.0, Kj = 371.0}
             },
             new FoodItems
-            { 
+            {
                 FoodCode = "14-999",
                 Name = "Apple",
-                FoodGroupCode = "Group 1",
-                Energy = new Energy { Kcal = 52.0, Kj = 218.0 }
+                FoodGroupCode = "F",
+                Energy = new Energy {Kcal = 52.0, Kj = 218.0}
             },
             new FoodItems
-            { 
+            {
                 FoodCode = "15-875",
                 Name = "Cake",
-                FoodGroupCode = "Group 2",
-                Energy = new Energy { Kcal = 113.0, Kj = 472.8 }
+                FoodGroupCode = "AN",
+                Energy = new Energy {Kcal = 113.0, Kj = 472.8}
             },
             new FoodItems
-            { 
+            {
                 FoodCode = "12-150",
                 Name = "Carrot",
-                FoodGroupCode = "Group 3",
-                Energy = new Energy { Kcal = 10, Kj = 45.0 }
+                FoodGroupCode = "D",
+                Energy = new Energy {Kcal = 10, Kj = 45.0}
             }
         };
     }
 
-    private void SetupRepositoryMock(List<FoodItems> database, FoodItemParameters foodItemParameters)
+    private void SetupRepositoryMockForAllFoodItems(List<FoodItems> database, FoodItemParameters foodItemParameters)
     {
         var filteredItems = database
             .AsQueryable()
@@ -294,7 +341,7 @@ public class FoodItemsControllerTest
     }
 
     
-    private void SetupServiceMock(FoodItemParameters foodItemParameters)
+    private void SetupServiceMockForAllFoodItems(FoodItemParameters foodItemParameters)
     {
         _service.Setup(s => s.FoodItemsService.GetAllFoodItemsAsync(foodItemParameters, false))
             .ReturnsAsync((FoodItemParameters parameters, bool trackChanges) =>
@@ -308,32 +355,73 @@ public class FoodItemsControllerTest
             });
     }
 
-   
-    private void SetupRepositoryMockForOneFoodItem(List<FoodItems> database, string foodCode)
+    private void SetupRepositoryMockForInputStrings(List<FoodItems> database, FoodItemParameters foodItemParameters,
+        string foodCode = "", string foodGroupCode = "") 
     {
-        var filteredItem = database
-            .AsQueryable()
-            .FirstOrDefault(x => x.FoodCode.Equals(foodCode)); // Filter by foodCode
-        
-        _repositoryManagerMock
-            .Setup(repo => repo.FoodItems.GetFoodItemAsync(foodCode, It.IsAny<bool>()))
-            .ReturnsAsync(filteredItem); // Ensure filteredItem is not null
+        if (string.IsNullOrEmpty(foodGroupCode))
+        {
+            var filteredItem = database
+                .AsQueryable()
+                .SingleOrDefault(x => x.FoodCode.Equals(foodCode)); // Filter by foodCode
+
+            _repositoryManagerMock
+                .Setup(repo => repo.FoodItems.GetFoodItemAsync(foodCode, It.IsAny<bool>()))
+                .ReturnsAsync(filteredItem); // Ensure filteredItem is not null
+        }
+        else
+        {
+            var query = database.AsQueryable().Where(x => x.FoodGroupCode.Equals(foodGroupCode));
+
+            if (!string.IsNullOrEmpty(foodItemParameters.OrderBy)) // Check if ordering is provided
+            {
+                query = query.OrderBy(foodItemParameters.OrderBy);
+            }
+
+            if (!string.IsNullOrEmpty(foodItemParameters.SearchFoodByName)) // Check if search filter is provided
+            {
+                query = query.Search(foodItemParameters.SearchFoodByName);
+            }
+
+            var filteredItems = query.ToList();
+
+            // Create a paged list based on the filtered items and parameters
+            var pagedList = PagedList<FoodItems>.ToPagedList(filteredItems, foodItemParameters.PageNumber, foodItemParameters.PageSize);
+
+            // Setup the mock to return the paged list when GetAllFoodItemsAsync is called with the specified parameters
+            _repositoryManagerMock
+                .Setup(repo => repo.FoodItems.GetFoodItemsForFoodGroupAsync(foodItemParameters, foodGroupCode, It.IsAny<bool>()))
+                .ReturnsAsync(pagedList);
+        }
     }
 
     
-    private void SetupServiceMockForOneFoodItem(string foodCode)
+    private void SetupServiceMockForInputStrings(FoodItemParameters foodItemParameters, string foodCode = "", string foodGroupCode = "")
     {
-        // Setup the service mock to return the mapped DTO when GetFoodItemAsync is called
-        _service.Setup(s => s.FoodItemsService.GetFoodItemAsync(foodCode, It.IsAny<bool>()))
-            .ReturnsAsync((string foodCode, bool trackChanges) =>
-            {
-                // Retrieve the food item from the repository mock based on the food code
-                var result = _repositoryManagerMock.Object.FoodItems.GetFoodItemAsync(foodCode, trackChanges).Result;
-                // Map the retrieved food item to a DTO
-                var mappedDto = _mapper.Map<FoodItemsDto>(result);
-                return mappedDto;
-            });
+        if (string.IsNullOrEmpty(foodGroupCode))
+        {
+            _service.Setup(s => s.FoodItemsService.GetFoodItemAsync(foodCode, It.IsAny<bool>()))
+                .ReturnsAsync((string foodCode, bool trackChanges) =>
+                {
+                    // Retrieve the food item from the repository mock based on the food code
+                    var result = _repositoryManagerMock.Object.FoodItems.GetFoodItemAsync(foodCode, trackChanges)
+                        .Result;
+                    // Map the retrieved food item to a DTO
+                    var mappedDto = _mapper.Map<FoodItemsDto>(result);
+                    return mappedDto;
+                });
+        }
+        else
+        {
+            _service.Setup(s => s.FoodItemsService.GetFoodItemsForFoodGroupAsync(It.IsAny<FoodItemParameters>(), foodGroupCode, It.IsAny<bool>()))
+                .ReturnsAsync((FoodItemParameters parameters, string groupCode, bool trackChanges) =>
+                {
+                    // Retrieve the items returned by the repository mock based on the parameters
+                    var pagedList = _repositoryManagerMock.Object.FoodItems.GetFoodItemsForFoodGroupAsync(parameters, groupCode, trackChanges).Result;
+                    var foodItemsDto = pagedList.Select(item => _mapper.Map<FoodItemsDto>(item));
+                    var metaData = pagedList.MetaData;
+
+                    return (foodItems: foodItemsDto, metaData: metaData);
+                });
+        }
     }
-
-
 }

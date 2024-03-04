@@ -42,6 +42,22 @@ public class FoodItemsController : ControllerBase
         FoodItemsDto foodItem = await _service.FoodItemsService.GetFoodItemAsync(foodCode, trackChanges: false);
         return Ok(foodItem);
     }
+    
+    /// <summary>
+    /// Gets a list of food items from a specific food group
+    /// </summary>
+    /// <returns>A list of food items from the given food group</returns>
+    [HttpGet("{foodGroupCode}/foodItems"), Authorize]
+    public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,
+        string foodGroupCode)
+    {
+        (IEnumerable<FoodItemsDto> foodItems, MetaData metaData) pagedResult = await _service.FoodItemsService.GetFoodItemsForFoodGroupAsync(foodItemParameters,
+            foodGroupCode, trackChanges: false);
+        
+        Response.Headers.Add("X-pagination", JsonSerializer.Serialize(pagedResult.metaData));
+        
+        return Ok(pagedResult.foodItems);
+    }
 
     /// <summary>
     /// Retrieves the available HTTP methods for the foodItems endpoint
