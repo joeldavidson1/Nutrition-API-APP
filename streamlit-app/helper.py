@@ -7,7 +7,19 @@ import plotly.express as px
 import pandas as pd
 from scipy import stats
 
+
 def get_key(my_dict, val):
+    """
+    Returns the key in the dictionary `my_dict` that corresponds to the given value `val`.
+    
+    Args:
+        my_dict (dict): The dictionary to search in.
+        val: The value to search for.
+    
+    Returns:
+        The key in `my_dict` that corresponds to `val`, or "Value does not exist in the dictionary"
+        if the value is not found.
+    """
     for key, value in my_dict.items():
         if value == val:
             return key
@@ -15,7 +27,16 @@ def get_key(my_dict, val):
     return "Value does not exist in the dictionary"
 
 
-def extract_measurement(option):
+def extract_measurement(option): 
+    """
+    Extracts the measurement unit from the given option.
+
+    Parameters:
+    option (str): The option containing the measurement unit.
+
+    Returns:
+    str or None: The extracted measurement unit, or None if no measurement unit is found.
+    """
     # Use regex to find the measurement unit
     match = re.search(r'\((.*?)\)', option)
     # If a match is found, return the measurement unit
@@ -27,6 +48,16 @@ def extract_measurement(option):
     
 
 def format_nutrient_option(option, for_api=True):
+    """
+    Formats a nutrient option by removing brackets, splitting into words, and appending the measurement unit.
+
+    Parameters:
+    option (str): The nutrient option to be formatted.
+    for_api (bool): Flag indicating whether the formatted option is for API usage. Default is True.
+
+    Returns:
+    str: The formatted nutrient option.
+    """
     # Remove brackets
     option = re.sub(r'[()]', '', option)
     # Split the option into words
@@ -49,6 +80,16 @@ def format_nutrient_option(option, for_api=True):
 
 
 def adjust_nutrition_values(nutrition_dict, quantity):
+    """
+    Adjusts the nutrition values in a dictionary based on the given quantity.
+
+    Args:
+        nutrition_dict (dict): A dictionary containing nutrition values.
+        quantity (int or float): The quantity to adjust the nutrition values by.
+
+    Returns:
+        dict: A new dictionary with adjusted nutrition values.
+    """
     adjusted_dict = copy.deepcopy(nutrition_dict)
     for key, value in adjusted_dict.items():
         if isinstance(value, dict):
@@ -58,7 +99,19 @@ def adjust_nutrition_values(nutrition_dict, quantity):
     return adjusted_dict
 
 
+from collections import defaultdict
+
 def add_nutrition_values(nutrition_dict, total_nutrition):
+    """
+    Recursively adds the nutrition values from the given `nutrition_dict` to the `total_nutrition` dictionary.
+
+    Args:
+        nutrition_dict (dict): A dictionary containing nutrition values.
+        total_nutrition (dict): A dictionary to store the total nutrition values.
+
+    Returns:
+        None
+    """
     for key, value in nutrition_dict.items():
         if isinstance(value, dict):
             if key not in total_nutrition:
@@ -68,24 +121,53 @@ def add_nutrition_values(nutrition_dict, total_nutrition):
             total_nutrition[key] += value
 
 def add_food_with_quantity(food, quantity):
+    """
+    Adds a food item with its corresponding quantity.
+
+    Args:
+        food: The food item to be added.
+        quantity: The quantity of the food item.
+
+    Returns:
+        A tuple containing the copied food item and its quantity.
+    """
     return (copy.deepcopy(food), quantity)
 
 
 def reverse_format_nutrient_option(option):
+    """
+    Reverse formats a nutrient option by adding spaces before capital letters,
+    capitalising each word, and putting the last word in parentheses.
+
+    Parameters:
+    option (str): The nutrient option to be reverse formatted.
+
+    Returns:
+    str: The reverse formatted nutrient option.
+    """
     if option == "kcal" or option == "kj":
         return option
 
-    # Split the option into words
     words = option.split('_')
     # Add spaces before capital letters
     words[0] = re.sub(r"(?<=\w)([A-Z])", r" \1", words[0])
-    # Capitalize each word and join them with a space, putting the last word in parentheses
+    # Capitalise each word and join them with a space, putting the last word in parentheses
     formatted_option = ' '.join(word.title() for word in words[:-1]) + ' (' + words[-1] + ')'
 
     return formatted_option
 
 
 def display_selected_row(grid_table, food_groups_dict):
+    """
+    Display the selected row from the grid table.
+
+    Parameters:
+    - grid_table (dict): The grid table containing the selected row.
+    - food_groups_dict (dict): A dictionary mapping food group codes to food group names.
+
+    Returns:
+    None
+    """
     if (grid_table['selected_rows']):
         selected_row = grid_table['selected_rows'][0]
         st.subheader(f'{selected_row['foodCode']}: {selected_row['name']}')
