@@ -33,7 +33,7 @@ public class Vitamins
     [Column("Vitamin_K1_mcg")]
     public double? VitaminK1_mcg { get; set; }
     public double? Carotene_mcg{ get; set; }
-    public double? Trytophan_mg { get; set; }
+    public double? Tryptophan_mg { get; set; }
 
     public FoodItems? FoodItems { get; set; }
 }

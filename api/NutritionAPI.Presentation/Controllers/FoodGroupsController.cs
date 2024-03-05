@@ -38,7 +38,7 @@ public class FoodGroupsController : ControllerBase
         FoodGroupsDto foodItem = await _service.FoodGroupsService.GetFoodGroup(foodGroupCode, trackChanges: false);
         return Ok(foodItem);
     }
-    
+
     /// <summary>
     /// Retrieves the available HTTP methods for the foodGroups endpoint
     /// </summary>

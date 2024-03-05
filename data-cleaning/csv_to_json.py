@@ -69,7 +69,7 @@ with open('combined_nutrition_tables.csv', 'r') as csv_file:
                 'vitamin_e_mg': row['Vitamin E (mg)'],
                 'vitamin_k1_mcg': row['Vitamin K1 (µg)'],
                 'carotene_mcg': row['Carotene (µg)'],
-                'trytophan_mg': row['Tryptophan/60 (mg)']
+                'tryptophan_mg': row['Tryptophan/60 (mg)']
             }
         }
 

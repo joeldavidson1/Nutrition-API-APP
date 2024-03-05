@@ -115,7 +115,7 @@ def create_tables():
             "Vitamin_E_mg" FLOAT NULL,
             "Vitamin_K1_mcg" FLOAT NULL,
             "Carotene_mcg" FLOAT NULL,
-            "Trytophan_mg" FLOAT NULL,
+            "Tryptophan_mg" FLOAT NULL,
             FOREIGN KEY ("FoodCode") REFERENCES "FoodItems" ("FoodCode")
         )
         """
@@ -244,7 +244,7 @@ def insert_data_to_tables():
 
                 # Insert into Vitamins Table
                 cursor.execute("""
-                    INSERT INTO "Vitamins" ("FoodCode", "Retinol_mcg", "Thiamin_mg", "Riboflavin_mg", "Niacin_mg", "Pantothenate_mg", "Vitamin_B6_mg", "Biotin_mcg", "Folate_mcg", "Vitamin_B12_mcg", "Vitamin_C_mg", "Vitamin_D_mcg", "Vitamin_E_mg", "Vitamin_K1_mcg", "Carotene_mcg", "Trytophan_mg")
+                    INSERT INTO "Vitamins" ("FoodCode", "Retinol_mcg", "Thiamin_mg", "Riboflavin_mg", "Niacin_mg", "Pantothenate_mg", "Vitamin_B6_mg", "Biotin_mcg", "Folate_mcg", "Vitamin_B12_mcg", "Vitamin_C_mg", "Vitamin_D_mcg", "Vitamin_E_mg", "Vitamin_K1_mcg", "Carotene_mcg", "Tryptophan_mg")
                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     food_item['foodCode'],
@@ -262,7 +262,7 @@ def insert_data_to_tables():
                     food_item['foodVitamins']['vitamin_e_mg'],
                     food_item['foodVitamins']['vitamin_k1_mcg'],
                     food_item['foodVitamins']['carotene_mcg'],
-                    food_item['foodVitamins']['trytophan_mg']
+                    food_item['foodVitamins']['tryptophan_mg']
                 ))
 
         print('Successfully inserted data into tables')
