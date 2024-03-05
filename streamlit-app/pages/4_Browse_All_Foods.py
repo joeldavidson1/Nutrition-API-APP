@@ -18,11 +18,11 @@ food_groups = list(food_groups_dict.keys())
 selected_group = st.selectbox("Filter by Food Group", food_groups)
 
 food_group_code = food_groups_dict[selected_group]
-response = api_handler.get_data_from_api(credentials.api_key, f"foodGroups/{food_group_code}/foodItems", True)
+response = api_handler.get_data_from_api(credentials.api_key, f"foodItems/{food_group_code}/foodItems", True)
 
 if response:
     df = pd.DataFrame(response)
-    df_to_display = df[['FoodCode', 'Name']]
+    df_to_display = df[['foodCode', 'name']]
     # AgGrid(df_to_display, )
     # st.write(df_to_display)
 

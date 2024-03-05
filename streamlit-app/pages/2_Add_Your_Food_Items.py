@@ -51,12 +51,12 @@ if food_to_search != "":
     response = api_handler.get_data_from_api(
     api_token, "foodItems", True, SearchFoodByName=food_to_search, PageSize=50)
     for food_item in response:
-        if (st.button(food_item["Name"], key=food_item["FoodCode"])):
+        if (st.button(food_item["name"], key=food_item["foodCode"])):
             st.session_state.selected_food = food_item
 
 # Quantity input
 if st.session_state.selected_food:
-    st.write(f"Selected food: {st.session_state.selected_food['Name']}")
+    st.write(f"Selected food: {st.session_state.selected_food['name']}")
     st.session_state.quantity = st.number_input('Enter quantity (g)', min_value=0, value=st.session_state.quantity)
 
 # Add button
@@ -86,7 +86,7 @@ if st.session_state.user_food_list:
     for i, (food, quantity) in enumerate(st.session_state.user_food_list):
         with col1:
             st.write("##")
-            st.write(food['Name'])
+            st.write(food['name'])
         with col2:
             st.write("#####")
             new_quantity = st.number_input('Quantity (g)', label_visibility="collapsed", min_value=0, value=quantity, key=f'quantity_{i}')
@@ -120,12 +120,12 @@ if st.session_state.user_food_list:
     #     for nutrient, value in nutrients.items():
     #         st.write(f"{reverse_format_nutrient_option(nutrient)}: {round(value, 2)}")
 
-    macronutrients = total_nutrition['Macronutrients']
+    macronutrients = total_nutrition['macronutrients']
     names = ['Protein', 'Fat', 'Carbohydrate']
     colour_dict = {'Protein': '#FF8333', 'Fat': '#FFD133', 'Carbohydrate': '#11A400'}
     helper.create_bar_chart(list(macronutrients.values()), names, "Macronutrient Composition as a Percentage (%)", "Macronutrient", colour_dict)
 
-    fats = [total_nutrition['Proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
+    fats = [total_nutrition['proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
     names = ['Saturated', 'Monounsaturated', 'Polyunsaturated', 'Trans']
     helper.create_bar_chart(fats, names, "Fats Composition as a Percentage (%)", "Fatty Acid")
  
@@ -139,12 +139,11 @@ if st.session_state.user_food_list:
         
         # Convert the nutrients dictionary to a DataFrame
         df = pd.DataFrame([(nutrient, round(value, 2)) for nutrient, value in nutrients.items()], columns=['Nutrient', 'Value'])
-        # st.write(nutrients)
         # Apply the reverse_format_nutrient_option method to the 'Nutrient' column
         df['Nutrient'] = df['Nutrient'].apply(helper.reverse_format_nutrient_option)
 
         # Use the current column for the category subheader and DataFrame
         with columns[i % 2]:
-            st.subheader(f"{category}:\n")
+            st.subheader(f"{category.capitalize()}:\n")
             st.dataframe(df)
     

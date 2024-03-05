@@ -47,26 +47,25 @@ with st.container():
     else:
         # Use the selected description to look up the food group code
         food_group_code = food_groups_dict[selected_group]
-        response = api_handler.get_data_from_api(credentials.api_key, f"foodGroups/{food_group_code}/foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
+        response = api_handler.get_data_from_api(credentials.api_key, f"foodItems/{food_group_code}/foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
     
     st.subheader(f"Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):")
     if response:
-
         df = pd.DataFrame(response)
 
         # Format the selected option back to its original format
         formatted_option = helper.format_nutrient_option(selected_option, False)
 
         # Create a new column in df for the selected option and its values
-        df[selected_option] = df.apply(lambda row: row[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option)][formatted_option], axis=1)
-        df_to_display = df[['FoodCode', 'Name', selected_option]]
+        df[selected_option] = df.apply(lambda row: row[constants.NUTRIENTS_TO_CATEGORIES.get(selected_option).lower()][formatted_option], axis=1)
+        df_to_display = df[['foodCode', 'name', selected_option]]
         st.markdown("#### Select a food item to view more details")
         gd = GridOptionsBuilder.from_dataframe(df_to_display)
         gd.configure_pagination(enabled=True)
         gd.configure_selection(selection_mode='single', use_checkbox=True)
 
-        gd.configure_column('FoodCode', width=60)
-        gd.configure_column(selected_option, width=60)
+        gd.configure_column('foodCode', width=60)
+        gd.configure_column(selected_option, width=75)
 
         grid_table = AgGrid(df, gridOptions=gd.build(), 
                             height=500, width='100%', 
@@ -90,7 +89,7 @@ with st.container():
             measurement = helper.extract_measurement(selected_option) 
 
         # Display the top (x) as bar chart
-        fig = px.bar(top_x, x=selected_option, y='Name', orientation='h', title=f'Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):', labels={"Name": "Food Name", selected_option: measurement}) 
+        fig = px.bar(top_x, x=selected_option, y='name', orientation='h', title=f'Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):', labels={"Name": "Food Name", selected_option: measurement}) 
         # Update y-axis to display all labels
         fig.update_yaxes(tickmode='linear', nticks=len(top_x))
         fig.update_xaxes(showgrid=True)

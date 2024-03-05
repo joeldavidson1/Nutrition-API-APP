@@ -72,6 +72,9 @@ def add_food_with_quantity(food, quantity):
 
 
 def reverse_format_nutrient_option(option):
+    if option == "kcal" or option == "kj":
+        return option
+
     # Split the option into words
     words = option.split('_')
     # Add spaces before capital letters
@@ -85,28 +88,30 @@ def reverse_format_nutrient_option(option):
 def display_selected_row(grid_table, food_groups_dict):
     if (grid_table['selected_rows']):
         selected_row = grid_table['selected_rows'][0]
-        st.subheader(f'{selected_row['FoodCode']}: {selected_row['Name']}')
-        st.markdown(f"**Food Group**: {get_key(food_groups_dict, selected_row['FoodGroupCode'])}")
-        st.markdown(f"**Description**: {selected_row['Description']}")
-        st.markdown(f"**Data References**: {selected_row['DataReferences']}")
+        st.subheader(f'{selected_row['foodCode']}: {selected_row['name']}')
+        st.markdown(f"**Food Group**: {get_key(food_groups_dict, selected_row['foodGroupCode'])}")
+        st.markdown(f"**Description**: {selected_row['description']}")
+        st.markdown(f"**Data References**: {selected_row['dataReferences']}")
 
         top_nutrients = calculate_top_5_nutrients(st.session_state.full_response, selected_row)
         display_top_nutrients(top_nutrients)
 
-        macronutrients = selected_row['Macronutrients']
+        macronutrients = selected_row['macronutrients']
         names = ['Protein', 'Fat', 'Carbohydrate']
         colour_dict = {'Protein': '#FF8333', 'Fat': '#FFD133', 'Carbohydrate': '#11A400'}
         create_bar_chart(list(macronutrients.values()), names, "Macronutrient Composition as a Percentage (%)", "Macronutrient", colour_dict)
 
-        fats = [selected_row['Proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
+        fats = [selected_row['proximates'][fat] for fat in ['fatsSaturated_g', 'fatsMonounsaturated_g', 'fatsPolyunsaturated_g', 'fatsTrans_g']]
         names = ['Saturated', 'Monounsaturated', 'Polyunsaturated', 'Trans']
         create_bar_chart(fats, names, "Fats Composition as a Percentage (%)", "Fatty Acid")
 
-        st.subheader(f"All nutrient information for {selected_row['Name']} per 100g")
+        st.subheader(f"All nutrient information for {selected_row['name']} per 100g")
         # Initialize a list to hold the columns
         columns = []
 
         for i, (category, nutrients) in enumerate(selected_row.items()):
+            category = category.capitalize()
+
             # Skip the keys that are not nutrient categories
             if category not in constants.NUTRIENT_CATEGORIES:
                 continue
@@ -120,7 +125,7 @@ def display_selected_row(grid_table, food_groups_dict):
 
             # Apply the reverse_format_nutrient_option method to the 'Nutrient' column
             df['Nutrient'] = df['Nutrient'].apply(reverse_format_nutrient_option)
-            
+             
             # Use the current column for the category subheader and DataFrame
             with columns[i % 2]:
                 st.markdown(f"##### {category}:\n")
@@ -153,10 +158,9 @@ def calculate_top_5_nutrients(food_data, food_item):
     # Create a dictionary to store the nutrient and its percentile
     nutrient_percentiles = {}
 
-    # Define the categories of nutrients to consider
-    nutrient_categories = ["Macronutrients", "Proximates", "Vitamins", "Minerals"]
 
-    for category in nutrient_categories:
+    for category in constants.NUTRIENT_CATEGORIES:
+        category = category.lower()
         for nutrient, value in food_item[category].items():
             if value is not None:  # Only consider the nutrient if its value is not None
                 # Get all the values for the nutrient, excluding None values
