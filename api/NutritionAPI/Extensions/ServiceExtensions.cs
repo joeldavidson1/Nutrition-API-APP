@@ -29,9 +29,9 @@ public static class ServiceExtensions
         services.AddScoped<IServiceManager, ServiceManager>();
 
     public static void ConfigureSqlContext(this IServiceCollection services,
-        IConfiguration configuration) =>
+        IConfiguration configuration, string connectionString) =>
         services.AddDbContext<RepositoryContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("postgreSqlConnection"), b =>
+            options.UseNpgsql(connectionString, b =>
                 b.MigrationsAssembly("NutritionAPI")));
 
     public static void ConfigureIdentity(this IServiceCollection services)

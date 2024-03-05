@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using AutoMapper;
 using Microsoft.AspNetCore.HttpOverrides;
+using Npgsql;
 using NutritionAPI.Extensions;
 using NutritionAPI.Presentation.ActionFilters;
 using Service;
@@ -9,6 +10,12 @@ using Shared.DataTransferObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var conStrBuilder = new NpgsqlConnectionStringBuilder(
+    builder.Configuration.GetConnectionString("postgreSqlConnection"))
+{
+    Password = builder.Configuration["Password"]
+};
+var connection = conStrBuilder.ConnectionString;
 
 // Add services to the container.
 builder.Services.AddAuthentication();
@@ -17,7 +24,7 @@ builder.Services.ConfigureJwt(builder.Configuration);
 builder.Services.ConfigureCors();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
-builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureSqlContext(builder.Configuration, connection);
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttribute>();

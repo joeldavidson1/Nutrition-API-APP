@@ -41,7 +41,7 @@ public class AuthenticationManager : IAuthenticationManager
     private SigningCredentials GetSigningCredentials()
     {
         var key =
-            Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"));
+            Encoding.UTF8.GetBytes(_configuration["JwtSettings:secret"]);
         var secret = new SymmetricSecurityKey(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
