@@ -265,7 +265,7 @@ def calculate_top_5_nutrients(food_data, food_item):
 
 def display_top_nutrients(top_nutrients):
     st.markdown("#### Top Nutrients:")
-    st.markdown("These nutrients are in the top percentiles compared to other foods in the database. The higher the percentile "
+    st.markdown("These nutrients are in the top percentiles compared to other foods in the database. The lower the percentage "
                 "the more the nutrient is present in the food.")
     
     # Create 5 columns

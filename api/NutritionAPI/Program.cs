@@ -10,12 +10,18 @@ using Shared.DataTransferObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var conStrBuilder = new NpgsqlConnectionStringBuilder(
-    builder.Configuration.GetConnectionString("postgreSqlConnection"))
+// Retrieve connection string and password from local environment variables
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRINGS");
+var password = Environment.GetEnvironmentVariable("PASSWORD");
+
+// Create a NpgsqlConnectionStringBuilder and set the connection string and password
+var conStrBuilder = new NpgsqlConnectionStringBuilder(connectionString)
 {
-    Password = builder.Configuration["Password"]
+    Password = password
 };
-var connection = conStrBuilder.ConnectionString;
+
+// Get the connection string
+var connection = conStrBuilder.ConnectionString;;
 
 // Add services to the container.
 builder.Services.AddAuthentication();
@@ -42,15 +48,14 @@ var app = builder.Build();
 app.ConfigureExceptionHandler();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(sw =>
-        sw.SwaggerEndpoint("/swagger/v1/swagger.json", "Nutrition API"));
-    app.UseDeveloperExceptionPage();
-}
-else
-    app.UseHsts();
+
+app.UseSwagger(); 
+app.UseSwaggerUI(sw =>
+    sw.SwaggerEndpoint("/swagger/v1/swagger.json", "Nutrition API"));
+app.UseDeveloperExceptionPage();
+
+// else
+    // app.UseHsts();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
