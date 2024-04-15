@@ -170,7 +170,7 @@ def display_selected_row(grid_table, food_groups_dict):
     """
     if (grid_table['selected_rows']):
         selected_row = grid_table['selected_rows'][0]
-        st.subheader(f'{selected_row['foodCode']}: {selected_row['name']}')
+        st.subheader(f"{selected_row['foodCode']}: {selected_row['name']}")
         st.markdown(f"**Food Group**: {get_key(food_groups_dict, selected_row['foodGroupCode'])}")
         st.markdown(f"**Description**: {selected_row['description']}")
         st.markdown(f"**Data References**: {selected_row['dataReferences']}")
