@@ -1,5 +1,4 @@
 import api_handler
-import credentials
 import constants
 import re
 import streamlit as st
@@ -10,33 +9,10 @@ import copy
 import helper
 
 
-api_token = credentials.api_key 
-# response = api_handler.get_data_from_api(api_token)
+api_token = st.session_state.api_key 
 
 st.title("Search for food items and add them to a food list to view the nutrient composition")
 
-# st.subheader("Every food item is displayed as per 100g")
-# st.write("""
-#      ##### Search a food and see the macronutrient distribution
-#     """)
-# food_to_search = st.text_input("Search for a food item", placeholder="Banana")
-
-# if food_to_search != "":
-#     response = api_handler.get_data_from_api(
-#     api_token, "foodItems", True, SearchFoodByName=food_to_search, PageSize=50)
-#     for food_item in response:
-#         if st.button(food_item["Name"], key=food_item["FoodCode"]):
-#             # st.write(f"Protein: {food_item['Macronutrients']['protein_g']}g")
-#             macronutrients = food_item['Macronutrients']
-#             fig = px.bar(x=['Protein', 'Fat', 'Carbohydrate'], y=list(macronutrients.values()), 
-#                         title=f"Macronutrient values for {food_item['Name']}",
-#                         labels={"x": "Macronutrient", "y": "Grams"})
-#             st.plotly_chart(fig)
-
-#             with st.expander("see more information"):
-#                 st.write(f"Food Code: {food_item['FoodCode']}")
-#                 st.write(f"Description of food: {food_item['Description']}")
-#                 st.write(f"Data source: {food_item['DataReferences']}")
 
 # Initialize the user food list in the session state if it doesn't exist
 if 'user_food_list' not in st.session_state:

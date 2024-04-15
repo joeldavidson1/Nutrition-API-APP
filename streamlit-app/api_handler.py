@@ -15,7 +15,7 @@ def get_data_from_api(token: str, end_point: str, get_all_pages: bool = False, *
     Returns:
         list: A list of data retrieved from the API.
     """
-    url = f"https://localhost:7099/api/{end_point}"
+    url = f"https://uol-nutrition-api.azurewebsites.net/api/{end_point}"
     headers = {"Authorization": f"Bearer {token}"}
     params = kwargs
     
@@ -55,3 +55,23 @@ def get_full_api_response(token: str, end_point: str, **kwargs):
         The full API response.
     """
     return get_data_from_api(token, end_point, True, **kwargs)
+
+
+def is_authenticated(api_key: str) -> bool:
+    """
+    Authenticates the API key.
+
+    Args:
+        api_key (str): The API key to authenticate.
+
+    Returns:
+        bool: True if the API key is valid, False otherwise.
+    """
+    url = "https://uol-nutrition-api.azurewebsites.net/api/foodItems"
+    headers = {"Authorization": f"Bearer {api_key}"}
+    response = requests.get(url, headers=headers, verify=False)
+    
+    if (response.status_code != 200):
+        return False
+    
+    return True

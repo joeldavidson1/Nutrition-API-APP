@@ -2,12 +2,11 @@ import streamlit as st
 import helper
 import constants
 import api_handler
-import credentials
 import pandas as pd
 from st_aggrid import AgGrid, GridOptionsBuilder
 import plotly.express as px
 
-
+api_key = st.session_state.api_key
 # Initialize session state variables
 if 'prev_order_by' not in st.session_state:
     st.session_state.prev_order_by = None
@@ -26,11 +25,11 @@ order_by = f"{constants.NUTRIENTS_TO_CATEGORIES.get(selected_option).lower()} {f
 
 # Check if the selection has changed before sending the request
 if st.session_state.prev_order_by != order_by:
-    response = api_handler.get_data_from_api(credentials.api_key, "foodItems", OrderBy=order_by)
+    response = api_handler.get_data_from_api(api_key, "foodItems", OrderBy=order_by)
     st.session_state.prev_order_by = order_by  # Update the previous selection
     
 with st.container():
-    food_groups_response = api_handler.get_data_from_api(credentials.api_key, "foodGroups")
+    food_groups_response = api_handler.get_data_from_api(api_key, "foodGroups")
     # Create a dictionary where the keys are descriptions and the values are the food group codes
     food_groups_dict = {food_group["description"]: food_group["foodGroupCode"] for food_group in food_groups_response}
     
@@ -43,11 +42,11 @@ with st.container():
     top_x_food_slider = st.slider('Move the slider to show (x) amount of foods', min_value=1, max_value=50, value=20)
 
     if selected_group == "All":
-        response = api_handler.get_data_from_api(credentials.api_key, "foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
+        response = api_handler.get_data_from_api(api_key, "foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
     else:
         # Use the selected description to look up the food group code
         food_group_code = food_groups_dict[selected_group]
-        response = api_handler.get_data_from_api(credentials.api_key, f"foodItems/{food_group_code}/foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
+        response = api_handler.get_data_from_api(api_key, f"foodItems/{food_group_code}/foodItems", PageSize=top_x_food_slider, OrderBy=order_by)
     
     st.subheader(f"Top {top_x_food_slider} foods for {selected_option} and: {selected_group} Food Group(s):")
     if response:
