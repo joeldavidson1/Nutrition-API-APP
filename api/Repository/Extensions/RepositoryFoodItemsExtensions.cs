@@ -55,7 +55,6 @@ public static class RepositoryFoodItemsExtensions
 
                 // Create the final lambda expression
                 var orderByExpression = Expression.Lambda<Func<FoodItems, double?>>(condition, parameter);
-                Console.WriteLine(orderByExpression);
 
                 var orderedQuery = isDescending
                     ? foodItems.OrderByDescending(orderByExpression)

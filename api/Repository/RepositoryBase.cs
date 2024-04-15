@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository;
 
+// This authentication code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
+// Spasojevic and Vladimir Pecanac
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
     protected RepositoryContext RepositoryContext;

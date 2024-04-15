@@ -35,6 +35,7 @@ public class FoodItemsController : ControllerBase
     /// <summary>
     /// Gets a specific food item from a given food code
     /// </summary>
+    /// <param name="foodCode" example="19-501">Search for a food item via its food code</param>
     /// <returns>A food item</returns>
     [HttpGet("{foodCode}"), Authorize]
     public async Task<IActionResult> GetFoodItem(string foodCode)
@@ -46,6 +47,7 @@ public class FoodItemsController : ControllerBase
     /// <summary>
     /// Gets a list of food items from a specific food group
     /// </summary>
+    /// <param name="foodGroupCode" example="DG">Filter food items via a food group code</param>
     /// <returns>A list of food items from the given food group</returns>
     [HttpGet("{foodGroupCode}/foodItems"), Authorize]
     public async Task<IActionResult> GetFoodItemsForFoodGroup([FromQuery] FoodItemParameters foodItemParameters,

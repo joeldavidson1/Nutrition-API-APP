@@ -52,7 +52,6 @@ public class AuthenticationController : ControllerBase
 
     /// <summary>
     /// Authenticates a user
-    /// </summary>
     /// <returns>Returns OK with a JWT token if authentication is successful; otherwise, returns Unauthorized</returns>
     [HttpPost("login")]
     [ServiceFilter(typeof(ValidationFilterAttribute))]

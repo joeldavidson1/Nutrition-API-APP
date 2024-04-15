@@ -31,6 +31,7 @@ public class FoodGroupsController : ControllerBase
     /// <summary>
     /// Gets a specific food group from a given food group code
     /// </summary>
+    /// <param name="foodGroupCode" example="DG">Filter food items via a food group code</param>
     /// <returns>A food group</returns>
     [HttpGet("{foodGroupCode}"), Authorize]
     public async Task<IActionResult> GetFoodGroup(string foodGroupCode)

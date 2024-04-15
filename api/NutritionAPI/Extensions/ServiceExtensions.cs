@@ -82,9 +82,20 @@ public static class ServiceExtensions
         services.AddSwaggerGen(sw =>
         {
             sw.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}/NutritionAPI.Presentation.xml");
-            
-            sw.SwaggerDoc("v1", new OpenApiInfo {Title = "Nutrition API", Version = "v1"});
-            
+            sw.IncludeXmlComments($@"{System.AppDomain.CurrentDomain.BaseDirectory}/Shared.xml");
+
+
+            sw.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Nutrition API", Version = "v1",
+                Description =
+                    "An ASP.NET Core Web API for the UK CoFID dataset.\n\nIMPORTANT: to enable efficient ordering for " +
+                    "the API, where values are 0.01 there were trace (Tr) values present in the dataset. Any values " +
+                    "that are null were either not present or were indicated as N.\n\nTo use the API you need to " +
+                    "register and then authenticate your login credentials. You will be provided with a token. " +
+                    "Click authorise and enter in Bearer <your_token> to access the resources available."
+            });
+
             sw.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 In = ParameterLocation.Header,

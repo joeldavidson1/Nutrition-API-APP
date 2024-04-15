@@ -10,6 +10,8 @@ using Shared.DataTransferObjects;
 
 namespace Service;
 
+// This authentication code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
+// Spasojevic and Vladimir Pecanac
 public class AuthenticationManager : IAuthenticationManager
 {
     private readonly UserManager<User> _userManager;
@@ -32,19 +34,16 @@ public class AuthenticationManager : IAuthenticationManager
 
     public async Task<string> CreateToken()
     {
-        var signingCredentials = GetSigningCredentials();
-        var claims = await GetClaims();
-        var tokenOptions = GenerateTokenOptions(signingCredentials, claims);
+        SigningCredentials signingCredentials = GetSigningCredentials();
+        List<Claim> claims = await GetClaims();
+        JwtSecurityToken tokenOptions = GenerateTokenOptions(signingCredentials, claims);
         return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
     }
     
     private SigningCredentials GetSigningCredentials()
     {
-        // var key =
-        //     Encoding.UTF8.GetBytes(_configuration["JwtSettings:secret"]);
-        var key =
-            Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"));
-        var secret = new SymmetricSecurityKey(key);
+        byte[] key = Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("SECRET"));
+        SymmetricSecurityKey secret = new SymmetricSecurityKey(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
     
@@ -62,11 +61,10 @@ public class AuthenticationManager : IAuthenticationManager
         return claims;
     }
     
-    private JwtSecurityToken GenerateTokenOptions(SigningCredentials
-        signingCredentials, List<Claim> claims)
+    private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {
-        var jwtSettings = _configuration.GetSection("JwtSettings");
-        var tokenOptions = new JwtSecurityToken
+        IConfigurationSection? jwtSettings = _configuration.GetSection("JwtSettings");
+        JwtSecurityToken tokenOptions = new JwtSecurityToken
         (
             issuer: jwtSettings.GetSection("validIssuer").Value,
             audience: jwtSettings.GetSection("validAudience").Value,

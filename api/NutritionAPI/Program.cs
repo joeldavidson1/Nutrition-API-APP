@@ -45,8 +45,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-app.ConfigureExceptionHandler();
-
 // Configure the HTTP request pipeline.
 
 app.UseSwagger(); 
