@@ -1,6 +1,6 @@
 # UK CoFID Nutritional Information Platform
 
-This is a nutritional information platform that was created with data from the [Public Health England Composition of Foods Integrated Dataset](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid) (CoFID). This project contains three folders to run each part of the project locally: data-cleaning, api, and streamlit-app.  However, the API has been published to Azure and can be used [here](https://uol-nutrition-api.azurewebsites.net/swagger/index.html).
+This is a nutritional information platform that was created with data from the [Public Health England Composition of Foods Integrated Dataset](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid) (CoFID). This project contains three folders to run each part of the project locally: `data-cleaning`, `api`, and `streamlit-app.`  However, the API has been published to Azure and can be used [here](https://uol-nutrition-api.azurewebsites.net/swagger/index.html).
 
 There is also an additional file `locust.py` which can be used to load test the API.
 
@@ -8,7 +8,7 @@ All of the Python code in the application ran using Python version 3.12.
 
 
 ## `data-cleaning`
-This directory contains all the files and code for cleaning the .xlsx file with the CoFID dataset. If you would like to run the files locally, please install [PostgreSQL](https://www.postgresql.org/download/) for your machine. 
+This directory contains all the files and code for cleaning the .xlsx file with the CoFID dataset. If you would like to run the files locally, please install [PostgreSQL](https://www.postgresql.org/download/) on your machine. 
 
 Follow these instructions to clean the dataset, create the required CSV and JSON files, and send the data to the local PostgreSQL database:
 ```powershell
@@ -17,7 +17,7 @@ cd nutrition-api-app/data-cleaning
 ```powershell
 pip install -r requirements.txt
 ```
-Ensure you have Jupyter Notebook installed and open the file `data_cleaning.ipynb` and run all the cells. Next run:
+Ensure you have Jupyter Notebook installed, open the file `data_cleaning.ipynb`, and run all the cells. Next run:
 
 ```powershell
 python csv_to_json.py
@@ -51,7 +51,7 @@ cd nutrition-api-app/api/NutritionAPI
 dotnet run
 ```
 
-If it has compiled successfully, you will be presented with a `localhost` URL. To navigate to the Swagger UI section of the API you might need to append `/swagger/index.html` to the end of the of the URL.
+If it has compiled successfully, you will be presented with a `localhost` URL. To navigate to the Swagger UI section of the API you might need to append `/swagger/index.html` to the end of the URL.
 
 If for any reason the project dependencies are not correctly installed or working, inside `/api/NutritionAPI` run:
 ```powershell
@@ -97,10 +97,10 @@ streamlit run Welcome.py
 
 The application will be connected to the already cloud-published API with Azure. If you wanted to test the API locally, the URL would have to be changed to the local URL running the API in `helper.py`.
 
-Follow the instructions which are shown on the welcome page to obtain your API key so you can use the various features in the application.
+Follow the instructions that are shown on the welcome page to obtain your API key so you can use the various features in the application.
 
 ## `locust.py`
-**DO NOT** perform this load test with the published API as it will incur costs to the developer due to vast amount of API calls.
+**DO NOT** perform this load test with the published API as it will incur costs to the developer due to the vast amount of API calls.
 
 These are load tests that test the efficiency and performance of the API utilising the Python library [`locust`](https://locust.io).
 If you would like to run the load tests of the API, firstly please ensure the API is up and running locally. Next, navigate to:
@@ -115,12 +115,11 @@ And run either:
  locust -f locust.py
 ```
 
-You will be given a URL to run the test through the Locust UI. Enter into the Host input box your local API URL, for example `https://localhost:7099` and start the swarm. If you would like to change which test is being run, inside `locust.py` comment out the tests you do not want, and uncomment the one you want. Only one test can be run at once.
+You will be given a URL to run the test through the Locust UI. Enter into the Host input box your local API URL, for example, `https://localhost:7099`, and start the swarm. If you would like to change which test is being run, inside `locust.py` comment out the tests you do not want, and uncomment the one you want. Only one test can be run at once.
 
 Alternatively, to run the test without using the UI, run:
-And run either:
 ```powershell
 locust -f locust.py --headless -H <YOUR API URL>
 ```
 
-Once the test is complete you will be presented with the statistics such as the average response time and the total number of requests.
+Once the test is complete you will be presented with the results and statistics such as the average response time and the total number of requests.
