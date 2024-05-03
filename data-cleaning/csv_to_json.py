@@ -75,10 +75,7 @@ with open('combined_nutrition_tables.csv', 'r') as csv_file:
 
         nutrition.append(food_dict)
 
-# for food in nutrition:
-#     print(food)
-# final = json.dumps(nutrition)
-
 with open('nutrition.json', 'w') as f:
     json.dump(nutrition, f)
 
+print("The file 'nutrition.json' has been created successfully.")
