@@ -1,10 +1,9 @@
 # UK CoFID Nutritional Information Platform
 
-This is a nutritional information platform that was created with data from the [Public Health England Composition of Foods Integrated Dataset](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid) (CoFID).
+This is a nutritional information platform that was created with data from the [Public Health England Composition of Foods Integrated Dataset](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid) (CoFID). This project contains three folders to run each part of the project locally: data-cleaning, api, and streamlit-app.  However, the API has been published to Azure and can be used [here](https://uol-nutrition-api.azurewebsites.net/swagger/index.html).
 
 All of the Python code in the application ran using Python version 3.12.
 
-The project contains three folders: data-cleaning, api, and streamlit-app.
 
 ## `data-cleaning`
 This directory contains all the files and code for cleaning the .xlsx file with the CoFID dataset. If you would like to run the files locally, please install [PostgreSQL](https://www.postgresql.org/download/) for your machine. 
