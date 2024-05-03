@@ -4,4 +4,4 @@ plotly==5.19.0
 Requests==2.31.0
 scipy==1.13.0
 streamlit==1.31.1
-st_aggrid==1.0.4
+st_aggrid==1.0.2
