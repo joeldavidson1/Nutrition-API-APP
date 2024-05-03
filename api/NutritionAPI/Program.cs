@@ -30,7 +30,7 @@ builder.Services.ConfigureJwt(builder.Configuration);
 builder.Services.ConfigureCors();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
-builder.Services.ConfigureSqlContext(builder.Configuration, connection);
+builder.Services.ConfigureSqlContext(connection);
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ValidationFilterAttribute>();

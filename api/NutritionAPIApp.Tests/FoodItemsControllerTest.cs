@@ -40,18 +40,13 @@ public class FoodItemsControllerTest
         _testOutputHelper = testOutputHelper;
         _repositoryManagerMock = new Mock<IRepositoryManager>();
         
-        // Create the configuration for AutoMapper
         var mapperConfig = new MapperConfiguration(cfg =>
         {
-            cfg.AddProfile<MappingProfile>(); // Add your mapping profile
-            // Add any additional mappings or configurations here
+            cfg.AddProfile<MappingProfile>(); 
         });
 
-        // Create an instance of IMapper using the configured mapper configuration
         _mapper = mapperConfig.CreateMapper();
-        
         _service = new Mock<IServiceManager>();
-
         _controller = new FoodItemsController(_service.Object);
     }
 

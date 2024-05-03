@@ -12,15 +12,6 @@ public class RepositoryContext : IdentityDbContext<User>
     {
         
     }
-    //
-    // public DbSet<FoodItems>? FoodItems { get; set; }
-    // public DbSet<FoodGroups>? FoodGroups { get; set; }
-    // public DbSet<Macronutrients>? Macronutrients{ get; set; }
-    // public DbSet<Proximates>? Proximates { get; set; }
-    // public DbSet<Minerals>? Minerals { get; set; }
-    // public DbSet<Vitamins>? Vitamins { get; set; }
-    // public DbSet<Energy>? Energy { get; set; }
-    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<FoodItems>(entity =>
