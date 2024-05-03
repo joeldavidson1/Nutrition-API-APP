@@ -14,7 +14,6 @@ st.markdown("""
     pages in the app, please enter your API token. If you do not have a token, please navigate to the API and login or register:
     https://uol-nutrition-api.azurewebsites.net/swagger/index.html
 """)
-
 # Check if 'logged_in' key exists in session_state
 if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
@@ -26,18 +25,15 @@ if not st.session_state.logged_in:
 
     if st.button("Log in"):
         if api_handler.is_authenticated(api_key):
-            st.success("Successful login. Collecting full API response for the first time to calculate nutrient percentiles. Please wait...")
-            st.session_state.logged_in = True
-            st.session_state.api_key = api_key  
-            
-            st.session_state.full_response = api_handler.get_full_api_response(api_key, "foodItems")
+            with st.spinner('Collecting full API response for the first time to calculate nutrient percentiles. This is only used for the nutrient percentile method. Please wait...'):
+                st.session_state.logged_in = True
+                st.session_state.api_key = api_key  
+                
+                st.session_state.full_response = api_handler.get_full_api_response(api_key, "foodItems")
+            st.success("Data successfully loaded.")
+            st.title('Successfully logged in to the API.')  # Display the title immediately after the user logs in
             st.rerun()
-            # st.write(st.session_state.full_response)
         else:
             st.error("Invalid API key. Please try again.")
 else:
     st.title('Successfully logged in to the API.')
-    # st.title('Nutrition')
-    # st.write(st.session_state.api_key)
-    # Rest of your app code
-

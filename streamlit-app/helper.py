@@ -39,10 +39,8 @@ def extract_measurement(option):
     """
     # Use regex to find the measurement unit
     match = re.search(r'\((.*?)\)', option)
-    # If a match is found, return the measurement unit
     if match:
         return constants.MEASUREMENT_UNITS[match.group(1)]
-    # If no match is found, return None
     else:
         return None
     
@@ -64,7 +62,6 @@ def format_nutrient_option(option, for_api=True):
     words = option.split()
     # Get the measurement unit
     measurement = words[-1]
-    # If there is only one word, return it as is
     if len(words) == 1:
         return option.lower() if for_api else option
     # Remove spaces and underscores between words if there are more than two words
@@ -237,14 +234,12 @@ def create_bar_chart(data, names, title, x_label, colour_dict=None):
 
 
 def calculate_top_5_nutrients(food_data, food_item):
-    # Create a dictionary to store the nutrient and its percentile
     nutrient_percentiles = {}
-
 
     for category in constants.NUTRIENT_CATEGORIES:
         category = category.lower()
         for nutrient, value in food_item[category].items():
-            if value is not None:  # Only consider the nutrient if its value is not None
+            if value is not None: 
                 # Get all the values for the nutrient, excluding None values
                 nutrient_values = [item[category][nutrient] for item in food_data if nutrient in item[category] and item[category][nutrient] is not None]
                 
@@ -254,7 +249,6 @@ def calculate_top_5_nutrients(food_data, food_item):
                 # Reverse the percentile
                 reversed_percentile = 100 - percentile
                 
-                # Store the nutrient and its reversed percentile in the dictionary
                 nutrient_percentiles[nutrient] = reversed_percentile
 
     # Sort the dictionary by percentile in descending order and get the top 5 nutrients

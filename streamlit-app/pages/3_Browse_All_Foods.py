@@ -25,14 +25,12 @@ if response:
     df = pd.DataFrame(response)
     df_to_display = df[['foodCode', 'name']]
     # AgGrid(df_to_display, )
-    # st.write(df_to_display)
+    # st.write(df)
 
     st.markdown('#### Select a food item to view more details')
     gd = GridOptionsBuilder.from_dataframe(df_to_display)
     gd.configure_pagination(enabled=True)
     gd.configure_selection(selection_mode='single', use_checkbox=True)
-
-    gd.configure_column('FoodCode', width=60)
 
     grid_table = AgGrid(df, gridOptions=gd.build(), 
                         height=500, width='100%', 
