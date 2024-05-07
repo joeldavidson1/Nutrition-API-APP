@@ -38,6 +38,8 @@ If the script ran successfully a success message should be printed and the table
 
 If none of the Python files run successfully, replace `python` with `python3` when running the scripts.
 
+Alternatively, the SQL database file is included in the root directory `nutrition_database.sql` and can be used to create the database with PostgreSQL locally.
+
 
 ## `api`
 This directory contains all the code for running the API.
@@ -63,9 +65,9 @@ dotnet run
 
 For ease of use and for marking purposes the required environment variables have been included in `launchSettings.json` in the directory `api/NutritionAPI/Properties`. For future development, this would have to be moved and more security measures would be introduced.
 
-If you want to test the API connected to the local database, please change the connection string environment variable inside `launchSettings.json`. If not, it will be connected to the cloud-based database hosted by Neon.
+If you want to test the API connected to the local database, please change the connection string environment variable inside `launchSettings.json` to the local database details. If not, it will be connected to the cloud-based database hosted by Neon. If you have built the database locally, you may need to apply the migrations to the database using Entity Framework (EF) Core to add the EF Core identity tables providing your local connection string.
 
-Alternatively, the API can be accessed through the following URL which has been hosted on Azure [Azure Nutrition API](https://uol-nutrition-api.azurewebsites.net/swagger/index.html).
+Alternatively, the API can be accessed through the following URL which has been hosted on Azure: [Azure Nutrition API](https://uol-nutrition-api.azurewebsites.net/swagger/index.html).
 
 To obtain an API key, please use the POST endpoint `api/authentication` to register. Alternatively, a dummy user can be used which is already registered using the endpoint `api/authentication/login` with the following details:
 
