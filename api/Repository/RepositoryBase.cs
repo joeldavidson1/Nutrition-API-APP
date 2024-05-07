@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Repository;
 
-// This authentication code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
+// This code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
 // Spasojevic and Vladimir Pecanac
 public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {
@@ -21,7 +21,4 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
                 .AsNoTracking() :
             RepositoryContext.Set<T>()
                 .Where(expression);
-    public void Create(T entity) => RepositoryContext.Set<T>().Add(entity);
-    public void Update(T entity) => RepositoryContext.Set<T>().Update(entity);
-    public void Delete(T entity) => RepositoryContext.Set<T>().Remove(entity);
 }

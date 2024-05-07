@@ -15,5 +15,13 @@ public class RoleConfiguration : IEntityTypeConfiguration<IdentityRole>
                 NormalizedName = "ADMINISTRATOR"
             }
         );
+        
+        builder.HasData(
+            new IdentityRole
+            {
+                Name = "User",
+                NormalizedName = "USER"
+            }
+        );
     }
 }

@@ -1,12 +1,9 @@
-using System.Runtime.CompilerServices;
 using AutoMapper;
 using Microsoft.AspNetCore.HttpOverrides;
 using Npgsql;
 using NutritionAPI.Extensions;
-using NutritionAPI.Presentation.ActionFilters;
 using Service;
 using Service.Contracts;
-using Shared.DataTransferObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +30,6 @@ builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureSqlContext(connection);
 builder.Services.ConfigureSwagger();
 builder.Services.AddAutoMapper(typeof(Program));
-builder.Services.AddScoped<ValidationFilterAttribute>();
 builder.Services.AddScoped<IAuthenticationManager, AuthenticationManager>();
 
 builder.Services.AddControllers()

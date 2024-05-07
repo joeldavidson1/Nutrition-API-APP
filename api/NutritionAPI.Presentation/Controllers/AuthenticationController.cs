@@ -2,11 +2,13 @@ using AutoMapper;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NutritionAPI.Presentation.ActionFilters;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 
 namespace NutritionAPI.Presentation.Controllers;
+
+// This code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
+// Spasojevic and Vladimir Pecanac
 
 [Route("api/authentication")]
 [ApiController]
@@ -29,7 +31,6 @@ public class AuthenticationController : ControllerBase
     /// </summary>
     /// <returns>Returns 201 Created if registration is successful; otherwise, returns BadRequest</returns>
     [HttpPost]
-    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
     {
         User? user = _mapper.Map<User>(userForRegistration);
@@ -54,7 +55,6 @@ public class AuthenticationController : ControllerBase
     /// Authenticates a user
     /// <returns>Returns OK with a JWT token if authentication is successful; otherwise, returns Unauthorized</returns>
     [HttpPost("login")]
-    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto
         user)
     {

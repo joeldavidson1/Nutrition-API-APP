@@ -1,6 +1,6 @@
 namespace Shared.RequestFeatures;
 
-// This authentication code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
+// This code has been adapted from the eBook - Ultimate ASP.NET Core Web API Second Edition by Marinko
 // Spasojevic and Vladimir Pecanac
 public class PagedList<T> : List<T>
 {
