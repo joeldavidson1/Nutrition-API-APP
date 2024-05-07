@@ -2,7 +2,7 @@ import csv
 import json
 
 nutrition = []
-with open('combined_nutrition_tables.csv', 'r') as csv_file:
+with open('combined_nutrition_tables.csv', 'r', encoding='utf-8') as csv_file:
     csv_reader = csv.DictReader(csv_file)
 
     for row in csv_reader:
