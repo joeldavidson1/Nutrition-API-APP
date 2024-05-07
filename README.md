@@ -103,14 +103,14 @@ Follow the instructions that are shown on the welcome page to obtain your API ke
 **DO NOT** perform this load test with the published API as it will incur costs to the developer due to the vast amount of API calls.
 
 These are load tests that test the efficiency and performance of the API utilising the Python library [`locust`](https://locust.io).
-If you would like to run the load tests of the API, firstly please ensure the API is up and running locally. Next, navigate to:
+If you would like to run the load tests of the API, firstly please ensure the API is up and running locally. Next:
 ```powershell
 cd nutrition-api-app
 ```
 ```powershell
 pip install locust
 ```
-And run either:
+And run:
 ```powershell
  locust -f locust.py
 ```
