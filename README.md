@@ -4,8 +4,9 @@ This is a nutritional information platform that was created with data from the [
 
 There is also an additional file `locust.py` which can be used to load test the API.
 
-All of the Python code in the application ran using Python version 3.12.
+ Please install .NET, Python, and pip to run this application locally.
 
+ All of the Python code in the application ran using Python version 3.12.
 
 ## `data-cleaning`
 This directory contains all the files and code for cleaning the .xlsx file with the CoFID dataset. If you would like to run the files locally, please install [PostgreSQL](https://www.postgresql.org/download/) on your machine. 
@@ -121,7 +122,7 @@ You will be given a URL to run the test through the Locust UI. Enter into the Ho
 
 Alternatively, to run the test without using the UI, run:
 ```powershell
-locust -f locust.py --headless -H <YOUR API URL>
+locust -f locust.py --headless -H <YOUR LOCAL API URL>
 ```
 
 Once the test is complete you will be presented with the results and statistics such as the average response time and the total number of requests.
